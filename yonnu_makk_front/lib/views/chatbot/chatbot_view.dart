@@ -1,0 +1,579 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/material.dart';
+import 'package:record/record.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'package:path_provider/path_provider.dart';
+import '../../config/theme.dart';
+import '../../services/api_service.dart';
+import '../../widgets/bottom_nav.dart';
+
+// ─── VUE CHATBOT IA (texte + voix, bilingue fr/wo) ───────────────────────────
+class ChatbotView extends StatefulWidget {
+  const ChatbotView({super.key});
+  @override
+  State<ChatbotView> createState() => _ChatbotViewState();
+}
+
+class _ChatbotViewState extends State<ChatbotView> {
+  final TextEditingController _ctrl     = TextEditingController();
+  final ScrollController      _scroll   = ScrollController();
+  final AudioRecorder         _recorder = AudioRecorder();
+  final AudioPlayer           _player   = AudioPlayer();
+
+  bool    _loading   = false;
+  bool    _recording = false;
+  String  _langue    = 'fr';      // 'fr' | 'wo'
+  String? _sessionId;
+
+  final List<_Msg> _messages = [
+    _Msg(
+      text: 'Bonjour ! Je suis votre assistant santé YOONU MAKK 🌸\n'
+            'Posez vos questions sur la grossesse et le suivi prénatal, '
+            'par écrit ou avec le micro 🎤. Vous pouvez aussi me parler en wolof.',
+      isUser: false,
+    ),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _chargerHistorique();
+  }
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    _scroll.dispose();
+    _recorder.dispose();
+    _player.dispose();
+    super.dispose();
+  }
+
+  // ── Historique ──────────────────────────────────────────────────────────────
+  Future<void> _chargerHistorique() async {
+    final res = await ApiService.instance.get('/patient/chatbot/historique');
+    if (!mounted || !res.ok) return;
+    final data = (res.data['data'] as List? ?? []);
+    if (data.isEmpty) return;
+    // L'API renvoie du plus récent au plus ancien → on remet dans l'ordre.
+    final items = data.reversed
+        .map((e) => _Msg(
+              text:   e['message'] as String? ?? '',
+              isUser: e['role'] == 'utilisateur',
+            ))
+        .toList();
+    setState(() {
+      _messages
+        ..clear()
+        ..addAll(items);
+      _sessionId = data.first['session_id'] as String?;
+    });
+    _scrollToBottom();
+  }
+
+  // ── Envoi texte ───────────────────────────────────────────────────────────
+  Future<void> _send([String? preset]) async {
+    final text = (preset ?? _ctrl.text).trim();
+    if (text.isEmpty || _loading) return;
+    setState(() {
+      _messages.add(_Msg(text: text, isUser: true));
+      _loading = true;
+      _ctrl.clear();
+    });
+    _scrollToBottom();
+
+    final res = await ApiService.instance.post('/patient/chatbot', body: {
+      'message': text,
+      'langue':  _langue,
+      'session_id': ?_sessionId,
+    });
+    if (!mounted) return;
+
+    if (res.ok) {
+      _sessionId = res.data['session_id'] as String? ?? _sessionId;
+      setState(() {
+        _messages.add(_Msg(
+          text:     res.data['message']?['message'] as String? ?? '…',
+          isUser:   false,
+          audioUrl: res.data['audio_url'] as String?,
+        ));
+        _loading = false;
+      });
+    } else {
+      setState(() {
+        _messages.add(_Msg(
+          text: res.error ?? 'Désolée, une erreur est survenue. Réessayez.',
+          isUser: false));
+        _loading = false;
+      });
+    }
+    _scrollToBottom();
+  }
+
+  // ── Enregistrement vocal ────────────────────────────────────────────────────
+  Future<void> _toggleRecord() async {
+    if (kIsWeb) {
+      _snack('La saisie vocale est disponible sur l\'application mobile.');
+      return;
+    }
+    if (_recording) {
+      final path = await _recorder.stop();
+      setState(() => _recording = false);
+      if (path != null) await _envoyerAudio(path);
+      return;
+    }
+    if (await _recorder.hasPermission()) {
+      final dir  = await getTemporaryDirectory();
+      final path = '${dir.path}/voix_${DateTime.now().millisecondsSinceEpoch}.m4a';
+      await _recorder.start(const RecordConfig(), path: path);
+      setState(() => _recording = true);
+    } else {
+      _snack('Accès au micro refusé.');
+    }
+  }
+
+  Future<void> _envoyerAudio(String path) async {
+    setState(() => _loading = true);
+    _scrollToBottom();
+    final res = await ApiService.instance.postMultipart('/patient/chatbot/audio',
+      fields: {
+        'langue': _langue,
+        'session_id': ?_sessionId,
+      },
+      files: {'audio': path},
+    );
+    if (!mounted) return;
+
+    if (res.ok) {
+      _sessionId = res.data['session_id'] as String? ?? _sessionId;
+      final transcription = res.data['transcription'] as String?;
+      final audioUrl      = res.data['audio_url'] as String?;
+      setState(() {
+        if (transcription != null && transcription.isNotEmpty) {
+          _messages.add(_Msg(text: transcription, isUser: true));
+        }
+        _messages.add(_Msg(
+          text:     res.data['message']?['message'] as String? ?? '…',
+          isUser:   false,
+          audioUrl: audioUrl));
+        _loading = false;
+      });
+      if (audioUrl != null) _lire(audioUrl);
+    } else {
+      setState(() => _loading = false);
+      _snack(res.error ?? 'Service vocal indisponible.');
+    }
+    _scrollToBottom();
+  }
+
+  Future<void> _lire(String url) async {
+    try { await _player.play(UrlSource(url)); } catch (_) {}
+  }
+
+  void _snack(String m) => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    content: Text(m), behavior: SnackBarBehavior.floating));
+
+  void _scrollToBottom() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_scroll.hasClients) {
+        _scroll.animateTo(_scroll.position.maxScrollExtent,
+          duration: const Duration(milliseconds: 300), curve: Curves.easeOut);
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.bg,
+      appBar: AppBar(
+        backgroundColor: AppColors.surface,
+        elevation: 0,
+        titleSpacing: 0,
+        title: Row(
+          children: [
+            const CircleAvatar(
+              radius: 18,
+              backgroundColor: AppColors.primarySoft,
+              child: Icon(Icons.smart_toy_rounded, color: AppColors.primary, size: 20),
+            ),
+            const SizedBox(width: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text('Assistant IA YOONU MAKK',
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: AppColors.ink)),
+                Row(children: [
+                  Container(width: 7, height: 7,
+                    decoration: const BoxDecoration(color: AppColors.success, shape: BoxShape.circle)),
+                  const SizedBox(width: 4),
+                  const Text('En ligne', style: TextStyle(fontSize: 11, color: AppColors.success)),
+                ]),
+              ],
+            ),
+          ],
+        ),
+        actions: [
+          // Sélecteur de langue FR / WO
+          _LangueToggle(
+            langue: _langue,
+            onChanged: (l) => setState(() => _langue = l),
+          ),
+          IconButton(
+            icon: const Icon(Icons.delete_outline_rounded, color: AppColors.ink2),
+            tooltip: 'Effacer la conversation',
+            onPressed: () => setState(() {
+              _messages.removeRange(1, _messages.length);
+            }),
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          _QuickSuggestions(onTap: _send),
+          Expanded(
+            child: ListView.builder(
+              controller: _scroll,
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              itemCount: _messages.length + (_loading ? 1 : 0),
+              itemBuilder: (_, i) {
+                if (i == _messages.length) return const _TypingBubble();
+                final m = _messages[i];
+                return _MessageBubble(
+                  msg: m,
+                  onPlay: m.audioUrl != null ? () => _lire(m.audioUrl!) : null,
+                );
+              },
+            ),
+          ),
+          _InputBar(
+            controller: _ctrl,
+            recording: _recording,
+            onSend: () => _send(),
+            onMic:  _toggleRecord,
+          ),
+        ],
+      ),
+      bottomNavigationBar: const BottomNav(currentIndex: 2),
+    );
+  }
+}
+
+// ─── MODÈLE MESSAGE ──────────────────────────────────────────────────────────
+class _Msg {
+  final String   text;
+  final bool     isUser;
+  final String?  audioUrl;
+  final DateTime time;
+  _Msg({required this.text, required this.isUser, this.audioUrl}) : time = DateTime.now();
+}
+
+// ─── SÉLECTEUR DE LANGUE ─────────────────────────────────────────────────────
+class _LangueToggle extends StatelessWidget {
+  final String langue;
+  final ValueChanged<String> onChanged;
+  const _LangueToggle({required this.langue, required this.onChanged});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.bg,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: AppColors.border),
+        ),
+        child: Row(mainAxisSize: MainAxisSize.min, children: [
+          _opt('FR', 'fr'),
+          _opt('WO', 'wo'),
+        ]),
+      ),
+    );
+  }
+
+  Widget _opt(String label, String value) {
+    final sel = langue == value;
+    return GestureDetector(
+      onTap: () => onChanged(value),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        decoration: BoxDecoration(
+          color: sel ? AppColors.primary : Colors.transparent,
+          borderRadius: BorderRadius.circular(20)),
+        child: Text(label, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w800,
+          color: sel ? Colors.white : AppColors.ink2)),
+      ),
+    );
+  }
+}
+
+// ─── BULLE DE MESSAGE ────────────────────────────────────────────────────────
+class _MessageBubble extends StatelessWidget {
+  final _Msg msg;
+  final VoidCallback? onPlay;
+  const _MessageBubble({required this.msg, this.onPlay});
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: msg.isUser ? Alignment.centerRight : Alignment.centerLeft,
+      child: Container(
+        constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.78),
+        margin: const EdgeInsets.only(bottom: 14),
+        child: Column(
+          crossAxisAlignment:
+              msg.isUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+          children: [
+            if (!msg.isUser)
+              const Padding(
+                padding: EdgeInsets.only(left: 4, bottom: 5),
+                child: Row(mainAxisSize: MainAxisSize.min, children: [
+                  CircleAvatar(
+                    radius: 11,
+                    backgroundColor: AppColors.primarySoft,
+                    child: Icon(Icons.smart_toy_rounded, color: AppColors.primary, size: 13),
+                  ),
+                  SizedBox(width: 5),
+                  Text('Assistant',
+                    style: TextStyle(fontSize: 11, color: AppColors.ink2, fontWeight: FontWeight.w500)),
+                ]),
+              ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              decoration: BoxDecoration(
+                color: msg.isUser ? AppColors.primary : AppColors.surface,
+                borderRadius: BorderRadius.only(
+                  topLeft:     const Radius.circular(18),
+                  topRight:    const Radius.circular(18),
+                  bottomLeft:  Radius.circular(msg.isUser ? 18 : 4),
+                  bottomRight: Radius.circular(msg.isUser ? 4 : 18),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.06),
+                    blurRadius: 8, offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(msg.text,
+                    style: TextStyle(
+                      fontSize: 13.5,
+                      color: msg.isUser ? Colors.white : AppColors.ink,
+                      height: 1.55,
+                    )),
+                  if (onPlay != null) ...[
+                    const SizedBox(height: 6),
+                    GestureDetector(
+                      onTap: onPlay,
+                      child: Row(mainAxisSize: MainAxisSize.min, children: const [
+                        Icon(Icons.volume_up_rounded, size: 16, color: AppColors.primary),
+                        SizedBox(width: 4),
+                        Text('Écouter', style: TextStyle(fontSize: 12,
+                          fontWeight: FontWeight.w700, color: AppColors.primary)),
+                      ]),
+                    ),
+                  ],
+                ],
+              ),
+            ),
+            const SizedBox(height: 3),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: Text(
+                '${msg.time.hour.toString().padLeft(2,'0')}:${msg.time.minute.toString().padLeft(2,'0')}',
+                style: const TextStyle(fontSize: 10, color: AppColors.ink2),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ─── INDICATEUR "EN TRAIN D'ÉCRIRE" ─────────────────────────────────────────
+class _TypingBubble extends StatelessWidget {
+  const _TypingBubble();
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 14),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        decoration: BoxDecoration(
+          color: AppColors.surface,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(18), topRight: Radius.circular(18),
+            bottomLeft: Radius.circular(4), bottomRight: Radius.circular(18),
+          ),
+          boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.06), blurRadius: 8)],
+        ),
+        child: const Row(mainAxisSize: MainAxisSize.min, children: [
+          _AnimDot(delay: 0),   SizedBox(width: 5),
+          _AnimDot(delay: 180), SizedBox(width: 5),
+          _AnimDot(delay: 360),
+        ]),
+      ),
+    );
+  }
+}
+
+class _AnimDot extends StatefulWidget {
+  final int delay;
+  const _AnimDot({required this.delay});
+  @override State<_AnimDot> createState() => _AnimDotState();
+}
+class _AnimDotState extends State<_AnimDot> with SingleTickerProviderStateMixin {
+  late AnimationController _ac;
+  late Animation<double>   _fade;
+  @override
+  void initState() {
+    super.initState();
+    _ac   = AnimationController(vsync: this, duration: const Duration(milliseconds: 700));
+    _fade = Tween(begin: 0.25, end: 1.0).animate(CurvedAnimation(parent: _ac, curve: Curves.easeInOut));
+    Future.delayed(Duration(milliseconds: widget.delay), () { if (mounted) _ac.repeat(reverse: true); });
+  }
+  @override void dispose() { _ac.dispose(); super.dispose(); }
+  @override
+  Widget build(BuildContext context) => FadeTransition(
+    opacity: _fade,
+    child: Container(width: 8, height: 8,
+      decoration: const BoxDecoration(color: AppColors.primary, shape: BoxShape.circle)),
+  );
+}
+
+// ─── SUGGESTIONS RAPIDES ─────────────────────────────────────────────────────
+class _QuickSuggestions extends StatelessWidget {
+  final ValueChanged<String> onTap;
+  const _QuickSuggestions({required this.onTap});
+
+  static const _items = [
+    ('🤰', 'Combien de consultations prénatales ?'),
+    ('🩸', 'Signes de danger pendant la grossesse'),
+    ('🍎', 'Alimentation pendant la grossesse'),
+    ('💉', 'Vaccins de la grossesse'),
+    ('👶', 'Mouvements du bébé'),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 46,
+      color: AppColors.surface,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+        itemCount: _items.length,
+        separatorBuilder: (_, i) => const SizedBox(width: 8),
+        itemBuilder: (_, i) => GestureDetector(
+          onTap: () => onTap(_items[i].$2),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            decoration: BoxDecoration(
+              color: AppColors.primarySoft,
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: AppColors.border),
+            ),
+            alignment: Alignment.center,
+            child: Text('${_items[i].$1} ${_items[i].$2}',
+              style: const TextStyle(fontSize: 12, color: AppColors.primary, fontWeight: FontWeight.w500)),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ─── BARRE DE SAISIE (texte + micro) ─────────────────────────────────────────
+class _InputBar extends StatelessWidget {
+  final TextEditingController controller;
+  final bool recording;
+  final VoidCallback onSend;
+  final VoidCallback onMic;
+  const _InputBar({
+    required this.controller,
+    required this.recording,
+    required this.onSend,
+    required this.onMic,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.fromLTRB(14, 8, 14, 16),
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        boxShadow: [BoxShadow(
+          color: AppColors.primary.withValues(alpha: 0.06),
+          blurRadius: 16, offset: const Offset(0, -4),
+        )],
+      ),
+      child: SafeArea(
+        top: false,
+        child: Row(children: [
+          Expanded(
+            child: TextField(
+              controller: controller,
+              maxLines: null,
+              textInputAction: TextInputAction.send,
+              onSubmitted: (_) => onSend(),
+              decoration: InputDecoration(
+                hintText: recording ? 'Enregistrement en cours…' : 'Posez votre question…',
+                hintStyle: TextStyle(
+                  color: recording ? AppColors.danger : AppColors.ink2, fontSize: 13),
+                filled: true,
+                fillColor: AppColors.bg,
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(24),
+                  borderSide: const BorderSide(color: AppColors.border),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(24),
+                  borderSide: const BorderSide(color: AppColors.border),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(24),
+                  borderSide: const BorderSide(color: AppColors.primary, width: 1.5),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(width: 8),
+          // Bouton micro (passe en rouge pendant l'enregistrement)
+          Material(
+            color: recording ? AppColors.danger : AppColors.primarySoft,
+            borderRadius: BorderRadius.circular(24),
+            child: InkWell(
+              onTap: onMic,
+              borderRadius: BorderRadius.circular(24),
+              child: Padding(
+                padding: const EdgeInsets.all(11),
+                child: Icon(recording ? Icons.stop_rounded : Icons.mic_rounded,
+                  color: recording ? Colors.white : AppColors.primary, size: 20),
+              ),
+            ),
+          ),
+          const SizedBox(width: 8),
+          Material(
+            color: AppColors.primary,
+            borderRadius: BorderRadius.circular(24),
+            child: InkWell(
+              onTap: onSend,
+              borderRadius: BorderRadius.circular(24),
+              child: const Padding(
+                padding: EdgeInsets.all(11),
+                child: Icon(Icons.send_rounded, color: Colors.white, size: 20),
+              ),
+            ),
+          ),
+        ]),
+      ),
+    );
+  }
+}

@@ -1,0 +1,124 @@
+import '../models/user.dart';
+import 'api_service.dart';
+import 'storage_service.dart';
+
+// ─── SERVICE D'AUTHENTIFICATION ───────────────────────────────────────────────
+// Gère : connexion, inscription, déconnexion, vérification du token.
+class AuthService {
+  AuthService._();
+  static final AuthService instance = AuthService._();
+
+  final _api     = ApiService.instance;
+  final _storage = StorageService.instance;
+
+  // Connexion (email ou téléphone + mot de passe)
+  Future<({User? user, String? error})> connecter({
+    required String identifiant,
+    required String motDePasse,
+  }) async {
+    final res = await _api.post('/auth/connexion', body: {
+      'identifiant': identifiant,
+      'password':    motDePasse,
+    });
+
+    if (!res.ok) {
+      return (user: null, error: res.error ?? 'Erreur de connexion.');
+    }
+
+    final token = res.data['token'] as String?;
+    if (token == null) return (user: null, error: 'Token manquant.');
+
+    await _storage.saveToken(token);
+    final user = User.fromJson(res.data['user'] as Map<String, dynamic>);
+    return (user: user, error: null);
+  }
+
+  // Inscription patient
+  Future<({User? user, String? error})> inscrire({
+    required String nom,
+    required String prenom,
+    required String email,
+    required String password,
+    required String passwordConfirmation,
+    required String genre,
+    required String typeProfil,
+    String?  telephone,
+    String?  dateNaissance,
+    String?  ville,
+  }) async {
+    final body = <String, dynamic>{
+      'nom':                    nom,
+      'prenom':                 prenom,
+      'email':                  email,
+      'password':               password,
+      'password_confirmation':  passwordConfirmation,
+      'genre':                  genre,
+      'type_profil':            typeProfil,
+    };
+    if (telephone     != null) body['telephone']      = telephone;
+    if (dateNaissance != null) body['date_naissance'] = dateNaissance;
+    if (ville         != null) body['ville']          = ville;
+
+    final res = await _api.post('/auth/inscription', body: body);
+
+    if (!res.ok) return (user: null, error: res.error ?? 'Erreur d\'inscription.');
+
+    final token = res.data['token'] as String?;
+    if (token == null) return (user: null, error: 'Token manquant.');
+
+    await _storage.saveToken(token);
+    final user = User.fromJson(res.data['user'] as Map<String, dynamic>);
+    return (user: user, error: null);
+  }
+
+  // Déconnexion
+  Future<void> deconnecter() async {
+    await _api.post('/auth/deconnexion');
+    await _storage.deleteToken();
+  }
+
+  // Soumettre une demande d'adhésion (gynécologue)
+  // Appelle POST /api/demandes-adhesion (route publique, multipart à cause des fichiers).
+  // [diplomePath] / [justificatifPath] : chemins locaux des documents (PDF/JPG/PNG).
+  Future<({bool ok, String? error})> soumettreDemandeAdhesion({
+    required String nom,
+    required String prenom,
+    required String email,
+    required String telephone,
+    required String numeroOrdre,
+    required String specialite,
+    required int    anneesExperience,
+    required String structureSante,
+    required String ville,
+    String? bio,
+    String? diplomePath,
+    String? justificatifPath,
+  }) async {
+    final fields = <String, String>{
+      'nom':               nom,
+      'prenom':            prenom,
+      'email':             email,
+      'telephone':         telephone,
+      'numero_ordre':      numeroOrdre,
+      'specialite':        specialite,
+      'annees_experience': anneesExperience.toString(),
+      'structure_sante':   structureSante,
+      'ville':             ville,
+    };
+
+    final files = <String, String>{};
+    if (diplomePath      != null) files['diplome']      = diplomePath;
+    if (justificatifPath != null) files['justificatif'] = justificatifPath;
+
+    final res = await _api.postMultipart('/demandes-adhesion',
+        fields: fields, files: files);
+    if (!res.ok) return (ok: false, error: res.error ?? 'Erreur lors de l\'envoi.');
+    return (ok: true, error: null);
+  }
+
+  // Vérifie si un token est stocké (pour décider de la page de démarrage)
+  Future<bool> estConnecte() async {
+    final token = await _storage.readToken();
+    return token != null;
+  }
+}
