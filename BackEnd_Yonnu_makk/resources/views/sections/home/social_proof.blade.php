@@ -10,38 +10,38 @@
 <section class="py-16 sm:py-24">
     <div class="mx-auto w-full max-w-7xl px-4 sm:px-6">
         <div class="mb-12 max-w-3xl scroll-reveal">
-            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Témoignages</p>
-            <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-yoonu-900 sm:text-4xl">Paroles de patientes et de praticiens.</h2>
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-mauve-400">Témoignages</p>
+            <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">Paroles de patientes et de praticiens.</h2>
         </div>
 
         <div class="grid gap-6 md:grid-cols-3">
             @foreach ($temoignages as [$initiales, $nom, $role, $texte])
-                <div class="scroll-reveal morph-card flex flex-col rounded-2xl border border-yoonu-100 bg-white p-6 shadow-soft transition-all duration-300">
+                <div class="scroll-reveal morph-card flex flex-col rounded-2xl border border-white/10 bg-ink-800 p-6 transition-all duration-300">
                     <div class="flex items-center gap-3">
-                        <span class="flex h-11 w-11 items-center justify-center rounded-full bg-yoonu-100 font-display text-sm font-bold text-yoonu-700">{{ $initiales }}</span>
+                        <span class="flex h-11 w-11 items-center justify-center rounded-full bg-yoonu-500/15 font-display text-sm font-bold text-yoonu-300">{{ $initiales }}</span>
                         <div>
-                            <p class="font-semibold text-yoonu-900">{{ $nom }}</p>
-                            <p class="text-xs text-slate-500">{{ $role }}</p>
+                            <p class="font-semibold text-white">{{ $nom }}</p>
+                            <p class="text-xs text-mauve-400">{{ $role }}</p>
                         </div>
                     </div>
-                    <p class="mt-4 text-sm leading-7 text-slate-600">« {{ $texte }} »</p>
+                    <p class="mt-4 text-sm leading-7 text-mauve-300">« {{ $texte }} »</p>
                 </div>
             @endforeach
         </div>
     </div>
 </section>
 
-<section class="bg-yoonu-50 py-16 sm:py-24">
+<section class="bg-ink-950 py-16 sm:py-24">
     <div class="mx-auto w-full max-w-7xl px-4 sm:px-6">
         <div class="scroll-reveal text-center">
-            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Ils nous font confiance</p>
-            <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-yoonu-900">Des patientes et praticiens partout au Sénégal.</h2>
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-mauve-400">Ils nous font confiance</p>
+            <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-white">Des patientes et praticiens partout au Sénégal.</h2>
         </div>
 
         <div class="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
             @foreach ($partenaires as $partenaire)
-                <div class="scroll-reveal stagger-item morph-card rounded-xl border border-yoonu-100 bg-white px-6 py-8 transition-all duration-300">
-                    <p class="text-center text-sm font-semibold text-slate-600">{{ $partenaire }}</p>
+                <div class="scroll-reveal stagger-item morph-card rounded-xl border border-white/10 bg-ink-800 px-6 py-8 transition-all duration-300">
+                    <p class="text-center text-sm font-semibold text-mauve-300">{{ $partenaire }}</p>
                 </div>
             @endforeach
         </div>

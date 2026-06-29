@@ -1,0 +1,216 @@
+%% Diagramme de classes UML - YOONU MAKK
+%% Genere depuis les modeles Eloquent (BackEnd_Yonnu_makk/app/Models)
+%% Rendu : GitHub, https://mermaid.live, extensions VS Code/IntelliJ Mermaid
+classDiagram
+    direction LR
+
+    class User {
+        +bigint id
+        +RoleUtilisateur role
+        +Genre genre
+        +string nom
+        +string prenom
+        +string email
+        +string telephone
+        +date date_naissance
+        +string ville
+        +string avatar
+        +isAdmin() bool
+        +isPatient() bool
+        +estHomme() bool
+    }
+    class Femme {
+        +bigint user_id
+        +TypeProfilFemme type_profil
+        +date date_debut_menopause
+        +StageMenopause stade_menopause
+        +text antecedents_medicaux
+        +estEnceinte() bool
+    }
+    class Administrateur {
+        +bigint user_id
+    }
+    class Gynecologue {
+        +string nom
+        +string prenom
+        +string email
+        +string numero_ordre
+        +string specialite
+        +int annees_experience
+        +string structure_sante
+        +string ville
+        +int tarif_consultation
+        +text bio
+        +bigint demande_adhesion_id
+        +bool is_active
+    }
+
+    class Symptome {
+        +bigint femme_id
+        +date date_journal
+        +text note_generale
+    }
+    class EntreeSymptome {
+        +bigint symptome_id
+        +TypeSymptome type_symptome
+        +int intensite
+        +text commentaire
+    }
+
+    class Grossesse {
+        +bigint femme_id
+        +date date_debut_grossesse
+        +date date_accouchement_prevue
+        +string groupe_sanguin
+        +int nombre_grossesses_anterieures
+        +int nombre_accouchements_anterieurs
+        +bool grossesse_active
+        +semainesAmenorrhee() int
+        +joursAvantAccouchement() int
+    }
+    class SuiviGrossesse {
+        +bigint grossesse_id
+        +int semaines_amenorrhee
+        +decimal poids_kg
+        +int tension_systolique
+        +int tension_diastolique
+        +decimal glycemie
+        +date date_saisie
+    }
+    class MouvementBebe {
+        +bigint grossesse_id
+        +datetime date_heure
+        +int nombre_mouvements
+        +IntensiteMouvement intensite
+    }
+
+    class RendezVous {
+        +bigint femme_id
+        +bigint gynecologue_id
+        +date date_souhaitee
+        +time heure_souhaitee
+        +text motif
+        +StatutRendezVous statut
+        +date date_confirmee
+        +text note_gynecologue
+    }
+    class DemandeAdhesion {
+        +string nom
+        +string prenom
+        +string email
+        +string numero_ordre
+        +string specialite
+        +string chemin_diplome
+        +string chemin_justificatif
+        +StatutDemandeAdhesion statut
+        +bigint traite_par
+        +estEnAttente() bool
+    }
+
+    class ProfessionnelSante {
+        +bigint gynecologue_id
+        +string type_professionnel
+        +string specialite
+        +json langues_parles
+        +json profils_pris_en_charge
+        +bool disponible_en_ligne
+        +decimal tarif_consultation
+        +decimal note_moyenne
+        +int nb_avis
+        +bool profil_verifie
+        +bool actif
+        +recalculerNote()
+    }
+    class DemandeIntermediation {
+        +bigint femme_id
+        +bigint professionnel_id
+        +string type_demande
+        +date date_souhaitee
+        +string statut
+        +bool urgente
+    }
+    class AvisProfessionnel {
+        +bigint femme_id
+        +bigint professionnel_id
+        +bigint demande_id
+        +int note
+        +bool recommande
+        +bool approuve
+    }
+
+    class CategorieContenu {
+        +string nom
+        +string slug
+        +string icone
+    }
+    class Contenu {
+        +bigint categorie_id
+        +bigint auteur_id
+        +TypeContenu type
+        +string titre
+        +Langue langue
+        +bool est_publie
+    }
+    class Video {
+        +bigint categorie_id
+        +bigint auteur_id
+        +string url_video
+        +int duree_secondes
+        +Langue langue
+        +bool est_publie
+    }
+
+    class Recommandation {
+        +bigint femme_id
+        +bigint gynecologue_id
+        +TypeRecommandation type
+        +string titre
+        +bool est_lu
+    }
+    class Notification {
+        +bigint user_id
+        +bigint gynecologue_id
+        +TypeNotification type
+        +string titre
+        +json donnees
+        +bool est_lu
+    }
+    class MessageChatbot {
+        +bigint user_id
+        +string session_id
+        +string role
+        +text message
+        +Langue langue
+    }
+
+    User "1" --> "0..1" Femme
+    User "1" --> "0..1" Administrateur
+    User "1" --> "0..*" Notification
+    User "1" --> "0..*" MessageChatbot
+    User "1" --> "0..*" Contenu : auteur
+    User "1" --> "0..*" Video : auteur
+    User "1" --> "0..*" DemandeAdhesion : traite_par
+
+    Femme "1" --> "0..*" Symptome
+    Femme "1" --> "0..*" Grossesse
+    Femme "1" --> "0..*" RendezVous
+    Femme "1" --> "0..*" Recommandation
+    Femme "1" --> "0..*" DemandeIntermediation
+    Femme "1" --> "0..*" AvisProfessionnel
+
+    Symptome "1" --> "0..*" EntreeSymptome
+    Grossesse "1" --> "0..*" SuiviGrossesse
+    Grossesse "1" --> "0..*" MouvementBebe
+
+    Gynecologue "1" --> "0..*" RendezVous
+    Gynecologue "1" --> "0..*" Recommandation
+    Gynecologue "1" --> "0..*" Notification
+    Gynecologue "1" --> "0..1" ProfessionnelSante
+    DemandeAdhesion "1" --> "0..1" Gynecologue
+
+    ProfessionnelSante "1" --> "0..*" DemandeIntermediation
+    ProfessionnelSante "1" --> "0..*" AvisProfessionnel
+    DemandeIntermediation "1" --> "0..1" AvisProfessionnel
+
+    CategorieContenu "1" --> "0..*" Contenu
+    CategorieContenu "1" --> "0..*" Video

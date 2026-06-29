@@ -19,7 +19,9 @@ use App\Models\Symptome;
 use App\Models\User;
 use App\Models\Video;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Schema;
 
 /*
  * ══════════════════════════════════════════════════════════════════════════════
@@ -50,6 +52,21 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        // ══════════════════════════════════════════════════════════════════════
+        // 0. NETTOYAGE — rend le seeder ré-exécutable (php artisan db:seed)
+        //    sans erreur de doublon (ex. users.email unique).
+        // ══════════════════════════════════════════════════════════════════════
+        $this->truncateTables([
+            'entrees_symptomes', 'symptomes',
+            'mouvements_bebe', 'suivis_grossesse', 'grossesses',
+            'recommandations', 'rendez_vous', 'notifications',
+            'messages_chatbot',
+            'avis_professionnels', 'demandes_intermediation', 'professionnels_sante',
+            'videos', 'contenus', 'categories_contenus',
+            'femmes', 'administrateurs', 'gynecologues', 'demandes_adhesion',
+            'users',
+        ]);
+
         // ══════════════════════════════════════════════════════════════════════
         // 1. ADMIN
         // ══════════════════════════════════════════════════════════════════════
@@ -97,6 +114,25 @@ class DatabaseSeeder extends Seeder
             'bio'                 => 'Spécialiste en santé de la femme, suivi grossesse à risque et ménopause.',
             'email_verified_at'   => now(),
         ]);
+
+        // Ajout de nouveaux gynécologues via la Factory
+        Gynecologue::factory()->create([
+            'prenom' => 'Fatoumata',
+            'nom' => 'Diallo',
+            'email' => 'dr.diallo@test.sn',
+            'ville' => 'Saint-Louis',
+            'structure_sante' => 'Hôpital Régional de Saint-Louis',
+        ]);
+
+        Gynecologue::factory()->create([
+            'prenom' => 'Khady',
+            'nom' => 'Ndiaye',
+            'email' => 'dr.ndiaye@test.sn',
+            'ville' => 'Thiès',
+            'structure_sante' => 'Hôpital Ahmadou Sakhir Ndiéguène',
+        ]);
+
+        Gynecologue::factory()->count(3)->create(); // 3 gynécologues aléatoires supplémentaires
 
         // ══════════════════════════════════════════════════════════════════════
         // 3. FEMMES ENCEINTES
@@ -673,6 +709,11 @@ class DatabaseSeeder extends Seeder
             'corps' => 'Les besoins en fer augmentent de 50 % pendant la grossesse. Au Sénégal, privilégier le thiéboudienne avec feuilles de bissap, le mafé aux arachides (protéines), le yassa citron (vitamine C). Éviter alcool, café excessif, poissons crus.',
             'langue' => 'fr', 'est_publie' => true, 'publie_le' => now()]);
 
+        Contenu::create(['categorie_id' => $cat4->id, 'auteur_id' => $admin->id, 'type' => 'article',
+            'titre' => 'Gérer l\'anxiété pendant la grossesse et la ménopause', 'slug' => 'gerer-anxiete-grossesse-menopause',
+            'corps' => 'Les bouleversements hormonaux de la grossesse comme de la ménopause peuvent amplifier l\'anxiété et les troubles du sommeil. Des gestes simples aident : respiration lente (6 cycles/minute), marche quotidienne, parole avec un proche ou un professionnel. En cas de tristesse persistante, de perte d\'intérêt ou d\'idées noires au-delà de deux semaines, il faut consulter : la dépression périnatale et le mal-être de la ménopause se soignent.',
+            'langue' => 'fr', 'est_publie' => true, 'publie_le' => now()]);
+
         Video::create(['categorie_id' => $cat3->id, 'auteur_id' => $admin->id,
             'titre' => 'Yoga doux pour la ménopause', 'slug' => 'yoga-doux-menopause',
             'description' => 'Séance de yoga de 20 minutes adaptée aux femmes en péri et post-ménopause. Réduit le stress, améliore le sommeil et soulage les douleurs articulaires.',
@@ -776,5 +817,23 @@ class DatabaseSeeder extends Seeder
             'titre' => 'Nouveau RDV en attente — Awa Fall', 'corps' => 'Mme Fall demande un RDV de suivi péri-ménopause dans 10 jours.']);
         Notification::create(['gynecologue_id' => $gyn->id, 'type' => 'rappel_rendez_vous',
             'titre' => 'URGENT — Surveillance TA Mariama Diop (36 SA)', 'corps' => 'Mme Diop (36 SA, risque pré-éclampsie) a un RDV monitoring dans 3 jours. À surveiller en priorité.']);
+    }
+
+    /**
+     * Vide les tables fournies (en ignorant les contraintes de clés étrangères)
+     * afin que le seeder puisse être relancé sans erreur de doublon.
+     * Les tables absentes sont ignorées silencieusement.
+     */
+    private function truncateTables(array $tables): void
+    {
+        Schema::disableForeignKeyConstraints();
+
+        foreach ($tables as $table) {
+            if (Schema::hasTable($table)) {
+                DB::table($table)->truncate();
+            }
+        }
+
+        Schema::enableForeignKeyConstraints();
     }
 }

@@ -71,6 +71,16 @@ class AuthService {
     return (user: user, error: null);
   }
 
+  // Mot de passe oublié : demande l'envoi d'un lien de réinitialisation par email.
+  // Appelle POST /api/auth/mot-de-passe/email.
+  Future<({bool ok, String message})> motDePasseOublie(String email) async {
+    final res = await _api.post('/auth/mot-de-passe/email', body: {'email': email});
+    final msg = (res.data is Map ? res.data['message'] as String? : null)
+        ?? res.error
+        ?? (res.ok ? 'Lien de réinitialisation envoyé.' : 'Erreur, réessayez plus tard.');
+    return (ok: res.ok, message: msg);
+  }
+
   // Déconnexion
   Future<void> deconnecter() async {
     await _api.post('/auth/deconnexion');

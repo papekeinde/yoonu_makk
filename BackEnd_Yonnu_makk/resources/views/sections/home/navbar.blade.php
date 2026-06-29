@@ -3,48 +3,43 @@
         ['Comment ça marche', '#process'],
         ['Pour qui', '#acteurs'],
         ['Fonctionnalités', '#fonctionnalites'],
-        ['Sécurité', '#securite'],
+        ['Assistant', route('assistant')],
     ];
-    $platformUrl = $frontendUrl ?? '#telechargement';
 @endphp
 
 <div x-data="{ scrolled: false, menuOpen: false }"
-     x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 40; })"
+     x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 24; })"
      @keydown.escape.window="menuOpen = false">
 
-    <nav class="fixed inset-x-0 top-0 z-50 transition-all duration-300"
-         :class="scrolled ? 'bg-white/95 backdrop-blur-xl border-b border-yoonu-100 shadow-[0_6px_28px_rgba(233,30,99,0.07)]' : 'bg-transparent'">
-        <div class="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6">
+    {{-- Barre fixe blanche, façon vitrine éditoriale --}}
+    <nav class="fixed inset-x-0 top-0 z-50 border-b border-black/[0.07] bg-white/95 backdrop-blur transition-shadow duration-300"
+         :class="scrolled ? 'shadow-[0_2px_24px_rgba(26,7,16,0.08)]' : ''">
+        <div class="mx-auto flex h-[72px] w-[min(1200px,92vw)] items-center justify-between gap-6">
             {{-- Logo --}}
-            <a href="/" class="flex items-center gap-2.5">
-                <img src="{{ asset('logo-yoonu-makk.svg') }}" alt="YOONU MAKK" class="h-9 w-9">
-                <span class="font-display text-lg font-extrabold tracking-tight text-yoonu-900">
-                    YOONU <span class="text-yoonu-500">MAKK</span>
-                </span>
+            <a href="/" class="flex items-center" aria-label="YOONU JIGEEN — accueil">
+                <img src="{{ asset('logo-yoonu-makk.svg') }}" alt="YOONU JIGEEN" class="h-9 w-9">
             </a>
 
-            {{-- Liens desktop --}}
-            <div class="hidden items-center gap-1 md:flex">
+            {{-- Liens — centrés --}}
+            <div class="hidden md:flex md:flex-1 md:items-center md:justify-center md:gap-1">
                 @foreach ($navLinks as [$label, $anchor])
                     <a href="{{ $anchor }}"
-                       class="rounded-lg px-3.5 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-yoonu-50 hover:text-yoonu-700">{{ $label }}</a>
+                       class="px-4 py-2 font-serif text-[0.95rem] text-ink-800/80 transition-colors hover:text-ink-900">{{ $label }}</a>
                 @endforeach
             </div>
 
-            {{-- CTA desktop --}}
-            <div class="hidden items-center gap-2 md:flex">
-                <a href="{{ route('assistant') }}"
-                   class="rounded-lg px-3.5 py-2 text-sm font-semibold text-yoonu-700 transition-colors hover:bg-yoonu-50">Assistant</a>
-                <a href="{{ $platformUrl }}"
-                   class="rounded-xl bg-yoonu-700 px-5 py-2.5 text-sm font-bold text-white shadow-[0_4px_18px_rgba(173,20,87,0.28)] transition-all hover:bg-yoonu-900 hover:scale-[1.02]">
-                    Ouvrir la plateforme
+            {{-- Connexion : un seul bouton, façonné « plein » --}}
+            <div class="hidden md:block">
+                <a href="{{ route('login') }}"
+                   class="inline-flex items-center border border-ink-900 bg-ink-900 px-6 py-2.5 font-display text-sm font-bold tracking-wide text-white transition-colors hover:bg-ink-700">
+                    Se connecter
                 </a>
             </div>
 
             {{-- Bouton menu mobile --}}
-            <button @click="menuOpen = !menuOpen" class="rounded-lg p-2 text-yoonu-900 md:hidden" aria-label="Menu">
-                <svg x-show="!menuOpen" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-                <svg x-show="menuOpen" x-cloak class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+            <button @click="menuOpen = !menuOpen" class="border border-ink-900/15 p-2 text-ink-900 md:hidden" aria-label="Menu">
+                <svg x-show="!menuOpen" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+                <svg x-show="menuOpen" x-cloak class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
         </div>
     </nav>
@@ -56,22 +51,20 @@
          x-transition:leave="transition ease-in duration-150"
          x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
          class="fixed inset-0 z-40 flex flex-col bg-white md:hidden">
-        <div class="flex h-[72px] items-center justify-between border-b border-yoonu-100 px-4">
-            <span class="font-display text-lg font-extrabold tracking-tight text-yoonu-900">YOONU <span class="text-yoonu-500">MAKK</span></span>
-            <button @click="menuOpen = false" class="p-2 text-yoonu-900" aria-label="Fermer">
-                <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        <div class="flex h-[72px] items-center justify-between border-b border-black/[0.07] px-[4vw]">
+            <span class="font-display text-lg font-extrabold tracking-tight text-ink-900">YOONU <span class="text-yoonu-600">MAKK</span></span>
+            <button @click="menuOpen = false" class="border border-ink-900/15 p-2 text-ink-900" aria-label="Fermer">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
         </div>
-        <div class="flex flex-1 flex-col justify-center gap-5 px-8">
+        <div class="flex flex-1 flex-col justify-center gap-2 px-[6vw]">
             @foreach ($navLinks as [$label, $anchor])
                 <a href="{{ $anchor }}" @click="menuOpen = false"
-                   class="font-display text-2xl font-bold text-yoonu-900">{{ $label }}</a>
+                   class="border-b border-black/5 py-4 font-serif text-2xl text-ink-900">{{ $label }}</a>
             @endforeach
-            <a href="{{ route('assistant') }}" @click="menuOpen = false"
-               class="font-display text-2xl font-bold text-yoonu-700">Assistant</a>
-            <a href="{{ $platformUrl }}" @click="menuOpen = false"
-               class="mt-3 rounded-2xl bg-yoonu-700 py-4 text-center text-base font-bold text-white shadow-[0_4px_20px_rgba(173,20,87,0.3)]">
-                Ouvrir la plateforme
+            <a href="{{ route('login') }}" @click="menuOpen = false"
+               class="mt-5 border border-ink-900 bg-ink-900 py-4 text-center font-display text-base font-bold tracking-wide text-white">
+                Se connecter
             </a>
         </div>
     </div>

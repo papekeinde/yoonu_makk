@@ -45,7 +45,9 @@ class Grossesse extends Model
 
     public function semainesAmenorrhee(): int
     {
-        return (int) now()->diffInWeeks($this->date_debut_grossesse);
+        // Semaines écoulées depuis le début de grossesse (toujours positif).
+        // diffInWeeks est signé sous Carbon 3 : on part de la date de début vers maintenant.
+        return (int) $this->date_debut_grossesse->diffInWeeks(now());
     }
 
     public function joursAvantAccouchement(): int

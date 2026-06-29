@@ -9,7 +9,7 @@ import '../../services/auth_service.dart';
 // ─── VUE INSCRIPTION ─────────────────────────────────────────────────────────
 // Toggle Patient | Gynécologue en haut.
 //   Patient    → 3 étapes : Identité / Profil santé / Sécurité + recap
-//   Gynécologue → 3 étapes : Identité / Infos professionnelles / Documents
+//   Gynécologue → 2 étapes : Identité / Infos professionnelles
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
   @override
@@ -144,10 +144,6 @@ class _RegisterViewState extends State<RegisterView> {
       genre:                _genre,
       typeProfil:           _typeProfil,
       telephone:            _telCtrl.text.trim().isEmpty ? null : _telCtrl.text.trim(),
-      // date_naissance est obligatoire côté back-end (collectée à l'étape 1)
-      dateNaissance:        _dateNaissance == null ? null
-          : '${_dateNaissance!.year}-${_dateNaissance!.month.toString().padLeft(2, '0')}-${_dateNaissance!.day.toString().padLeft(2, '0')}',
-      ville:                _villeCtrl.text.trim().isEmpty ? null : _villeCtrl.text.trim(),
     );
     if (!mounted) return;
     if (ok) Navigator.pushReplacementNamed(context, Routes.home);
@@ -574,7 +570,6 @@ class _RegisterViewState extends State<RegisterView> {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       if (_gEtape == 1) ..._g1Identite(),
       if (_gEtape == 2) ..._g2Professionnel(),
-      if (_gEtape == 3) ..._g3Documents(),
       const SizedBox(height: 24),
       _gLoading
           ? const Center(child: CircularProgressIndicator(color: AppColors.primary))
@@ -582,14 +577,17 @@ class _RegisterViewState extends State<RegisterView> {
               onPressed: () {
                 if (_gEtape == 1) {
                   if (_valideGEtape1()) { setState(() => _gEtape = 2); }
-                } else if (_gEtape == 2) {
-                  if (_valideGEtape2()) { setState(() => _gEtape = 3); }
                 } else {
                   _soumettreDemandeGyneco();
                 }
               },
-              child: Text(_gEtape < 3 ? 'Continuer' : 'Envoyer ma demande'),
+              child: Text(_gEtape == 1 ? 'Continuer' : 'Envoyer ma demande'),
             ),
+      const SizedBox(height: 12),
+      _infoBox(
+        icon: Icons.info_outline_rounded,
+        text: 'Vos documents (diplôme, justificatif) vous seront demandés lors de la validation par notre équipe.',
+      ),
     ]);
   }
 
@@ -666,91 +664,6 @@ class _RegisterViewState extends State<RegisterView> {
     ),
   ];
 
-  List<Widget> _g3Documents() => [
-    const Text('Documents justificatifs',
-      style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: AppColors.primaryDark)),
-    const SizedBox(height: 6),
-    const Text('Indispensables pour valider votre statut de professionnel de santé',
-      style: TextStyle(fontSize: 14, color: AppColors.ink2)),
-    const SizedBox(height: 22),
-    _uploadCard(
-      titre: 'Diplôme de médecine *',
-      sousTitre: 'Diplôme d\'État ou de spécialisation',
-      icon: Icons.school_outlined,
-      nomFichier: _gDiplomeNom,
-      onTap: () => _choisirDocument(diplome: true),
-      onRetirer: _gDiplomePath == null ? null
-          : () => setState(() { _gDiplomePath = null; _gDiplomeNom = null; }),
-    ),
-    const SizedBox(height: 12),
-    _uploadCard(
-      titre: 'Carte professionnelle / Ordre *',
-      sousTitre: 'Carte SYNGOB / ONMSP ou attestation d\'inscription',
-      icon: Icons.badge_outlined,
-      nomFichier: _gJustificatifNom,
-      onTap: () => _choisirDocument(diplome: false),
-      onRetirer: _gJustificatifPath == null ? null
-          : () => setState(() { _gJustificatifPath = null; _gJustificatifNom = null; }),
-    ),
-    const SizedBox(height: 16),
-    _infoBox(
-      icon: Icons.lock_outline_rounded,
-      text: 'Formats acceptés : PDF, JPG ou PNG (max 5 Mo). '
-            'Vos documents sont confidentiels et ne servent qu\'à la vérification.',
-    ),
-  ];
-
-  Widget _uploadCard({
-    required String titre,
-    required String sousTitre,
-    required IconData icon,
-    required String? nomFichier,
-    required VoidCallback onTap,
-    VoidCallback? onRetirer,
-  }) {
-    final rempli = nomFichier != null;
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.all(14),
-        decoration: BoxDecoration(
-          color: rempli ? AppColors.primarySoft : Colors.white,
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(
-            color: rempli ? AppColors.primary : AppColors.border,
-            width: 1.5),
-        ),
-        child: Row(children: [
-          Container(
-            width: 44, height: 44,
-            decoration: BoxDecoration(
-              color: rempli ? AppColors.primary : AppColors.primarySoft,
-              borderRadius: BorderRadius.circular(12)),
-            child: Icon(rempli ? Icons.check_rounded : icon,
-              color: rempli ? Colors.white : AppColors.primary, size: 22),
-          ),
-          const SizedBox(width: 12),
-          Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(titre,
-              style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w800, color: AppColors.ink)),
-            const SizedBox(height: 2),
-            Text(rempli ? nomFichier : sousTitre,
-              maxLines: 1, overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: 11,
-                color: rempli ? AppColors.primaryDark : AppColors.ink2,
-                fontWeight: rempli ? FontWeight.w600 : FontWeight.w400)),
-          ])),
-          if (onRetirer != null)
-            IconButton(
-              icon: const Icon(Icons.close_rounded, size: 18, color: AppColors.ink2),
-              onPressed: onRetirer)
-          else
-            const Icon(Icons.upload_file_rounded, size: 20, color: AppColors.primary),
-        ]),
-      ),
-    );
-  }
-
   Widget _succesGyneco() => Center(
     child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       const SizedBox(height: 20),
@@ -769,8 +682,8 @@ class _RegisterViewState extends State<RegisterView> {
         style: TextStyle(fontSize: 14, color: AppColors.ink2, height: 1.6),
         textAlign: TextAlign.center),
       const SizedBox(height: 20),
-      _infoBox(icon: Icons.verified_outlined,
-        text: 'Vos documents (diplôme, carte professionnelle) ont bien été reçus et seront vérifiés par notre équipe.'),
+      _infoBox(icon: Icons.article_outlined,
+        text: 'Préparez : diplôme, carte professionnelle, certificat SYNGOB.'),
       const SizedBox(height: 28),
       ElevatedButton(
         onPressed: () => Navigator.pushReplacementNamed(context, Routes.login),

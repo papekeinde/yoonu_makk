@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../config/theme.dart';
 import '../../config/routes.dart';
 import '../../controllers/auth_controller.dart';
+import '../../services/auth_service.dart';
 import '../../widgets/app_input.dart';
 
 // ─── VUE CONNEXION ────────────────────────────────────────────────────────────

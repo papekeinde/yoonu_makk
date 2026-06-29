@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Middleware\EnsureAdminWeb;
 use App\Http\Middleware\EnsureEmailVerifie;
 use App\Http\Middleware\EnsureGynecologueActif;
+use App\Http\Middleware\EnsureGynecologueWeb;
 use App\Http\Middleware\EnsureRole;
 use App\Http\Middleware\SecureHeaders;
 use Illuminate\Foundation\Application;
@@ -24,6 +26,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'role'               => EnsureRole::class,
             'gynecologue.actif'  => EnsureGynecologueActif::class,
             'email.verifie'      => EnsureEmailVerifie::class,
+            'admin.web'          => EnsureAdminWeb::class,
+            'gynecologue.web'    => EnsureGynecologueWeb::class,
         ]);
 
         // Sanctum stateful domains (pour les cookies SPA si besoin)

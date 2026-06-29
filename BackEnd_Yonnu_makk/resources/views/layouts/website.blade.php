@@ -70,9 +70,10 @@
 
         /* ===== Scrollbar & sélection aux couleurs de la charte ===== */
         ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #FCE4EC; }
-        ::-webkit-scrollbar-thumb { background: #E91E63; border-radius: 6px; }
-        ::selection { background: rgba(233, 30, 99, 0.18); }
+        ::-webkit-scrollbar-track { background: #140509; }
+        ::-webkit-scrollbar-thumb { background: #AD1457; border-radius: 6px; }
+        ::-webkit-scrollbar-thumb:hover { background: #E91E63; }
+        ::selection { background: rgba(233, 30, 99, 0.32); color: #fff; }
 
         /* ===== Décalage d'ancrage sous la navbar fixe ===== */
         section[id], [id] { scroll-margin-top: 88px; }
@@ -89,7 +90,8 @@
                 extend: {
                     fontFamily: {
                         sans: ['Manrope', 'ui-sans-serif', 'system-ui'],
-                        display: ['Archivo', 'ui-sans-serif', 'system-ui']
+                        display: ['Archivo', 'ui-sans-serif', 'system-ui'],
+                        serif: ['Fraunces', 'Georgia', 'Times New Roman', 'serif']
                     },
                     colors: {
                         yoonu: {
@@ -103,6 +105,34 @@
                             700: '#AD1457',
                             800: '#8B1A47',
                             900: '#6B0D2B'
+                        },
+                        // Échelle de triage — palette sémantique d'urgence,
+                        // sourde et accordée au rose de marque.
+                        urgence: {
+                            50: '#FAEEEC', 100: '#F1D5D0', 200: '#E3ADA4',
+                            500: '#BC4A3C', 600: '#A53E32', 700: '#8A3328'
+                        },
+                        rapide: {
+                            50: '#FAF3E4', 100: '#F0E1BC', 200: '#E2C988',
+                            500: '#C08A33', 600: '#A37223', 700: '#855C1C'
+                        },
+                        standard: {
+                            50: '#EDF2ED', 100: '#D6E2D6', 200: '#B0C7B2',
+                            500: '#5F8568', 600: '#4E7056', 700: '#3E5A45'
+                        },
+                        // Thème sombre — repris du dashboard (sidebar bordeaux).
+                        ink: {
+                            950: '#140509', // fond le plus profond
+                            900: '#1A0710', // fond de page (= sidebar dashboard)
+                            800: '#25101A', // carte (= dark-card)
+                            700: '#311624', // surface secondaire / hover
+                            600: '#3A1A28'  // bordure (= dark-border)
+                        },
+                        mauve: {
+                            200: '#DCC9D2', // texte clair
+                            300: '#C9B8C0', // texte courant
+                            400: '#A98F99', // texte atténué
+                            500: '#866974'  // texte discret
                         }
                     },
                     boxShadow: {
@@ -114,14 +144,14 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
         gsap.registerPlugin(ScrollTrigger);
     </script>
 </head>
-<body class="font-sans bg-white text-yoonu-900 min-h-screen antialiased">
+<body class="font-sans bg-ink-900 text-mauve-300 min-h-screen antialiased">
     @yield('content')
     <script>
         // GSAP Scroll Reveal Animations

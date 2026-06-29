@@ -51,6 +51,10 @@ return [
             'driver'   => 'sanctum',
             'provider' => 'gynecologues',
         ],
+        'gynecologue_web' => [
+            'driver'   => 'session',
+            'provider' => 'gynecologues',
+        ],
     ],
 
     /*

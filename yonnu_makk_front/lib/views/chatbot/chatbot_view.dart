@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:record/record.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import '../../config/theme.dart';
 import '../../services/api_service.dart';
 import '../../widgets/bottom_nav.dart';
 
-// ─── VUE CHATBOT IA (texte + voix, bilingue fr/wo) ───────────────────────────
+// ─── VUE CHATBOT IA (texte + voix, en français) ──────────────────────────────
 class ChatbotView extends StatefulWidget {
   const ChatbotView({super.key});
   @override
@@ -19,17 +20,18 @@ class _ChatbotViewState extends State<ChatbotView> {
   final ScrollController      _scroll   = ScrollController();
   final AudioRecorder         _recorder = AudioRecorder();
   final AudioPlayer           _player   = AudioPlayer();
+  final FlutterTts            _tts      = FlutterTts();
 
   bool    _loading   = false;
   bool    _recording = false;
-  String  _langue    = 'fr';      // 'fr' | 'wo'
+  bool    _voiceOn   = true;      // lecture vocale automatique des réponses
   String? _sessionId;
 
   final List<_Msg> _messages = [
     _Msg(
       text: 'Bonjour ! Je suis votre assistant santé YOONU MAKK 🌸\n'
             'Posez vos questions sur la grossesse et le suivi prénatal, '
-            'par écrit ou avec le micro 🎤. Vous pouvez aussi me parler en wolof.',
+            'par écrit ou avec le micro 🎤. Je peux aussi vous répondre à voix haute.',
       isUser: false,
     ),
   ];
@@ -37,7 +39,16 @@ class _ChatbotViewState extends State<ChatbotView> {
   @override
   void initState() {
     super.initState();
+    _initTts();
     _chargerHistorique();
+  }
+
+  Future<void> _initTts() async {
+    await _tts.setLanguage('fr-FR');
+    await _tts.setSpeechRate(0.5);   // débit posé, plus naturel
+    await _tts.setPitch(1.0);
+    await _tts.setVolume(1.0);
+    await _tts.awaitSpeakCompletion(true);
   }
 
   @override
@@ -46,7 +57,21 @@ class _ChatbotViewState extends State<ChatbotView> {
     _scroll.dispose();
     _recorder.dispose();
     _player.dispose();
+    _tts.stop();
     super.dispose();
+  }
+
+  /// Lit un message à voix haute : audio du serveur si présent, sinon
+  /// synthèse vocale locale (flutter_tts) du texte.
+  Future<void> _parler(_Msg m) async {
+    await _tts.stop();
+    if (m.audioUrl != null) {
+      try { await _player.play(UrlSource(m.audioUrl!)); return; } catch (_) {}
+    }
+    final texte = m.text.trim();
+    if (texte.isNotEmpty) {
+      try { await _tts.speak(texte); } catch (_) {}
+    }
   }
 
   // ── Historique ──────────────────────────────────────────────────────────────
@@ -84,21 +109,22 @@ class _ChatbotViewState extends State<ChatbotView> {
 
     final res = await ApiService.instance.post('/patient/chatbot', body: {
       'message': text,
-      'langue':  _langue,
       'session_id': ?_sessionId,
     });
     if (!mounted) return;
 
     if (res.ok) {
       _sessionId = res.data['session_id'] as String? ?? _sessionId;
+      final reponse = _Msg(
+        text:     res.data['message']?['message'] as String? ?? '…',
+        isUser:   false,
+        audioUrl: res.data['audio_url'] as String?,
+      );
       setState(() {
-        _messages.add(_Msg(
-          text:     res.data['message']?['message'] as String? ?? '…',
-          isUser:   false,
-          audioUrl: res.data['audio_url'] as String?,
-        ));
+        _messages.add(reponse);
         _loading = false;
       });
+      if (_voiceOn) _parler(reponse);
     } else {
       setState(() {
         _messages.add(_Msg(
@@ -137,7 +163,6 @@ class _ChatbotViewState extends State<ChatbotView> {
     _scrollToBottom();
     final res = await ApiService.instance.postMultipart('/patient/chatbot/audio',
       fields: {
-        'langue': _langue,
         'session_id': ?_sessionId,
       },
       files: {'audio': path},
@@ -147,27 +172,24 @@ class _ChatbotViewState extends State<ChatbotView> {
     if (res.ok) {
       _sessionId = res.data['session_id'] as String? ?? _sessionId;
       final transcription = res.data['transcription'] as String?;
-      final audioUrl      = res.data['audio_url'] as String?;
+      final reponse = _Msg(
+        text:     res.data['message']?['message'] as String? ?? '…',
+        isUser:   false,
+        audioUrl: res.data['audio_url'] as String?,
+      );
       setState(() {
         if (transcription != null && transcription.isNotEmpty) {
           _messages.add(_Msg(text: transcription, isUser: true));
         }
-        _messages.add(_Msg(
-          text:     res.data['message']?['message'] as String? ?? '…',
-          isUser:   false,
-          audioUrl: audioUrl));
+        _messages.add(reponse);
         _loading = false;
       });
-      if (audioUrl != null) _lire(audioUrl);
+      if (_voiceOn) _parler(reponse);
     } else {
       setState(() => _loading = false);
       _snack(res.error ?? 'Service vocal indisponible.');
     }
     _scrollToBottom();
-  }
-
-  Future<void> _lire(String url) async {
-    try { await _player.play(UrlSource(url)); } catch (_) {}
   }
 
   void _snack(String m) => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -214,17 +236,25 @@ class _ChatbotViewState extends State<ChatbotView> {
           ],
         ),
         actions: [
-          // Sélecteur de langue FR / WO
-          _LangueToggle(
-            langue: _langue,
-            onChanged: (l) => setState(() => _langue = l),
+          // Activer / couper la lecture vocale des réponses
+          IconButton(
+            icon: Icon(
+              _voiceOn ? Icons.volume_up_rounded : Icons.volume_off_rounded,
+              color: _voiceOn ? AppColors.primary : AppColors.ink2,
+            ),
+            tooltip: _voiceOn ? 'Couper la voix' : 'Activer la voix',
+            onPressed: () {
+              setState(() => _voiceOn = !_voiceOn);
+              if (!_voiceOn) _tts.stop();
+            },
           ),
           IconButton(
             icon: const Icon(Icons.delete_outline_rounded, color: AppColors.ink2),
             tooltip: 'Effacer la conversation',
-            onPressed: () => setState(() {
-              _messages.removeRange(1, _messages.length);
-            }),
+            onPressed: () {
+              _tts.stop();
+              setState(() => _messages.removeRange(1, _messages.length));
+            },
           ),
         ],
       ),
@@ -241,7 +271,8 @@ class _ChatbotViewState extends State<ChatbotView> {
                 final m = _messages[i];
                 return _MessageBubble(
                   msg: m,
-                  onPlay: m.audioUrl != null ? () => _lire(m.audioUrl!) : null,
+                  // Toute réponse de l'assistant peut être écoutée (audio serveur ou synthèse vocale).
+                  onPlay: m.isUser ? null : () => _parler(m),
                 );
               },
             ),
@@ -266,46 +297,6 @@ class _Msg {
   final String?  audioUrl;
   final DateTime time;
   _Msg({required this.text, required this.isUser, this.audioUrl}) : time = DateTime.now();
-}
-
-// ─── SÉLECTEUR DE LANGUE ─────────────────────────────────────────────────────
-class _LangueToggle extends StatelessWidget {
-  final String langue;
-  final ValueChanged<String> onChanged;
-  const _LangueToggle({required this.langue, required this.onChanged});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppColors.bg,
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: AppColors.border),
-        ),
-        child: Row(mainAxisSize: MainAxisSize.min, children: [
-          _opt('FR', 'fr'),
-          _opt('WO', 'wo'),
-        ]),
-      ),
-    );
-  }
-
-  Widget _opt(String label, String value) {
-    final sel = langue == value;
-    return GestureDetector(
-      onTap: () => onChanged(value),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-        decoration: BoxDecoration(
-          color: sel ? AppColors.primary : Colors.transparent,
-          borderRadius: BorderRadius.circular(20)),
-        child: Text(label, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w800,
-          color: sel ? Colors.white : AppColors.ink2)),
-      ),
-    );
-  }
 }
 
 // ─── BULLE DE MESSAGE ────────────────────────────────────────────────────────
