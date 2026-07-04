@@ -1,358 +1,301 @@
-@startuml YonnuMakk-DiagrammeDeClasses
-' Diagramme de classes UML - YOONU MAKK
-' Genere a partir des modeles Eloquent (BackEnd_Yonnu_makk/app/Models)
-' Application bilingue (francais / wolof) - sante de la femme (menopause + grossesse)
+@startuml diagramme-classes-yoonu-makk
+title Diagramme de classes — YOONU MAKK (backend Laravel)
 
-skinparam linetype ortho
-skinparam classAttributeIconSize 0
+skinparam backgroundColor #FFFFFF
 skinparam shadowing false
+skinparam classFontStyle bold
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #C2185B
+  HeaderBackgroundColor #E91E63
+  FontColor #1A0710
+  AttributeFontColor #333333
+}
+skinparam ArrowColor #8B1A47
 hide circle
-hide methods
+left to right direction
 
-' =====================================================================
-' ENUMERATIONS
-' =====================================================================
-package "Enumerations" <<Folder>> {
-  enum RoleUtilisateur { patient \n admin }
-  enum Genre { femme \n homme }
-  enum TypeProfilFemme { menopause \n grossesse }
-  enum StageMenopause { perimenopause \n menopause \n postmenopause }
-  enum IntensiteMouvement { leger \n modere \n fort }
-  enum Langue { fr \n wo }
-  enum StatutRendezVous { en_attente \n accepte \n refuse \n termine \n annule }
-  enum StatutDemandeAdhesion { en_attente \n approuvee \n rejetee }
-  enum TypeContenu { article \n conseil \n faq }
-  enum TypeNotification { rappel_rendez_vous \n nouveau_contenu \n statut_rendez_vous \n general \n rappel_suivi_grossesse \n alerte_grossesse \n felicitations_grossesse }
-  enum TypeRecommandation { nutrition \n activite_physique \n hygiene_vie \n consultation \n prenatal \n allaitement \n preparation_accouchement }
-  enum TypeSymptome { bouffees_chaleur \n fatigue \n stress \n ... }
+' ============================ COMPTES ============================
+class User {
+  + id : bigint <<PK>>
+  + role : enum {admin, patient}
+  + genre : enum {femme, homme}
+  + nom : string
+  + prenom : string
+  + email : string <<unique>>
+  + telephone : string
+  + date_naissance : date
+  + ville : string
+  + password : string
+  + email_verified_at : datetime
+  --
+  + isAdmin() : bool
+  + isPatient() : bool
 }
 
-' =====================================================================
-' UTILISATEURS / COMPTES
-' =====================================================================
-package "Comptes & Acteurs" <<Folder>> {
-  class User {
-    +id : bigint
-    +role : RoleUtilisateur
-    +genre : Genre
-    +nom : string
-    +prenom : string
-    +email : string
-    +password : string «hashed»
-    +telephone : string
-    +date_naissance : date
-    +ville : string
-    +avatar : string
-    +email_verified_at : datetime
-    --
-    +isAdmin() : bool
-    +isPatient() : bool
-    +estHomme() : bool
-    +age() : int
-  }
-
-  class Femme {
-    +id : bigint
-    +user_id : bigint «FK»
-    +type_profil : TypeProfilFemme
-    +date_debut_menopause : date
-    +stade_menopause : StageMenopause
-    +antecedents_medicaux : text
-    --
-    +estEnceinte() : bool
-  }
-
-  class Administrateur {
-    +id : bigint
-    +user_id : bigint «FK»
-  }
-
-  class Gynecologue {
-    +id : bigint
-    +nom : string
-    +prenom : string
-    +email : string
-    +password : string «hashed»
-    +telephone : string
-    +numero_ordre : string
-    +specialite : string
-    +annees_experience : int
-    +structure_sante : string
-    +ville : string
-    +tarif_consultation : int
-    +bio : text
-    +avatar : string
-    +demande_adhesion_id : bigint «FK»
-    +is_active : bool
-    --
-    +getNomCompletAttribute() : string
-  }
+class Femme {
+  + id : bigint <<PK>>
+  + type_profil : enum {grossesse, menopause}
+  + date_debut_menopause : date
+  + stade_menopause : enum {perimenopause, menopause, postmenopause}
+  + antecedents_medicaux : text
+  --
+  + estEnceinte() : bool
 }
 
-' =====================================================================
-' MENOPAUSE / JOURNAL DES SYMPTOMES
-' =====================================================================
-package "Menopause - Symptomes" <<Folder>> {
-  class Symptome {
-    +id : bigint
-    +femme_id : bigint «FK»
-    +date_journal : date
-    +note_generale : text
-  }
-
-  class EntreeSymptome {
-    +id : bigint
-    +symptome_id : bigint «FK»
-    +type_symptome : TypeSymptome
-    +intensite : int
-    +commentaire : text
-  }
+class Administrateur {
+  + id : bigint <<PK>>
 }
 
-' =====================================================================
-' GROSSESSE
-' =====================================================================
-package "Grossesse" <<Folder>> {
-  class Grossesse {
-    +id : bigint
-    +femme_id : bigint «FK»
-    +date_debut_grossesse : date
-    +date_accouchement_prevue : date
-    +groupe_sanguin : string
-    +nombre_grossesses_anterieures : int
-    +nombre_accouchements_anterieurs : int
-    +antecedents_obstetricaux : text
-    +grossesse_active : bool
-    --
-    +semainesAmenorrhee() : int
-    +joursAvantAccouchement() : int
-  }
-
-  class SuiviGrossesse {
-    +id : bigint
-    +grossesse_id : bigint «FK»
-    +semaines_amenorrhee : int
-    +poids_kg : decimal
-    +tension_systolique : int
-    +tension_diastolique : int
-    +glycemie : decimal
-    +notes : text
-    +date_saisie : date
-  }
-
-  class MouvementBebe {
-    +id : bigint
-    +grossesse_id : bigint «FK»
-    +date_heure : datetime
-    +nombre_mouvements : int
-    +intensite : IntensiteMouvement
-    +notes : text
-  }
+class Gynecologue {
+  + id : bigint <<PK>>
+  + demande_adhesion_id : bigint <<FK>>
+  + numero_ordre : string
+  + specialite : string
+  + annees_experience : int
+  + structure_sante : string
+  + bio : text
+  + tarif_consultation : int
+  + is_active : bool
 }
 
-' =====================================================================
-' RENDEZ-VOUS / ADHESION GYNECOLOGUE
-' =====================================================================
-package "Rendez-vous & Adhesion" <<Folder>> {
-  class RendezVous {
-    +id : bigint
-    +femme_id : bigint «FK»
-    +gynecologue_id : bigint «FK»
-    +date_souhaitee : date
-    +heure_souhaitee : time
-    +motif : text
-    +statut : StatutRendezVous
-    +date_confirmee : date
-    +heure_confirmee : time
-    +note_gynecologue : text
-    +annule_par : string
-    +raison_annulation : text
-  }
-
-  class DemandeAdhesion {
-    +id : bigint
-    +nom : string
-    +prenom : string
-    +email : string
-    +telephone : string
-    +numero_ordre : string
-    +specialite : string
-    +annees_experience : int
-    +structure_sante : string
-    +ville : string
-    +chemin_diplome : string
-    +chemin_justificatif : string
-    +statut : StatutDemandeAdhesion
-    +note_admin : text
-    +traite_par : bigint «FK»
-    +traite_le : datetime
-    --
-    +estEnAttente() : bool
-  }
+class DemandeAdhesion {
+  + id : bigint <<PK>>
+  + nom : string
+  + prenom : string
+  + email : string
+  + telephone : string
+  + numero_ordre : string
+  + specialite : string
+  + annees_experience : int
+  + structure_sante : string
+  + ville : string
+  + chemin_diplome : string
+  + chemin_justificatif : string
+  + statut : enum {en_attente, approuvee, rejetee}
+  + traite_par : bigint <<FK>>
+  + traite_le : datetime
+  --
+  + estEnAttente() : bool
 }
 
-' =====================================================================
-' INTERMEDIATION (annuaire professionnels)
-' =====================================================================
-package "Intermediation" <<Folder>> {
-  class ProfessionnelSante {
-    +id : bigint
-    +gynecologue_id : bigint «FK»
-    +nom / prenom / email / telephone
-    +ville / structure_sante / bio / photo
-    +type_professionnel : string
-    +specialite : string
-    +annees_experience : int
-    +langues_parles : json
-    +profils_pris_en_charge : json
-    +disponible_en_ligne : bool
-    +disponible_en_cabinet : bool
-    +tarif_consultation : decimal
-    +jours_disponibles : json
-    +note_moyenne : decimal
-    +nb_avis : int
-    +profil_verifie : bool
-    +actif : bool
-    --
-    +recalculerNote()
-  }
-
-  class DemandeIntermediation {
-    +id : bigint
-    +femme_id : bigint «FK»
-    +professionnel_id : bigint «FK»
-    +type_demande : string
-    +message / motif : text
-    +date_souhaitee / heure_souhaitee
-    +date_confirmee / heure_confirmee
-    +statut : string
-    +reponse_professionnel : text
-    +compte_rendu : text
-    +urgente : bool
-  }
-
-  class AvisProfessionnel {
-    +id : bigint
-    +femme_id : bigint «FK»
-    +professionnel_id : bigint «FK»
-    +demande_id : bigint «FK»
-    +note : int
-    +commentaire : text
-    +recommande : bool
-    +approuve : bool
-  }
+' ============================ SUIVI SANTÉ ============================
+class Symptome {
+  + id : bigint <<PK>>
+  + femme_id : bigint <<FK>>
+  + date_journal : date
+  + note_generale : text
 }
 
-' =====================================================================
-' CONTENU EDUCATIF / MEDIA
-' =====================================================================
-package "Contenu educatif" <<Folder>> {
-  class CategorieContenu {
-    +id : bigint
-    +nom : string
-    +slug : string
-    +description : text
-    +icone : string
-  }
-
-  class Contenu {
-    +id : bigint
-    +categorie_id : bigint «FK»
-    +auteur_id : bigint «FK»
-    +type : TypeContenu
-    +titre / slug : string
-    +corps : longtext
-    +image_couverture : string
-    +langue : Langue
-    +est_publie : bool
-    +publie_le : datetime
-  }
-
-  class Video {
-    +id : bigint
-    +categorie_id : bigint «FK»
-    +auteur_id : bigint «FK»
-    +titre / slug : string
-    +description : text
-    +url_video : string
-    +miniature : string
-    +duree_secondes : int
-    +langue : Langue
-    +est_publie : bool
-    +publie_le : datetime
-  }
+class EntreeSymptome {
+  + id : bigint <<PK>>
+  + symptome_id : bigint <<FK>>
+  + type_symptome : enum {bouffees_chaleur, nausee_vomissement, fatigue, douleurs_dorsales, ...}
+  + intensite : int
+  + commentaire : text
 }
 
-' =====================================================================
-' RECOMMANDATIONS / NOTIFICATIONS / CHATBOT
-' =====================================================================
-package "Suivi & Communication" <<Folder>> {
-  class Recommandation {
-    +id : bigint
-    +femme_id : bigint «FK»
-    +gynecologue_id : bigint «FK»
-    +type : TypeRecommandation
-    +titre : string
-    +corps : text
-    +genere_par : string
-    +est_lu : bool
-  }
-
-  class Notification {
-    +id : bigint
-    +user_id : bigint «FK»
-    +gynecologue_id : bigint «FK»
-    +type : TypeNotification
-    +titre : string
-    +corps : text
-    +donnees : json
-    +est_lu : bool
-    +lu_le : datetime
-  }
-
-  class MessageChatbot {
-    +id : bigint
-    +user_id : bigint «FK»
-    +session_id : string
-    +role : string
-    +message : text
-    +langue : Langue
-  }
+class Grossesse {
+  + id : bigint <<PK>>
+  + femme_id : bigint <<FK>>
+  + date_debut_grossesse : date
+  + date_accouchement_prevue : date
+  + groupe_sanguin : string
+  + nombre_grossesses_anterieures : int
+  + nombre_accouchements_anterieurs : int
+  + antecedents_obstetricaux : text
+  + grossesse_active : bool
+  --
+  + semainesAmenorrhee() : int
+  + joursAvantAccouchement() : int
 }
 
-' =====================================================================
-' RELATIONS
-' =====================================================================
-User "1" -- "0..1" Femme
-User "1" -- "0..1" Administrateur
-User "1" -- "0..*" Notification
-User "1" -- "0..*" MessageChatbot
-User "1" -- "0..*" Contenu : auteur >
-User "1" -- "0..*" Video : auteur >
-User "1" -- "0..*" DemandeAdhesion : traite_par >
+class SuiviGrossesse {
+  + id : bigint <<PK>>
+  + grossesse_id : bigint <<FK>>
+  + semaines_amenorrhee : int
+  + poids_kg : decimal
+  + tension_systolique : int
+  + tension_diastolique : int
+  + glycemie : decimal
+  + notes : text
+  + date_saisie : date
+}
 
-Femme "1" -- "0..*" Symptome
-Femme "1" -- "0..*" Grossesse
-Femme "1" -- "0..*" RendezVous
-Femme "1" -- "0..*" Recommandation
-Femme "1" -- "0..*" DemandeIntermediation
-Femme "1" -- "0..*" AvisProfessionnel
+class MouvementBebe {
+  + id : bigint <<PK>>
+  + grossesse_id : bigint <<FK>>
+  + date_heure : datetime
+  + nombre_mouvements : int
+  + intensite : enum {leger, modere, fort}
+}
 
-Symptome "1" -- "0..*" EntreeSymptome
-Grossesse "1" -- "0..*" SuiviGrossesse
-Grossesse "1" -- "0..*" MouvementBebe
+' ============================ RENDEZ-VOUS & RECO ============================
+class RendezVous {
+  + id : bigint <<PK>>
+  + femme_id : bigint <<FK>>
+  + gynecologue_id : bigint <<FK>>
+  + date_souhaitee : date
+  + heure_souhaitee : time
+  + motif : text
+  + statut : enum {en_attente, accepte, refuse, termine, annule}
+  + date_confirmee : date
+  + heure_confirmee : time
+  + note_gynecologue : text
+  + annule_par : string
+  + raison_annulation : text
+}
 
-Gynecologue "1" -- "0..*" RendezVous
-Gynecologue "1" -- "0..*" Recommandation
-Gynecologue "1" -- "0..*" Notification
-Gynecologue "1" -- "0..1" ProfessionnelSante
-DemandeAdhesion "1" -- "0..1" Gynecologue
+class Recommandation {
+  + id : bigint <<PK>>
+  + femme_id : bigint <<FK>>
+  + gynecologue_id : bigint <<FK>>
+  + type : enum {nutrition, activite_physique, hygiene_vie, consultation, prenatal, allaitement, preparation_accouchement}
+  + titre : string
+  + corps : text
+  + genere_par : string
+  + est_lu : bool
+}
 
-ProfessionnelSante "1" -- "0..*" DemandeIntermediation
-ProfessionnelSante "1" -- "0..*" AvisProfessionnel
-DemandeIntermediation "1" -- "0..1" AvisProfessionnel
+class Notification {
+  + id : bigint <<PK>>
+  + user_id : bigint <<FK>>
+  + gynecologue_id : bigint <<FK>>
+  + type : enum {felicitations_grossesse, rappel_suivi_grossesse, statut_rendez_vous, rappel_rendez_vous, general, ...}
+  + titre : string
+  + corps : text
+  + est_lu : bool
+}
 
-CategorieContenu "1" -- "0..*" Contenu
-CategorieContenu "1" -- "0..*" Video
+' ============================ INTERMÉDIATION ============================
+class ProfessionnelSante {
+  + id : bigint <<PK>>
+  + gynecologue_id : bigint <<FK>>
+  + nom : string
+  + prenom : string
+  + email : string
+  + telephone : string
+  + ville : string
+  + structure_sante : string
+  + bio : text
+  + type_professionnel : enum {gynecologue, sage_femme, nutritionniste, psychologue_perinatal, medecin_generaliste, coach_prenatal}
+  + specialite : string
+  + annees_experience : int
+  + numero_ordre : string
+  + langues_parles : json
+  + profils_pris_en_charge : json
+  + disponible_en_ligne : bool
+  + disponible_en_cabinet : bool
+  + tarif_consultation : int
+  + horaires : string
+  + adresse : string
+  + nb_avis : int
+  + note_moyenne : decimal
+  + nb_consultations : int
+  + profil_verifie : bool
+  + actif : bool
+}
+
+class DemandeIntermediation {
+  + id : bigint <<PK>>
+  + femme_id : bigint <<FK>>
+  + professionnel_id : bigint <<FK>>
+  + type_demande : string
+  + date_souhaitee : date
+  + statut : string
+  + urgente : bool
+}
+
+class AvisProfessionnel {
+  + id : bigint <<PK>>
+  + femme_id : bigint <<FK>>
+  + professionnel_id : bigint <<FK>>
+  + demande_id : bigint <<FK>>
+  + note : int
+  + commentaire : text
+  + approuve : bool
+}
+
+' ============================ CONTENUS ============================
+class CategorieContenu {
+  + id : bigint <<PK>>
+  + nom : string
+  + slug : string <<unique>>
+  + icone : string
+}
+
+class Contenu {
+  + id : bigint <<PK>>
+  + categorie_id : bigint <<FK>>
+  + auteur_id : bigint <<FK>>
+  + type : enum {article, conseil}
+  + titre : string
+  + slug : string
+  + corps : text
+  + langue : enum {fr, wo}
+  + est_publie : bool
+  + publie_le : datetime
+}
+
+class Video {
+  + id : bigint <<PK>>
+  + categorie_id : bigint <<FK>>
+  + auteur_id : bigint <<FK>>
+  + titre : string
+  + slug : string
+  + description : text
+  + url_video : string
+  + duree_secondes : int
+  + langue : enum {fr, wo}
+  + est_publie : bool
+  + publie_le : datetime
+}
+
+' ============================ CHATBOT ============================
+class MessageChatbot {
+  + id : bigint <<PK>>
+  + user_id : bigint <<FK>>
+  + session_id : string
+  + role : enum {utilisateur, assistant}
+  + message : text
+  + langue : enum {fr, wo}
+}
+
+' ============================ HÉRITAGE (généralisation) ============================
+User <|-- Administrateur
+User <|-- Femme
+User <|-- Gynecologue
+
+' ============================ ASSOCIATIONS (24) ============================
+User "1" --> "0..*" Notification : reçoit
+User "1" --> "0..*" MessageChatbot : échange
+
+Administrateur "1" --> "0..*" Contenu : rédige
+Administrateur "1" --> "0..*" Video : rédige
+Administrateur "1" --> "0..*" DemandeAdhesion : traite
+
+Femme "1" --> "0..*" Symptome : journalise
+Femme "1" --> "0..*" Grossesse : a
+Femme "1" --> "0..*" RendezVous : demande
+Femme "1" --> "0..*" Recommandation : reçoit
+Femme "1" --> "0..*" DemandeIntermediation : initie
+Femme "1" --> "0..*" AvisProfessionnel : dépose
+
+Symptome "1" --> "0..*" EntreeSymptome : contient
+Grossesse "1" --> "0..*" SuiviGrossesse : suit
+Grossesse "1" --> "0..*" MouvementBebe : enregistre
+
+Gynecologue "1" --> "0..*" RendezVous : gère
+Gynecologue "1" --> "0..*" Recommandation : émet
+Gynecologue "1" --> "0..*" Notification : reçoit
+Gynecologue "1" --> "0..*" ProfessionnelSante : est lié à
+DemandeAdhesion "1" --> "0..1" Gynecologue : donne naissance à
+
+ProfessionnelSante "1" --> "0..*" DemandeIntermediation : reçoit
+ProfessionnelSante "1" --> "0..*" AvisProfessionnel : est noté par
+DemandeIntermediation "1" --> "0..1" AvisProfessionnel : aboutit à
+
+CategorieContenu "1" --> "0..*" Contenu : regroupe
+CategorieContenu "1" --> "0..*" Video : regroupe
 
 @enduml

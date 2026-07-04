@@ -1,6 +1,6 @@
-# yonnu_makk_front
+# Yoonu Jigeen
 
-Application bilingue (francais, wolof) d'intermediation et conseiller medicale sur la ménopause
+Application bilingue (francais, wolof) d'intermediation et conseiller medicale sur la santé de la femme
 
 ## Getting Started
 

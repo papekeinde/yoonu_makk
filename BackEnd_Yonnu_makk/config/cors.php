@@ -15,14 +15,7 @@ return [
 
     // SECURITE: restreindre aux origines connues uniquement
     // Ajouter ici le domaine de production quand déployé
-    'allowed_origins' => [
-        'http://localhost:51995',   // Flutter web dev (port fixe)
-        'http://127.0.0.1:51995',
-        'http://localhost:3000',
-        'http://127.0.0.1:3000',
-        'http://localhost:8080',
-        'http://127.0.0.1:8080',
-    ],
+'allowed_origins' => ['*'],
 
     // Pattern pour couvrir tous les ports localhost en développement Flutter web
     // (flutter run --web génère un port aléatoire à chaque lancement)

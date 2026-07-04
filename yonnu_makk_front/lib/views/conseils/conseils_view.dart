@@ -80,24 +80,39 @@ class _ConseilsViewState extends State<ConseilsView> {
           Container(
             padding: const EdgeInsets.all(4),
             decoration: BoxDecoration(
-              color: accentSoft, borderRadius: BorderRadius.circular(14)),
-            child: Row(children: List.generate(tabs.length, (i) => Expanded(
-              child: GestureDetector(
-                onTap: () => setState(() => _tab = i),
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  padding: const EdgeInsets.symmetric(vertical: 9),
-                  decoration: BoxDecoration(
-                    color: _tab == i ? accent : Colors.transparent,
-                    borderRadius: BorderRadius.circular(11),
-                  ),
-                  alignment: Alignment.center,
-                  child: Text(tabs[i], style: TextStyle(
-                    fontSize: 12, fontWeight: FontWeight.w700,
-                    color: _tab == i ? Colors.white : AppColors.ink2)),
+              color: AppColors.surface,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: AppColors.border),
+              boxShadow: [
+                BoxShadow(
+                  color: accent.withValues(alpha: 0.08),
+                  blurRadius: 10,
+                  offset: const Offset(0, 3),
                 ),
-              ),
-            ))),
+              ],
+            ),
+            child: Row(children: List.generate(tabs.length, (i) {
+              final selected = _tab == i;
+              return Expanded(
+                child: GestureDetector(
+                  onTap: () => setState(() => _tab = i),
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 220),
+                    curve: Curves.easeOut,
+                    margin: const EdgeInsets.symmetric(horizontal: 2),
+                    padding: const EdgeInsets.symmetric(vertical: 9),
+                    decoration: BoxDecoration(
+                      color: selected ? accent : accentSoft.withValues(alpha: 0.55),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    alignment: Alignment.center,
+                    child: Text(tabs[i], style: TextStyle(
+                      fontSize: 12, fontWeight: FontWeight.w800,
+                      color: selected ? Colors.white : AppColors.ink2)),
+                  ),
+                ),
+              );
+            })),
           ),
           const SizedBox(height: 16),
 

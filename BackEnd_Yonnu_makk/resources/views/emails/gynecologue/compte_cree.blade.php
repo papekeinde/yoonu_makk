@@ -19,13 +19,13 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>YOONU MAKK</h1>
+            <h1>YOONU JIGEEN</h1>
         </div>
         <div class="body">
             <p>Bonjour <strong>Dr. {{ $gynecologue->prenom }} {{ $gynecologue->nom }}</strong>,</p>
 
             <p>
-                Votre demande d'adhésion à la plateforme <strong>YOONU MAKK</strong> a été approuvée.
+                Votre demande d'adhésion à la plateforme <strong>YOONU JIGEEN</strong> a été approuvée.
                 Votre compte gynécologue est maintenant actif.
             </p>
 
@@ -46,7 +46,7 @@
             </p>
         </div>
         <div class="footer">
-            &copy; {{ date('Y') }} YOONU MAKK — Tous droits réservés
+            &copy; {{ date('Y') }} YOONU JIGEEN — Tous droits réservés
         </div>
     </div>
 </body>

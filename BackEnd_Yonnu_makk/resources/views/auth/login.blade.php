@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Connexion | {{ config('app.name', 'YOONU MAKK') }} — Espace professionnel</title>
+    <title>Connexion | {{ config('app.name', 'YOONU JIGEEN') }} — Espace professionnel</title>
     <link rel="icon" href="{{ asset('logo-yoonu-makk.svg') }}" type="image/svg+xml">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -76,7 +76,7 @@
 
                     <p class="mt-6 font-serif text-lg leading-8 text-ink-800/80">
                         Administration ou suivi gynécologique : connectez-vous, et
-                        <span class="font-semibold text-ink-900">YOONU&nbsp;MAKK vous dirige</span>
+                        <span class="font-semibold text-ink-900">YOONU&nbsp;JIGEEN vous dirige</span>
                         vers le bon tableau de bord.
                     </p>
 
@@ -95,7 +95,7 @@
                     </div>
                 </div>
 
-                <p class="relative z-10 mt-12 font-serif text-sm text-ink-800/50">© {{ date('Y') }} YOONU MAKK · Plateforme de santé · Sénégal</p>
+                <p class="relative z-10 mt-12 font-serif text-sm text-ink-800/50">© {{ date('Y') }} YOONU JIGEEN · Plateforme de santé · Sénégal</p>
             </aside>
 
             {{-- ═══════ COLONNE FORMULAIRE ═══════ --}}

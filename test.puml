@@ -1,0 +1,164 @@
+@startuml
+
+top to bottom direction
+skinparam classAttributeIconSize 0
+
+'========================
+' UTILISATEURS
+'========================
+
+class User {
+    +id : int
+    +role : Role
+    +genre : Genre
+    +nom : String
+    +prenom : String
+    +email : String
+    +telephone : String
+    +dateNaissance : Date
+    +isAdmin() : bool
+    +isPatient() : bool
+}
+
+class Femme {
+    +typeProfil : TypeProfil
+    +dateDebutMenopause : Date
+    +stadeMenopause : Stade
+    +estEnceinte() : bool
+}
+
+class Gynecologue {
+    +numeroOrdre : String
+    +specialite : String
+    +anneesExperience : int
+    +structureSante : String
+    +tarifConsultation : int
+    +isActive : bool
+}
+
+class Administrateur {
+    +niveauAcces : String
+}
+
+User <|-- Femme
+User <|-- Gynecologue
+User <|-- Administrateur
+
+'========================
+' GROSSESSE
+'========================
+
+class Grossesse {
+    +id : int
+    +dateDebutGrossesse : Date
+    +dateAccouchementPrevue : Date
+    +grossesseActive : bool
+    +semainesAmenorrhee() : int
+}
+
+class SuiviGrossesse {
+    +id : int
+    +dateSuivi : Date
+    +poids : float
+    +tension : String
+}
+
+class MouvementBebe {
+    +id : int
+    +dateObservation : Date
+    +nombreMouvements : int
+}
+
+'========================
+' SYMPTÔMES
+'========================
+
+class Symptome {
+    +id : int
+    +dateJournal : Date
+    +noteGenerale : String
+}
+
+class EntreeSymptome {
+    +id : int
+    +type : TypeSymptome
+    +intensite : int
+}
+
+'========================
+' CONSULTATIONS
+'========================
+
+class RendezVous {
+    +id : int
+    +dateSouhaitee : Date
+    +statut : Statut
+    +motif : String
+}
+
+class Recommandation {
+    +id : int
+    +titre : String
+    +description : String
+}
+
+'========================
+' CONTENUS
+'========================
+
+class Contenu {
+    +id : int
+    +titre : String
+    +corps : String
+    +type : TypeContenu
+    +langue : Langue
+}
+
+class CategorieContenu {
+    +id : int
+    +nom : String
+}
+
+'========================
+' CHATBOT
+'========================
+
+class MessageChatbot {
+    +id : int
+    +message : String
+    +reponse : String
+    +dateMessage : Date
+}
+
+class Notification {
+    +id : int
+    +titre : String
+    +contenu : String
+    +dateEnvoi : Date
+    +lu : bool
+}
+
+'========================
+' RELATIONS
+'========================
+
+Femme "1" --> "*" Grossesse : suit
+Femme "1" --> "*" Symptome : journalise
+Femme "1" --> "*" RendezVous : sollicite
+Femme "1" --> "*" Recommandation : reçoit
+
+Grossesse "1" --> "*" SuiviGrossesse : historique
+Grossesse "1" --> "*" MouvementBebe : enregistre
+
+Symptome "1" --> "*" EntreeSymptome : contient
+
+Gynecologue "1" --> "*" RendezVous : gère
+Gynecologue "1" --> "*" Recommandation : rédige
+
+Administrateur "1" --> "*" Contenu : rédige
+CategorieContenu "1" --> "*" Contenu : contient
+
+User "1" --> "*" MessageChatbot : échange
+User "1" --> "*" Notification : reçoit
+
+@enduml

@@ -5,7 +5,7 @@ class AppConfig {
   AppConfig._();
 
   // Nom & version
-  static const appName    = 'Yoonu Makk';
+  static const appName    = 'Yoonu Jigeen';
   static const appVersion = '1.0.0';
 
   // URL de base de l'API Laravel

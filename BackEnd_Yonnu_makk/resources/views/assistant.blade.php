@@ -1,13 +1,13 @@
 @extends('layouts.website')
 
-@section('title', 'Assistant IA - YOONU MAKK')
+@section('title', 'Assistant IA - YOONU JIGEEN')
 
 @section('content')
     <header class="sticky top-0 z-20 border-b border-yoonu-200 bg-white/95 backdrop-blur">
         <div class="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-3 sm:px-6">
             <div class="flex items-center gap-3 font-display text-lg font-bold tracking-tight text-yoonu-900 sm:text-xl">
-                <img src="{{ asset('logo-yoonu-makk.svg') }}" alt="YOONU MAKK" class="h-9 w-9 rounded-full border border-yoonu-200">
-                <span>YOONU MAKK</span>
+                <img src="{{ asset('logo-yoonu-makk.svg') }}" alt="YOONU JIGEEN" class="h-9 w-9 rounded-full border border-yoonu-200">
+                <span>YOONU JIGEEN</span>
             </div>
             <div class="flex flex-wrap items-center gap-3 text-sm">
                 <a class="font-medium text-slate-600 transition hover:text-yoonu-700" href="{{ url('/') }}">Accueil</a>
@@ -22,7 +22,7 @@
             <div class="rounded-2xl border border-yoonu-200 bg-white p-6 sm:p-7 animate-fade-in animate-delay-100">
                 <span class="inline-flex rounded-full bg-yoonu-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-yoonu-700">Assistant IA · Orientation conversationnelle</span>
                 <h1 class="mt-4 font-display text-3xl font-bold tracking-tight text-yoonu-900 sm:text-4xl">Un assistant qui informe, reformule et oriente sans diagnostiquer.</h1>
-                <p class="mt-4 text-base leading-7 text-slate-600">Cette page presente le role de l'assistant IA dans YOONU MAKK : aider l'utilisatrice a mieux exprimer sa situation, rappeler les signaux d'alerte et guider vers le bon parcours sans se substituer au professionnel de sante.</p>
+                <p class="mt-4 text-base leading-7 text-slate-600">Cette page presente le role de l'assistant IA dans YOONU JIGEEN : aider l'utilisatrice a mieux exprimer sa situation, rappeler les signaux d'alerte et guider vers le bon parcours sans se substituer au professionnel de sante.</p>
 
                 <div class="mt-6 space-y-3">
                     <div class="ml-auto max-w-[88%] rounded-2xl border border-yoonu-200 bg-yoonu-50 p-4 text-sm leading-7 text-slate-700">Bonjour, j'ai une douleur pelvienne depuis hier et je ne sais pas si je dois prendre rendez-vous ou consulter vite.</div>
@@ -67,7 +67,7 @@
                 <div class="grid gap-4 lg:grid-cols-[1.3fr_.9fr] lg:items-end">
                     <div>
                         <span class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Parcours</span>
-                        <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-yoonu-900">Comment l'assistant s'integre dans l'experience YOONU MAKK.</h2>
+                        <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-yoonu-900">Comment l'assistant s'integre dans l'experience YOONU JIGEEN.</h2>
                     </div>
                     <div class="rounded-2xl border border-yoonu-200 bg-yoonu-50 p-4 text-xs font-semibold leading-6 text-yoonu-900">L'objectif n'est pas de remplacer l'echange clinique, mais de le preparer avec plus de clarte et moins de friction.</div>
                 </div>

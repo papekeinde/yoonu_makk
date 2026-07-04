@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Tableau de bord') | {{ config('app.name', 'YOONU MAKK') }}</title>
+    <title>@yield('title', 'Tableau de bord') | {{ config('app.name', 'YOONU JIGEEN') }}</title>
     <link rel="icon" href="{{ asset('logo-yoonu-makk.svg') }}" type="image/svg+xml">
 
     <!-- Polices -->
@@ -121,9 +121,9 @@
             <div class="pt-7 pb-6 flex" :class="!$store.sidebar.isOpen ? 'xl:justify-center' : 'justify-start'">
                 <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2.5">
                     <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-yoonu-500 shrink-0">
-                        <img src="{{ asset('logo-yoonu-makk.svg') }}" alt="YOONU MAKK" class="h-6 w-6">
+                        <img src="{{ asset('logo-yoonu-makk.svg') }}" alt="YOONU JIGEEN" class="h-6 w-6">
                     </span>
-                    <span x-show="$store.sidebar.isOpen" class="text-lg font-bold text-white font-display tracking-tight">YOONU&nbsp;MAKK</span>
+                    <span x-show="$store.sidebar.isOpen" class="text-lg font-bold text-white font-display tracking-tight">YOONU&nbsp;JIGEEN</span>
                 </a>
             </div>
 

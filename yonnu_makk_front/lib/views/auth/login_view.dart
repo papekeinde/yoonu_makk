@@ -66,7 +66,7 @@ class _LoginViewState extends State<LoginView> {
               ),
             ),
             const SizedBox(width: 8),
-            const Text('YOONU MAKK'),
+            const Text('YOONU JIGEEN'),
           ],
         ),
       ),

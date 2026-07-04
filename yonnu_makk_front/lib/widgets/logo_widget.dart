@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../config/theme.dart';
 
-// ─── LOGO YOONU MAKK ─────────────────────────────────────────────────────────
-// Reproduit le logo : cercle rose avec Y + texte YOONU MAKK + sous-titre.
+// ─── LOGO YOONU JIGEEN ────────────────────────────────────────────────────────
+// Reproduit le logo : cercle rose avec Y + texte YOONU JIGEEN + sous-titre.
 class LogoWidget extends StatelessWidget {
   final double size;
   final bool showSubtitle;
@@ -55,7 +55,7 @@ class LogoWidget extends StatelessWidget {
         const SizedBox(height: 20),
         // Nom de l'application
         Text(
-          'YOONU MAKK',
+          'YOONU JIGEEN',
           style: TextStyle(
             fontSize: size * 0.27,
             fontWeight: FontWeight.w800,

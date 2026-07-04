@@ -28,8 +28,8 @@
             {{-- Marque + newsletter --}}
             <div>
                 <div class="flex items-center gap-2.5">
-                    <img src="{{ asset('logo-yoonu-makk.svg') }}" alt="YOONU MAKK" class="h-9 w-9">
-                    <span class="font-display text-lg font-extrabold tracking-tight text-yoonu-900">YOONU <span class="text-yoonu-500">MAKK</span></span>
+                    <img src="{{ asset('logo-yoonu-makk.svg') }}" alt="YOONU JIGEEN" class="h-9 w-9">
+                    <span class="font-display text-lg font-extrabold tracking-tight text-yoonu-900">YOONU <span class="text-yoonu-500">JIGEEN</span></span>
                 </div>
                 <p class="mt-3 max-w-xs text-sm text-slate-600">Orientation, coordination et suivi en santé des femmes — sans se substituer au diagnostic médical.</p>
 
@@ -54,7 +54,7 @@
 
         <div class="mt-10 border-t border-yoonu-100 pt-8">
             <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
-                <p class="text-xs text-slate-500">© {{ now()->year }} YOONU MAKK · Plateforme de santé basée au Sénégal · Tous droits réservés</p>
+                <p class="text-xs text-slate-500">© {{ now()->year }} YOONU JIGEEN · Plateforme de santé basée au Sénégal · Tous droits réservés</p>
                 <div class="flex gap-3">
                     <a class="flex h-9 w-9 items-center justify-center rounded-full bg-yoonu-50 text-yoonu-700 transition hover:bg-yoonu-100" href="#" aria-label="Twitter">
                         <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-7.007 3.748 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84"/></svg>

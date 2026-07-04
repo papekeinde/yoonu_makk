@@ -61,11 +61,23 @@ class _GrossesseViewState extends State<GrossesseView> {
   }
 
   Future<void> _chargerSuivis() async {
-    final res = await ApiService.instance.get('/patient/grossesse/suivis');
-    if (!mounted || !res.ok) return;
-    _suivis = (res.data as List? ?? [])
-        .map((e) => SuiviGrossesse.fromJson(e as Map<String, dynamic>))
-        .toList();
+    try {
+      final res = await ApiService.instance.get('/patient/grossesse/suivis');
+      if (!mounted || !res.ok) return;
+
+      final raw = res.data;
+      final items = raw is List
+          ? raw
+          : raw is Map<String, dynamic>
+              ? raw['data'] as List?
+              : null;
+
+      _suivis = (items ?? [])
+          .map((e) => SuiviGrossesse.fromJson(e as Map<String, dynamic>))
+          .toList();
+    } catch (_) {
+      _suivis = [];
+    }
   }
 
   void _snack(String msg, {bool erreur = false}) =>

@@ -107,7 +107,7 @@
             <div class="flex flex-col justify-center rounded-2xl border border-yoonu-500/30 bg-yoonu-500/[0.06] p-6">
                 <span class="text-xs font-bold uppercase tracking-[0.16em] text-yoonu-300">À retenir</span>
                 <p class="mt-2 text-sm leading-7 text-mauve-200">
-                    YOONU MAKK <strong class="text-white">informe et oriente</strong>. Il ne pose pas de diagnostic
+                    YOONU JIGEEN <strong class="text-white">informe et oriente</strong>. Il ne pose pas de diagnostic
                     et ne remplace jamais l'avis d'un professionnel de santé.
                 </p>
             </div>

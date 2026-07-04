@@ -20,7 +20,7 @@ class SuiviGrossesseController extends Controller
 
         $suivis = $grossesse->suivis()->orderByDesc('date_saisie')->get();
 
-        return response()->json(SuiviGrossesseResource::collection($suivis));
+        return response()->json(SuiviGrossesseResource::collection($suivis)->response()->getData(true));
     }
 
     public function store(StoreSuiviGrossesseRequest $request): JsonResponse

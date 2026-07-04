@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agenda — YOONU MAKK</title>
+<title>Agenda — YOONU JIGEEN</title>
 
 <!-- FullCalendar CDN -->
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
@@ -189,7 +189,7 @@
     <span style="font-size:20px">📅</span>
   </div>
   <div>
-    <h1>Agenda YOONU MAKK</h1>
+    <h1>Agenda YOONU JIGEEN</h1>
     <p id="header-info">Calendrier des rendez-vous</p>
   </div>
 </div>

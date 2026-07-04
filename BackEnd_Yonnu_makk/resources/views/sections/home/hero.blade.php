@@ -22,7 +22,7 @@
                 Santé des femmes · Sénégal
             </span>
             <p class="mt-6 max-w-[556px] font-serif text-lg leading-8 text-ink-800/80">
-                YOONU MAKK qualifie une situation en langage simple et l'oriente vers
+                YOONU JIGEEN qualifie une situation en langage simple et l'oriente vers
                 <span class="font-semibold text-ink-900">le bon niveau de prise en charge</span>.
                 Sans jamais se substituer au diagnostic médical.
             </p>

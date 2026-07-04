@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Connexion | {{ config('app.name', 'YOONU MAKK') }} — Espace gynécologue</title>
+    <title>Connexion | {{ config('app.name', 'YOONU JIGEEN') }} — Espace gynécologue</title>
     <link rel="icon" href="{{ asset('logo-yoonu-makk.svg') }}" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,9 +37,9 @@
                 {{-- en-tête de marque (mobile) --}}
                 <a href="{{ url('/') }}" class="mb-10 flex items-center gap-2.5 lg:hidden">
                     <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-yoonu-500">
-                        <img src="{{ asset('logo-yoonu-makk.svg') }}" alt="YOONU MAKK" class="h-6 w-6">
+                        <img src="{{ asset('logo-yoonu-makk.svg') }}" alt="YOONU JIGEEN" class="h-6 w-6">
                     </span>
-                    <span class="font-display text-lg font-extrabold tracking-tight text-yoonu-900">YOONU <span class="text-yoonu-500">MAKK</span></span>
+                    <span class="font-display text-lg font-extrabold tracking-tight text-yoonu-900">YOONU <span class="text-yoonu-500">JIGEEN</span></span>
                 </a>
 
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-yoonu-600">Espace gynécologue</span>
@@ -96,9 +96,9 @@
 
             <a href="{{ url('/') }}" class="relative ml-auto flex items-center gap-2.5">
                 <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-yoonu-500">
-                    <img src="{{ asset('logo-yoonu-makk.svg') }}" alt="YOONU MAKK" class="h-6 w-6">
+                    <img src="{{ asset('logo-yoonu-makk.svg') }}" alt="YOONU JIGEEN" class="h-6 w-6">
                 </span>
-                <span class="font-display text-lg font-extrabold tracking-tight text-yoonu-900">YOONU <span class="text-yoonu-500">MAKK</span></span>
+                <span class="font-display text-lg font-extrabold tracking-tight text-yoonu-900">YOONU <span class="text-yoonu-500">JIGEEN</span></span>
             </a>
 
             <div class="relative mt-auto">
@@ -126,7 +126,7 @@
                 </div>
             </div>
 
-            <p class="relative mt-12 text-xs text-slate-400">© {{ date('Y') }} YOONU MAKK · Espace réservé aux gynécologues</p>
+            <p class="relative mt-12 text-xs text-slate-400">© {{ date('Y') }} YOONU JIGEEN · Espace réservé aux gynécologues</p>
         </aside>
     </div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>

@@ -18,7 +18,7 @@
         <div class="mb-12 max-w-3xl scroll-reveal">
             <p class="text-xs font-semibold uppercase tracking-[0.16em] text-mauve-400">Pour qui</p>
             <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">Une plateforme, quatre expériences adaptées.</h2>
-            <p class="mt-3 text-base leading-7 text-mauve-300">Chaque acteur du parcours de soin trouve sa place et son utilité dans YOONU MAKK.</p>
+            <p class="mt-3 text-base leading-7 text-mauve-300">Chaque acteur du parcours de soin trouve sa place et son utilité dans YOONU JIGEEN.</p>
         </div>
 
         <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">

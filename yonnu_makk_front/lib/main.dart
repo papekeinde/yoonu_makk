@@ -8,11 +8,11 @@ import 'controllers/auth_controller.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const YoonuMakkApp());
+  runApp(const YoonuJigeenApp());
 }
 
-class YoonuMakkApp extends StatelessWidget {
-  const YoonuMakkApp({super.key});
+class YoonuJigeenApp extends StatelessWidget {
+  const YoonuJigeenApp({super.key});
 
   @override
   Widget build(BuildContext context) {

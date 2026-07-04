@@ -11,26 +11,52 @@ class AuthService {
   final _api     = ApiService.instance;
   final _storage = StorageService.instance;
 
-  // Connexion (email ou téléphone + mot de passe)
+  // Connexion (patient/admin via l'API users, gynécologue via son endpoint dédié)
   Future<({User? user, String? error})> connecter({
     required String identifiant,
     required String motDePasse,
   }) async {
-    final res = await _api.post('/auth/connexion', body: {
+    final baseBody = {
       'identifiant': identifiant,
       'password':    motDePasse,
-    });
+    };
 
-    if (!res.ok) {
-      return (user: null, error: res.error ?? 'Erreur de connexion.');
+    final res = await _api.post('/auth/connexion', body: baseBody);
+    if (res.ok) {
+      final token = res.data['token'] as String?;
+      if (token == null) return (user: null, error: 'Token manquant.');
+
+      await _storage.saveToken(token);
+      final user = User.fromJson(res.data['user'] as Map<String, dynamic>);
+      return (user: user, error: null);
     }
 
-    final token = res.data['token'] as String?;
-    if (token == null) return (user: null, error: 'Token manquant.');
+    final gynecoRes = await _api.post('/gynecologue/auth/connexion', body: baseBody);
+    if (gynecoRes.ok) {
+      final token = gynecoRes.data['token'] as String?;
+      if (token == null) return (user: null, error: 'Token manquant.');
 
-    await _storage.saveToken(token);
-    final user = User.fromJson(res.data['user'] as Map<String, dynamic>);
-    return (user: user, error: null);
+      await _storage.saveToken(token);
+      final raw = gynecoRes.data['gynecologue'] as Map<String, dynamic>?;
+      if (raw == null) return (user: null, error: 'Profil gynécologue introuvable.');
+
+      final user = User(
+        id: raw['id'] as int? ?? 0,
+        nom: raw['nom'] as String? ?? '',
+        prenom: raw['prenom'] as String? ?? '',
+        email: raw['email'] as String? ?? identifiant,
+        telephone: raw['telephone'] as String?,
+        role: 'gynecologue',
+        genre: raw['genre'] as String?,
+        photo: raw['avatar'] as String?,
+        ville: raw['ville'] as String?,
+        emailVerifie: true,
+      );
+      return (user: user, error: null);
+    }
+
+    final message = (res.error ?? gynecoRes.error ?? 'Erreur de connexion.').toString();
+    return (user: null, error: message);
   }
 
   // Inscription patient

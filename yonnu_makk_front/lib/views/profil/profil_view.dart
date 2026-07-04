@@ -58,6 +58,14 @@ class _ProfilViewState extends State<ProfilView> {
     Navigator.pushNamedAndRemoveUntil(context, Routes.landing, (_) => false);
   }
 
+  void _retour() {
+    if (!Navigator.canPop(context)) {
+      Navigator.pushReplacementNamed(context, Routes.home);
+      return;
+    }
+    Navigator.maybePop(context);
+  }
+
   void _bientot(String fonc) => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
     content: Text('$fonc — bientôt disponible.'),
     behavior: SnackBarBehavior.floating,
@@ -88,16 +96,17 @@ class _ProfilViewState extends State<ProfilView> {
     final initiale = prenom.isNotEmpty ? prenom[0].toUpperCase() : '?';
 
     return PopScope(
-      canPop: false,
-      // Le retour (flèche AppBar, geste ou bouton navigateur) déconnecte l'utilisateur.
-      onPopInvokedWithResult: (didPop, _) { if (!didPop) _deconnecter(); },
+      canPop: true,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) _retour();
+      },
       child: Scaffold(
       backgroundColor: AppColors.bg,
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_rounded),
-          tooltip: 'Se déconnecter',
-          onPressed: _deconnecter,
+          tooltip: 'Retour',
+          onPressed: _retour,
         ),
         title: const Text('Mon profil',
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
@@ -260,7 +269,7 @@ class _ProfilViewState extends State<ProfilView> {
             ),
 
             const SizedBox(height: 32),
-            const Center(child: Text('YOONU MAKK v1.0.0',
+            const Center(child: Text('YOONU JIGEEN v1.0.0',
               style: TextStyle(fontSize: 11, color: AppColors.ink2))),
             const SizedBox(height: 20),
           ],

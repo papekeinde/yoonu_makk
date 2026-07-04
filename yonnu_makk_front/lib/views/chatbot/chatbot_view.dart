@@ -29,7 +29,7 @@ class _ChatbotViewState extends State<ChatbotView> {
 
   final List<_Msg> _messages = [
     _Msg(
-      text: 'Bonjour ! Je suis votre assistant santé YOONU MAKK 🌸\n'
+      text: 'Bonjour ! Je suis votre assistant santé YOONU JIGEEN 🌸\n'
             'Posez vos questions sur la grossesse et le suivi prénatal, '
             'par écrit ou avec le micro 🎤. Je peux aussi vous répondre à voix haute.',
       isUser: false,
@@ -44,11 +44,53 @@ class _ChatbotViewState extends State<ChatbotView> {
   }
 
   Future<void> _initTts() async {
+    // Privilégier le moteur Google (voix neuronales de meilleure qualité) sur Android.
+    try {
+      final moteurs = (await _tts.getEngines) as List?;
+      if (moteurs != null && moteurs.contains('com.google.android.tts')) {
+        await _tts.setEngine('com.google.android.tts');
+      }
+    } catch (_) {}
+
     await _tts.setLanguage('fr-FR');
-    await _tts.setSpeechRate(0.5);   // débit posé, plus naturel
-    await _tts.setPitch(1.0);
+    await _choisirMeilleureVoixFr();
+
+    await _tts.setSpeechRate(0.46);  // débit posé, plus naturel
+    await _tts.setPitch(1.05);       // timbre légèrement plus chaleureux
     await _tts.setVolume(1.0);
     await _tts.awaitSpeakCompletion(true);
+  }
+
+  /// Sélectionne la voix française la plus naturelle parmi celles installées
+  /// (préférence aux voix réseau/améliorées, puis à une voix féminine).
+  Future<void> _choisirMeilleureVoixFr() async {
+    try {
+      final voix = (await _tts.getVoices) as List?;
+      if (voix == null) return;
+
+      final fr = voix
+          .whereType<Map>()
+          .where((v) => (v['locale'] ?? '').toString().toLowerCase().startsWith('fr'))
+          .toList();
+      if (fr.isEmpty) return;
+
+      int score(Map v) {
+        final n = (v['name'] ?? '').toString().toLowerCase();
+        var s = 0;
+        if (n.contains('network')) s += 4;       // voix réseau = plus naturelle
+        if (n.contains('enhanced') || n.contains('premium')) s += 3;
+        if (RegExp(r'(fr-fr|fre)').hasMatch((v['locale'] ?? '').toString().toLowerCase())) s += 2;
+        if (n.contains('female') || n.contains('-f-') || n.endsWith('f')) s += 1;
+        return s;
+      }
+
+      fr.sort((a, b) => score(b).compareTo(score(a)));
+      final meilleure = fr.first;
+      await _tts.setVoice({
+        'name':   meilleure['name'].toString(),
+        'locale': meilleure['locale'].toString(),
+      });
+    } catch (_) {/* on garde la voix par défaut si indisponible */}
   }
 
   @override
@@ -223,7 +265,7 @@ class _ChatbotViewState extends State<ChatbotView> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Assistant IA YOONU MAKK',
+                const Text('Assistant IA YOONU JIGEEN',
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: AppColors.ink)),
                 Row(children: [
                   Container(width: 7, height: 7,

@@ -1,6 +1,6 @@
 @extends('layouts.website')
 
-@section('title', 'YOONU MAKK — Site web')
+@section('title', 'YOONU JIGEEN — Site web')
 
 @section('content')
     @include('sections.home.navbar')

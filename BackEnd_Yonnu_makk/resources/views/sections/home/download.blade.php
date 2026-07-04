@@ -46,12 +46,12 @@
             <div class="scroll-reveal morph-card rounded-2xl border border-white/10 bg-gradient-to-br from-ink-800 to-ink-900 p-6 transition-all duration-300">
                 <div class="mb-6 flex h-48 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-ink-950">
                     <div class="flex flex-col items-center gap-3">
-                        <img src="{{ asset('logo-yoonu-makk.svg') }}" alt="YOONU MAKK" class="h-16 w-16">
-                        <span class="font-display text-lg font-extrabold tracking-tight text-white">YOONU <span class="text-yoonu-400">MAKK</span></span>
+                        <img src="{{ asset('logo-yoonu-makk.svg') }}" alt="YOONU JIGEEN" class="h-16 w-16">
+                        <span class="font-display text-lg font-extrabold tracking-tight text-white">YOONU <span class="text-yoonu-400">JIGEEN</span></span>
                         <span class="rounded-full bg-yoonu-500/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-yoonu-300">Application mobile</span>
                     </div>
                 </div>
-                <h3 class="font-display text-lg font-bold text-white">Pourquoi utiliser l'app YOONU MAKK ?</h3>
+                <h3 class="font-display text-lg font-bold text-white">Pourquoi utiliser l'app YOONU JIGEEN ?</h3>
                 <ul class="mt-4 space-y-3" data-stagger>
                     @foreach ($avantages as $avantage)
                         <li class="stagger-item flex items-start gap-3">

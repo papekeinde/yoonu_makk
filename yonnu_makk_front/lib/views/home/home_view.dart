@@ -35,6 +35,9 @@ class HomeView extends StatelessWidget {
     if (user.role == 'admin') {
       content = _HomeAdmin(prenomUser: user.prenom);
       showFab = false;
+    } else if (user.role == 'gynecologue') {
+      content = _HomeGynecologue(prenomUser: user.prenom);
+      showFab = false;
     } else if (user.genre == 'homme') {
       content = _HomeDiscovery(prenomUser: user.prenom);
     } else if (user.typeProfil == 'grossesse') {
@@ -54,6 +57,44 @@ class HomeView extends StatelessWidget {
               estEnceinte:  estEnceinte,
               estHomme: user.genre == 'homme',
             ),
+    );
+  }
+}
+
+// ─── ACCUEIL — profil GYNÉCOLOGUE ───────────────────────────────────────────
+class _HomeGynecologue extends StatelessWidget {
+  final String prenomUser;
+  const _HomeGynecologue({required this.prenomUser});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Espace professionnel'),
+        actions: [
+          IconButton(
+            onPressed: () => context.read<AuthController>().deconnecter().then((_) {
+              if (context.mounted) Navigator.pushReplacementNamed(context, Routes.landing);
+            }),
+            icon: const Icon(Icons.logout_rounded),
+          ),
+        ],
+      ),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.medical_services_outlined, size: 56, color: AppColors.primary),
+              const SizedBox(height: 16),
+              Text('Bienvenue Dr. $prenomUser', style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w800)),
+              const SizedBox(height: 8),
+              const Text('Votre espace professionnel sera bientôt disponible dans l’application mobile.', textAlign: TextAlign.center),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

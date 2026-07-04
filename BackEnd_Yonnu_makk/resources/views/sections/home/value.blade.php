@@ -31,9 +31,9 @@
         <div class="layout-morph-section overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-ink-800 via-ink-800 to-ink-900 p-6 sm:p-8">
             <div class="grid gap-4 lg:grid-cols-[1.3fr_.9fr] lg:items-end">
                 <div class="layout-morph-intro">
-                    <span class="text-xs font-bold uppercase tracking-[0.18em] text-mauve-400">Pourquoi YOONU MAKK</span>
+                    <span class="text-xs font-bold uppercase tracking-[0.18em] text-mauve-400">Pourquoi YOONU JIGEEN</span>
                     <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">Une plateforme pensée pour inspirer confiance.</h2>
-                    <p class="mt-3 max-w-3xl text-[15px] leading-8 text-mauve-300">YOONU MAKK clarifie la demande de la patiente, structure l'information utile pour le gynécologue et rend la prise en charge plus lisible, sans brouiller le cadre médical.</p>
+                    <p class="mt-3 max-w-3xl text-[15px] leading-8 text-mauve-300">YOONU JIGEEN clarifie la demande de la patiente, structure l'information utile pour le gynécologue et rend la prise en charge plus lisible, sans brouiller le cadre médical.</p>
                 </div>
                 <div class="layout-morph-accent rounded-2xl border border-white/10 bg-white/5 p-5 text-sm font-semibold leading-7 text-white backdrop-blur-sm">
                     Langage clair, parcours plus lisibles et priorisation assumée des situations sensibles.

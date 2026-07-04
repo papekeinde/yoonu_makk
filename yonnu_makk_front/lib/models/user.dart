@@ -32,9 +32,10 @@ class User {
 
   String get nomComplet => '$prenom $nom';
 
-  bool get estPatient  => role == 'patient';
-  bool get estAdmin    => role == 'admin';
-  bool get estFemme    => genre == 'femme';
+  bool get estPatient      => role == 'patient';
+  bool get estAdmin        => role == 'admin';
+  bool get estGynecologue  => role == 'gynecologue';
+  bool get estFemme        => genre == 'femme';
   bool get estEnceinte => typeProfil == 'grossesse';
   bool get estMenopause => typeProfil == 'menopause';
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // ─── PALETTE DE COULEURS ────────────────────────────────────────────────────
-// Couleurs dérivées directement du logo YOONU MAKK.
+// Couleurs dérivées directement du logo YOONU JIGEEN.
 class AppColors {
   AppColors._();
 

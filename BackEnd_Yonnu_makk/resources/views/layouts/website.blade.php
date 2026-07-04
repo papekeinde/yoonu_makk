@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="YOONU MAKK aide à l'orientation, à la coordination et au suivi gynécologique sans se substituer au diagnostic médical.">
-    <title>@yield('title', 'YOONU MAKK')</title>
+    <meta name="description" content="YOONU JIGEEN aide à l'orientation, à la coordination et au suivi gynécologique sans se substituer au diagnostic médical.">
+    <title>@yield('title', 'YOONU JIGEEN')</title>
     <link rel="icon" href="{{ asset('logo-yoonu-makk.svg') }}" type="image/svg+xml">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>

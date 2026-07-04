@@ -52,7 +52,7 @@
          x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
          class="fixed inset-0 z-40 flex flex-col bg-white md:hidden">
         <div class="flex h-[72px] items-center justify-between border-b border-black/[0.07] px-[4vw]">
-            <span class="font-display text-lg font-extrabold tracking-tight text-ink-900">YOONU <span class="text-yoonu-600">MAKK</span></span>
+            <span class="font-display text-lg font-extrabold tracking-tight text-ink-900">YOONU <span class="text-yoonu-600">JIGEEN</span></span>
             <button @click="menuOpen = false" class="border border-ink-900/15 p-2 text-ink-900" aria-label="Fermer">
                 <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
