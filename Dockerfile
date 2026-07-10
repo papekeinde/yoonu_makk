@@ -30,15 +30,15 @@ WORKDIR /var/www/html
 # Copy project
 COPY . .
 
-# Create SQLite database for temporary testing if needed
-RUN touch database/database.sqlite
-RUN chmod 666 database/database.sqlite
+# Create SQLite database for temporary testing
+RUN touch database/database.sqlite && chmod 666 database/database.sqlite
+
+# Entrypoint script to run migrations
+COPY entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
-
-# Run migrations (force)
-# RUN php artisan migrate --force --seed # Only if we want to seed immediately
 
 # Install Node dependencies and build assets
 RUN npm install && npm run build
@@ -57,4 +57,4 @@ RUN a2enmod rewrite
 # Expose port 80
 EXPOSE 80
 
-CMD ["apache2-foreground"]
+ENTRYPOINT ["entrypoint.sh"]
