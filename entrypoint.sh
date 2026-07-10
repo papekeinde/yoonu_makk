@@ -4,8 +4,9 @@
 touch /var/www/html/database/database.sqlite
 chmod 666 /var/www/html/database/database.sqlite
 
-# Lancer les migrations automatiquement au démarrage
+# Lancer les migrations et le seed automatiquement au démarrage
 php artisan migrate --force
+php artisan db:seed --force
 
 # Lancer Apache en premier plan
 exec apache2-foreground
