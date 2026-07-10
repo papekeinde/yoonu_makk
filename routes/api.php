@@ -103,6 +103,7 @@ Route::middleware(['auth:sanctum', 'role:patient', 'email.verifie'])->prefix('pa
 
     Route::get('chatbot/historique',   [\App\Http\Controllers\Api\Patient\ChatbotController::class, 'historique'])->name('chatbot.historique');
     Route::post('chatbot',             [\App\Http\Controllers\Api\Patient\ChatbotController::class, 'envoyer'])->name('chatbot.envoyer');
+    Route::post('chatbot/audio',       [\App\Http\Controllers\Api\Patient\ChatbotController::class, 'envoyerAudio'])->name('chatbot.audio');
 
     // ─── GROSSESSE ────────────────────────────────────────────────────────────
     Route::prefix('grossesse')->name('grossesse.')->group(function () {
