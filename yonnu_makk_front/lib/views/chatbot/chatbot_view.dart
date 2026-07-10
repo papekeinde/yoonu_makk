@@ -8,7 +8,7 @@ import '../../config/theme.dart';
 import '../../services/api_service.dart';
 import '../../widgets/bottom_nav.dart';
 
-// ─── VUE CHATBOT IA (texte + voix, en français) ──────────────────────────────
+// ─── VUE CHATBOT IA (texte + voix, français / wolof) ───────────────────────────
 class ChatbotView extends StatefulWidget {
   const ChatbotView({super.key});
   @override
@@ -25,15 +25,21 @@ class _ChatbotViewState extends State<ChatbotView> {
   bool    _loading   = false;
   bool    _recording = false;
   bool    _voiceOn   = true;      // lecture vocale automatique des réponses
+  String  _langue    = 'fr';      // 'fr' ou 'wo'
   String? _sessionId;
 
+  static const _msgAccueilFr =
+      'Bonjour ! Je suis votre assistant santé YOONU JIGEEN 🌸\n'
+      'Posez vos questions sur la grossesse et le suivi prénatal, '
+      'par écrit ou avec le micro 🎤. Je peux aussi vous répondre à voix haute.';
+
+  static const _msgAccueilWo =
+      'Bonjour ! Man mooy assistant santé YOONU JIGEEN 🌸\n'
+      'Laajal sama ay laaj ci ëmbë ak suivi prénatal, '
+      'ci bindëfu wala ak mikro 🎤. Mën naa tamit la tontu ak xam-xam.';
+
   final List<_Msg> _messages = [
-    _Msg(
-      text: 'Bonjour ! Je suis votre assistant santé YOONU JIGEEN 🌸\n'
-            'Posez vos questions sur la grossesse et le suivi prénatal, '
-            'par écrit ou avec le micro 🎤. Je peux aussi vous répondre à voix haute.',
-      isUser: false,
-    ),
+    _Msg(text: _msgAccueilFr, isUser: false),
   ];
 
   @override
@@ -103,17 +109,35 @@ class _ChatbotViewState extends State<ChatbotView> {
     super.dispose();
   }
 
-  /// Lit un message à voix haute : audio du serveur si présent, sinon
-  /// synthèse vocale locale (flutter_tts) du texte.
+  /// Lit un message à voix haute.
+  /// - En mode wolof : joue l'audio pré-enregistré uniquement (pas de TTS synthétique).
+  /// - En mode français : audio serveur si présent, sinon TTS local.
   Future<void> _parler(_Msg m) async {
     await _tts.stop();
     if (m.audioUrl != null) {
       try { await _player.play(UrlSource(m.audioUrl!)); return; } catch (_) {}
     }
+    // En wolof, on ne tombe pas en fallback TTS (qualité trop mauvaise).
+    if (_langue == 'wo') return;
     final texte = m.text.trim();
     if (texte.isNotEmpty) {
       try { await _tts.speak(texte); } catch (_) {}
     }
+  }
+
+  /// Bascule la langue FR ↔ WO et remet un message d'accueil adapté.
+  void _toggleLangue() {
+    _tts.stop();
+    setState(() {
+      _langue = _langue == 'fr' ? 'wo' : 'fr';
+      // Réinitialise la conversation avec le bon message d'accueil.
+      _messages
+        ..clear()
+        ..add(_Msg(
+            text: _langue == 'wo' ? _msgAccueilWo : _msgAccueilFr,
+            isUser: false));
+      _sessionId = null;
+    });
   }
 
   // ── Historique ──────────────────────────────────────────────────────────────
@@ -150,7 +174,8 @@ class _ChatbotViewState extends State<ChatbotView> {
     _scrollToBottom();
 
     final res = await ApiService.instance.post('/patient/chatbot', body: {
-      'message': text,
+      'message':    text,
+      'langue':     _langue,
       'session_id': ?_sessionId,
     });
     if (!mounted) return;
@@ -205,6 +230,7 @@ class _ChatbotViewState extends State<ChatbotView> {
     _scrollToBottom();
     final res = await ApiService.instance.postMultipart('/patient/chatbot/audio',
       fields: {
+        'langue':     _langue,
         'session_id': ?_sessionId,
       },
       files: {'audio': path},
@@ -278,7 +304,34 @@ class _ChatbotViewState extends State<ChatbotView> {
           ],
         ),
         actions: [
-          // Activer / couper la lecture vocale des réponses
+          // ── Bascule langue FR / WO ──────────────────────────────────────
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
+            child: GestureDetector(
+              onTap: _toggleLangue,
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                decoration: BoxDecoration(
+                  color: _langue == 'wo' ? AppColors.primary : AppColors.primarySoft,
+                  borderRadius: BorderRadius.circular(14),
+                  border: Border.all(
+                    color: _langue == 'wo' ? AppColors.primary : AppColors.border,
+                    width: 1.5,
+                  ),
+                ),
+                child: Text(
+                  _langue == 'wo' ? '🇸🇳 WO' : '🇫🇷 FR',
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                    color: _langue == 'wo' ? Colors.white : AppColors.primary,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          // ── Volume ──────────────────────────────────────────────────────
           IconButton(
             icon: Icon(
               _voiceOn ? Icons.volume_up_rounded : Icons.volume_off_rounded,
@@ -302,7 +355,7 @@ class _ChatbotViewState extends State<ChatbotView> {
       ),
       body: Column(
         children: [
-          _QuickSuggestions(onTap: _send),
+          _QuickSuggestions(onTap: _send, langue: _langue),
           Expanded(
             child: ListView.builder(
               controller: _scroll,
@@ -322,6 +375,7 @@ class _ChatbotViewState extends State<ChatbotView> {
           _InputBar(
             controller: _ctrl,
             recording: _recording,
+            langue:    _langue,
             onSend: () => _send(),
             onMic:  _toggleRecord,
           ),
@@ -483,9 +537,10 @@ class _AnimDotState extends State<_AnimDot> with SingleTickerProviderStateMixin 
 // ─── SUGGESTIONS RAPIDES ─────────────────────────────────────────────────────
 class _QuickSuggestions extends StatelessWidget {
   final ValueChanged<String> onTap;
-  const _QuickSuggestions({required this.onTap});
+  final String langue;
+  const _QuickSuggestions({required this.onTap, required this.langue});
 
-  static const _items = [
+  static const _itemsFr = [
     ('🤰', 'Combien de consultations prénatales ?'),
     ('🩸', 'Signes de danger pendant la grossesse'),
     ('🍎', 'Alimentation pendant la grossesse'),
@@ -493,18 +548,27 @@ class _QuickSuggestions extends StatelessWidget {
     ('👶', 'Mouvements du bébé'),
   ];
 
+  static const _itemsWo = [
+    ('🤰', 'Ñaata wisite prénatale la war a def ?'),
+    ('🩸', 'Yan mooy signou urgence ci ëmbë ?'),
+    ('🍎', 'Lan lañu war lekk ci biir ëmbë ?'),
+    ('💉', 'Ñaata pikir tatanos la war a jël ?'),
+    ('👶', 'Lan mooy signes du travail ?'),
+  ];
+
   @override
   Widget build(BuildContext context) {
+    final items = langue == 'wo' ? _itemsWo : _itemsFr;
     return Container(
       height: 46,
       color: AppColors.surface,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
-        itemCount: _items.length,
+        itemCount: items.length,
         separatorBuilder: (_, i) => const SizedBox(width: 8),
         itemBuilder: (_, i) => GestureDetector(
-          onTap: () => onTap(_items[i].$2),
+          onTap: () => onTap(items[i].$2),
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 12),
             decoration: BoxDecoration(
@@ -513,7 +577,7 @@ class _QuickSuggestions extends StatelessWidget {
               border: Border.all(color: AppColors.border),
             ),
             alignment: Alignment.center,
-            child: Text('${_items[i].$1} ${_items[i].$2}',
+            child: Text('${items[i].$1} ${items[i].$2}',
               style: const TextStyle(fontSize: 12, color: AppColors.primary, fontWeight: FontWeight.w500)),
           ),
         ),
@@ -526,17 +590,22 @@ class _QuickSuggestions extends StatelessWidget {
 class _InputBar extends StatelessWidget {
   final TextEditingController controller;
   final bool recording;
+  final String langue;
   final VoidCallback onSend;
   final VoidCallback onMic;
   const _InputBar({
     required this.controller,
     required this.recording,
+    required this.langue,
     required this.onSend,
     required this.onMic,
   });
 
   @override
   Widget build(BuildContext context) {
+    final hintText = recording
+        ? 'Enregistrement en cours…'
+        : (langue == 'wo' ? 'Laajal sama… (ëmbii wala menopause)' : 'Posez votre question…');
     return Container(
       padding: const EdgeInsets.fromLTRB(14, 8, 14, 16),
       decoration: BoxDecoration(
@@ -556,7 +625,7 @@ class _InputBar extends StatelessWidget {
               textInputAction: TextInputAction.send,
               onSubmitted: (_) => onSend(),
               decoration: InputDecoration(
-                hintText: recording ? 'Enregistrement en cours…' : 'Posez votre question…',
+                hintText: hintText,
                 hintStyle: TextStyle(
                   color: recording ? AppColors.danger : AppColors.ink2, fontSize: 13),
                 filled: true,

@@ -52,7 +52,7 @@ dependencies:
   # Sélection de fichiers (documents d'adhésion gynécologue)
   file_picker: ^8.1.6
   # Chatbot vocal : enregistrement micro + lecture audio + synthèse vocale
-  record: ^5.1.2
+  record: ^7.1.1
   audioplayers: ^6.1.0
   path_provider: ^2.1.4
   flutter_tts: ^4.2.0

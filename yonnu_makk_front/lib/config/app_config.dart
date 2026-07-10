@@ -9,10 +9,7 @@ class AppConfig {
   static const appVersion = '1.0.0';
 
   // URL de base de l'API Laravel
-  // • Android émulateur : 10.0.2.2 = localhost de la machine hôte
-  // • iOS simulateur / Web : 127.0.0.1
-  // • Appareil physique   : adresse IP locale de votre machine (ex: 192.168.x.x)
-  static const apiBaseUrl = 'http://10.0.2.2:8000/api';
+  static const apiBaseUrl = 'https://yoonu-makk-1.onrender.com/api';
 
   // Durée d'attente maximale pour chaque requête
   static const requestTimeout = Duration(seconds: 15);
