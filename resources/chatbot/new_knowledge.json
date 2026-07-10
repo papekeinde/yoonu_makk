@@ -1,0 +1,3436 @@
+{
+  "metadata": {
+    "version": "1.0_complete",
+    "format": "bilingual_variants_enhanced",
+    "source": "Base prenatale: USAID/Neema Tutorat 3.0 (2019) | Base menopause: YOONU Jigeen (IMS 2024, Soc. Canadienne de Menopause 2023, SFM-GEMVi 2025)",
+    "languages": [
+      "wolof",
+      "french"
+    ],
+    "domaines": [
+      "grossesse",
+      "menopause"
+    ],
+    "total_questions": 92,
+    "total_grossesse": 31,
+    "total_menopause": 61,
+    "enhancements": [
+      "keywords_tripartite",
+      "answer_bilingual",
+      "importance",
+      "source",
+      "domaine"
+    ],
+    "wolof_status": "grossesse=valide_prof | menopause=brouillon_a_valider_par_locuteur_natif",
+    "created": "2026-06-29",
+    "description": "Base de connaissances complete YOONU Jigeen: grossesse (prenatal, base du prof) + menopause. Meme schema, champ domaine pour filtrer/router."
+  },
+  "questions": [
+    {
+      "id": "cpn_001",
+      "category": "calendrier_grossesse",
+      "question_wo": "Ñaata wisite prénatale la war a def ci sama biir ëmbë?",
+      "question_fr": "Combien de consultations prénatales pendant la grossesse ?",
+      "question_bi": "Ñaata visite prénatale la war a def ci sama biir ",
+      "response_wo": "War nga def lumu néew-néew ñenti wisit. Wisit bu njëkk bi bala nga matal fuk ak ñenti semaine manam ci ñatti weer yu njëkk yi. Bi ci toppu ci digënte ñent ba juroom ben nelu weer bi. ñattelu wisit bi ci juroom ñattelu weer bi. Wisit bu mujju bi war nga ko def boo dugué ci say juroom-ñentelu weer. Boo dugué ci sa juroom ñentelu weer, war nga dem wisit fukki bëss ak juroom yu ne ba kérok ngay wëssine.",
+      "response_fr": "Vous devez faire 4 consultations prénatales minimum : la premiere consultation prénatale se fait avant 14 semaines (1er trimestre), la deuxième consultation entre 4 et 6 mois, la troisième à 8 mois de grossesse, la dernière consultation prénatale se fait au 9ème mois. Après le 9ème mois, vous devez effectuer une visite tous les 15 jours jusqu'à l'accouchement.",
+      "answer_bilingual": "War nga def minimum quatre consultations prénatales: Premier bi avant quatorze semaines, Deuxième bi entre sixième ak huitième mois bi, Troisième bi ci huitième mois bi, Quatrième bi ci sa neuvième mois. Après 9 mois: da nga wara dém visite tous les quinze jours.",
+      "keywords_wo": [
+        "ñaata",
+        "consultation",
+        "ëmbë",
+        "wisit",
+        "semaine",
+        "weer"
+      ],
+      "keywords_fr": [
+        "combien",
+        "consultation",
+        "prénatale",
+        "CPN",
+        "grossesse",
+        "trimestre",
+        "mois",
+        "semaines",
+        "4"
+      ],
+      "keywords_common": [
+        "CPN",
+        "CPN1",
+        "CPN2",
+        "CPN3",
+        "CPN4",
+        "14",
+        "16",
+        "28",
+        "32",
+        "36"
+      ],
+      "importance": "high",
+      "source": "USAID/Neema p.8-9",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "cpn_002",
+      "category": "calendrier_grossesse",
+      "question_wo": "Kañ lañu war a def wisite bu njëkk bi?",
+      "question_fr": "Quand faire la première consultation prénatale ?",
+      "question_bi": "Kañ lañ war a def première visite prénatale bi?",
+      "response_wo": "Sa wisit bu njëkk war nga ko def ci fuk ak ñenti semaine yi. Bës boo njorte ne da nga wannë lor, demal gaaw hôpital nax ñu weral sak ëmbë te seet sa wer gi yaram lepp lu ci sikk.",
+      "response_fr": "La première consultation prénatale se fait avant 14 semaines (au premier trimestre). Dès que vous pensez être enceinte, consultez pour confirmer la grossesse et dépister précocement les problèmes.",
+      "answer_bilingual": "Sa première visite war nga ko def avant quatorze semaines. Bis boo sentire da nga ëmbë demal gaaw seti doktor nah nga am ci ay leeral.",
+      "keywords_wo": [
+        "Kañ",
+        "consultation",
+        "wisite",
+        "njëkk",
+        "première",
+        "jiitu",
+        "weer"
+      ],
+      "keywords_fr": [
+        "quand",
+        "première",
+        "CPN1",
+        "semaines",
+        "mois",
+        "trimestre",
+        "début",
+        "précoce"
+      ],
+      "keywords_common": [
+        "CPN1",
+        "14",
+        "3 mois"
+      ],
+      "importance": "high",
+      "source": "USAID/Neema p.8",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "cpn_003",
+      "category": "consultations_prenatales",
+      "question_wo": "Lan lañuy def ci wisite yi?",
+      "question_fr": "Que fait-on pendant la consultation prénatale ?",
+      "question_bi": "Lan lañuy def ci consultation prénatale bi?",
+      "response_wo": "Wisit yi ngay def da lay waajal ngir nga wëssine ci anam you mucci ayib. Ci biir wisit yi, di na ñu la laaj sa information ci sa wer gi yaram. Di na ñu la défal tamit ay examen ngir seet sa xol sa poids sa taille ak tension. Di na ñu xool tamit bepp sikë bu mëna am ci sa butitu njureelu-kaay. Di na ñu def ay test deret, suukër,sidaa ak yénén. Bindal la ay fer-ñentë yooy jël, defal la pikir tetaanos. Di na ñu waxtaan ak iow ci sa ëmbë",
+      "response_fr": "Pendant la consultation prénatale : interrogatoire, examen général (poids, taille, tension), examen obstétrical, examens complémentaires (groupage sanguin, NFS, Emmel, glycémie, syphilis, VIH, albumine urinaire), prescriptions (fer/acide folique, vaccin), conseils grossesse et accouchement.",
+      "answer_bilingual": "Consultations yi da lay préparé ba nga mënë wëssine si conditions yu baax Di na ñu la defal ay Examens ngir xol sa poids, sa taille, sukër ak tension, testé tamite sa dérét nax amo bène jangoro. Di nañu seet sa butitu njurelukaay. Di nañu la bindal ay garab ak vitamine te conseillé la tamite ci sa ëmbë.",
+      "keywords_wo": [
+        "lan",
+        "def",
+        "wisite",
+        "consultation",
+        "test",
+        "examen",
+        "deret",
+        "vaccin"
+      ],
+      "keywords_fr": [
+        "que",
+        "fait",
+        "CPN",
+        "examen",
+        "test",
+        "tension",
+        "poids",
+        "taille",
+        "sanguin"
+      ],
+      "keywords_common": [
+        "CPN",
+        "NFS",
+        "Emmel",
+        "VIH",
+        "albumine",
+        "groupage",
+        "glycémie",
+        "fer",
+        "VAT"
+      ],
+      "importance": "medium",
+      "source": "USAID/Neema p.10-11",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "cpn_004",
+      "category": "consultations_prenatales",
+      "question_wo": "Lan moy njariñu wisite yi ?",
+      "question_fr": "Pourquoi les CPN sont-elles importantes ?",
+      "question_bi": "Lan moy importance consultation prénatale yi?",
+      "response_wo": "Ci wisit yi di nañu xool bepp jafe-jafe ju la mëna lorr anémie wala sidaa wala sibiru. Di na ñu la faggal tamit bepp feebar bindal la feer ak vaccin ak moustiquaire. Di na ñu la conseille tamit ci sa lekkinë ak seet baxam lepp jaar na yoon. Wisit yi da lay waajal yak sa dom ba ngene baña am bene jafe-jafe bay wëssine.",
+      "response_fr": "Les consultations prénatales permettent de : détecter précocement les complications (anémie, HTA, VIH, paludisme), prévenir les problèmes (vaccins, fer, moustiquaire), préparer l'accouchement, promouvoir la santé (nutrition, hygiène, allaitement). Les consultations sauvent la vie de la mère et du bébé.",
+      "answer_bilingual": "Consultations yi day tax ñu teela détecter bepp complication bu melni anémie, sida wala sibiru, prévenir jafe-jafe ak feebar yu la mën lorr. Di na ñu la conseillé tamit ci sa alimentation te préparer sa accouchement ci conditions yu baax. Visite yi di na la sauvé yaak sa dom",
+      "keywords_wo": [
+        "lu",
+        "tax",
+        "important",
+        "pourquoi",
+        "jariñ",
+        "njariñu",
+        "wisite",
+        "xool"
+      ],
+      "keywords_fr": [
+        "pourquoi",
+        "important",
+        "CPN",
+        "détecter",
+        "prévenir",
+        "complications",
+        "santé"
+      ],
+      "keywords_common": [
+        "CPN",
+        "complications",
+        "prévention",
+        "dépistage",
+        "anémie",
+        "HTA",
+        "VIH"
+      ],
+      "importance": "high",
+      "source": "USAID/Neema p.8-12",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "urgence_001",
+      "category": "urgences_grossesse",
+      "question_wo": "Yan mooy signou urgence ci eumbe ?",
+      "question_fr": "Quels sont les 9 signes d'urgence pendant la grossesse ?",
+      "question_bi": "Yan mooy signou urgence ci sama biir ëmbë ?",
+      "response_wo": "juroom ñenti siñ yi may lim boo ci giss dawal kër doktor. Deret bu jóge ci sa njurelu-kaay. Bu mbathie bopp gi toje. Tàngaayu yaram bu metti. Booy faral di sayy. Biir buy metti. jafe-jafe booy noyyi. Bopp buy metti bu and ak gis-gis gu jafe ak miir. Boo setloo sa yaram wala sa bëtt di jël melokane bu zon. Booy wathiou lu bëri",
+      "response_fr": "9 signes nécessitant consultation IMMÉDIATE jour et nuit : 1) Hémorragie génitale, 2) Perte des eaux, 3) Fièvre, 4) Convulsions, 5) Douleurs abdominales persistantes avant terme, 6) Respiration difficile, 7) Maux de tête sévères/vision floue/vertiges, 8) Ictère (jaunisse), 9) Vomissements incessants.",
+      "answer_bilingual": "neuf signe yi urgence la. Saa boo ko gissé demal gaaw hopital ci heure bu mu mënti am: Derete bu jóge ci sa njurelukaay, ndox mu jóge ci sa njurelukaay tamit, soo ame Fièvre, sooy am convulsions manam say, Biir buy metti, Problémou noyi, Bopp buy metti, Sa yaram buy jël couleur bu zone ak wathiou mu bëri",
+      "keywords_wo": [
+        "Yan mooy",
+        "signou",
+        "urgence",
+        "garaw",
+        "deret",
+        "jafe-jafe",
+        "ndox",
+        "tàng",
+        "convulsions",
+        "métit",
+        "biir",
+        "boppou",
+        "jaune",
+        "wathiou"
+      ],
+      "keywords_fr": [
+        "quels",
+        "signes",
+        "urgence",
+        "saignement",
+        "hémorragie",
+        "perte",
+        "eaux",
+        "fièvre",
+        "convulsions",
+        "douleur",
+        "respiration",
+        "maux",
+        "tête",
+        "jaunisse",
+        "vomissement"
+      ],
+      "keywords_common": [
+        "9",
+        "urgence",
+        "hémorragie",
+        "convulsions",
+        "fièvre",
+        "ictère",
+        "éclampsie"
+      ],
+      "importance": "critical",
+      "source": "USAID/Neema p.24",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "urgence_002",
+      "category": "urgences_grossesse",
+      "question_wo": "Yan moy signou yu wooredi yi ?",
+      "question_fr": "Quels sont les signes de danger ?",
+      "question_bi": "Yan moy signou danger yi ?",
+      "response_wo": "ñenti siñ yi wóorul. So setloo say gët wala sa lamiñ weex nga manque deret. Soo gissee tamit ay newi-newi ci sa yaram , sa loxo, sa tànk wala sa kanam. Su Xale bi yëngëtotut. Su sa jamono matu jalle manam sa ëmbë weesu ñen-fukki semaine. Demal gaaw kër doktor.",
+      "response_fr": "4 signes nécessitant consultation rapide (24-48h) : 1) Pâleur des muqueuses (anémie), 2) Œdèmes (gonflements pieds, mains, visage), 3) Diminution ou absence de mouvements fœtaux, 4) Terme dépassé (>40 semaines).",
+      "answer_bilingual": "Quatre signe yi danger yu mak la. Soo ko ame da nga war a gaaw consulté wu: Weexaay ci sa lamiñ wala say beute mën naa nek anémie, ay newi-newi ci sa yaram, say loxo ak tank, Su xalé bougétoul, Su sa période accouchement jalle manam su dépassé quarante semaines.",
+      "keywords_wo": [
+        "signou",
+        "danger",
+        "weex",
+        "deret",
+        "manque",
+        "anémie",
+        "newi-newi",
+        "xale",
+        "yengetou",
+        "matou"
+      ],
+      "keywords_fr": [
+        "signes",
+        "danger",
+        "pâleur",
+        "anémie",
+        "œdème",
+        "gonflement",
+        "mouvements",
+        "fœtus",
+        "terme",
+        "dépassé",
+        "40"
+      ],
+      "keywords_common": [
+        "4",
+        "danger",
+        "anémie",
+        "œdème",
+        "mouvements fœtaux",
+        "terme",
+        "40"
+      ],
+      "importance": "high",
+      "source": "USAID/Neema p.24",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "urgence_003",
+      "category": "urgences_grossesse",
+      "question_wo": "Suma gisse deret bu jóge ci sama njurelukaay, lan laa war a def ?",
+      "question_fr": "Que faire en cas de saignement vaginal ?",
+      "question_bi": "Suma ame saignement vaginal, lan laa war a def ?",
+      "response_wo": "Derete bu jóge ci sa njurelu kaay, urgense bu mag la. Demal gaaw hôpital, ak waxtu bumu mënti am. Bakkan xaj na ci. Tan-naalél ku la mëna may deret booy dem. Ci hôpital bi dinañ la fajj te topato la",
+      "response_fr": "Saignement vaginal = URGENCE ABSOLUE. Aller IMMÉDIATEMENT hôpital jour ou nuit, ne pas attendre. Risque mort rapide. Identifier donneur sang d'avance. À l'hôpital : arrêt saignement, perfusion, prise en charge urgente adaptée.",
+      "answer_bilingual": "Saignement vaginal urgence bu mak la. Demal gaaw hopital, bul xaar te nga andal ku la mën may derete. Sa faatu xaj na ci. Di na ñu la jël en charge te topato la.",
+      "keywords_wo": [
+        "deret",
+        "lan la war a def",
+        "jóge",
+        "saignement",
+        "njurelukaay",
+        "urgence",
+        "hôpital",
+        "sang",
+        "dee"
+      ],
+      "keywords_fr": [
+        "saignement",
+        "vaginal",
+        "hémorragie",
+        "sang",
+        "urgence",
+        "hôpital",
+        "donneur",
+        "mort"
+      ],
+      "keywords_common": [
+        "saignement",
+        "hémorragie",
+        "urgence",
+        "donneur",
+        "sang",
+        "perfusion"
+      ],
+      "importance": "critical",
+      "source": "USAID/Neema p.24",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "urgence_004",
+      "category": "urgences_grossesse",
+      "question_wo": "Lu may def bu mbathie bopp gi toje ?",
+      "question_fr": "Que faire si perte des eaux ?",
+      "question_bi": "Lu may def suma ame perte des eaux ?",
+      "response_wo": "Bu mbathie bopp gi toje, mooy su ndox bi ëmbë xale bi tuuroo. Demal gaaw hopital ngir xool baxam sa matu jotna. Ay jafe-jafe mën na dal xale bi lu melni infection wala tamit sa matu jot. Demal gaaw xooli doktor!",
+      "response_fr": "Perte des eaux = rupture poche amniotique. URGENCE. Aller IMMÉDIATEMENT maternité vérifier si travail commencé. Risques : infection bébé, accouchement prématuré. Dangereux d'attendre maison, consulter immédiatement même sans douleurs.",
+      "answer_bilingual": "Perte des eaux mooy su possu ndox mi ëmbë xale bi commence ture jóge ci sa njurelukaay Demal gaaw hôpital pour vérifier baxam sa accouchement da commencé Sa dom mën na ci jële infection wala nga def accouchement prématuré.",
+      "keywords_wo": [
+        "ndox",
+        "jóge",
+        "perte",
+        "eau",
+        "sac",
+        "urgence",
+        "infection",
+        "prématuré"
+      ],
+      "keywords_fr": [
+        "perte",
+        "eaux",
+        "rupture",
+        "poche",
+        "amniotique",
+        "urgence",
+        "infection",
+        "prématurité"
+      ],
+      "keywords_common": [
+        "perte des eaux",
+        "rupture",
+        "membrane",
+        "infection",
+        "prématurité"
+      ],
+      "importance": "critical",
+      "source": "USAID/Neema p.24-25",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "urgence_005",
+      "category": "urgences_grossesse",
+      "question_wo": "Lu tax tàngaay woorëdi ci sama ëmbë ?",
+      "question_fr": "Pourquoi la fièvre est-elle dangereuse pendant la grossesse ?",
+      "question_bi": "Lu tax fièvre dangereux ci sama ëmbë ?",
+      "response_wo": "Tàngaayu yaram bi mën na tekki diangoro bu woorëdi bu melni siburu. Tàngaay bobu woorul ci xalé bi ndax mën na ko indil ay jafe-jafe yu koy tere judu wala su judo mu am ay malformation. Bu tàngaayu yaram bi weesso 38 degré, demal gaaw hôpital ngir ñu defal la test ak traitement bu baax. Bul fajoo dara ta laajo sa doktoor.",
+      "response_fr": "Fièvre peut indiquer infection grave (paludisme, infection urinaire, listériose). Dangereuse pour bébé (malformations, fausse couche, prématurité) et mère. Fièvre >38°C : consulter immédiatement pour diagnostic et traitement. Ne pas s'automédiquer.",
+      "answer_bilingual": "Fièvre mën na nek feebar bu melni sibiru. Fièvre worul ci iow ak xale bi nax mëna indi ay malformation, avortement ak accouchement prematuré. Bul jël bene garab te consultéwo médecin. Demal gaaw hôpital",
+      "keywords_wo": [
+        "tàng",
+        "tàngaay",
+        "fièvre",
+        "yaram",
+        "woorul",
+        "paludisme",
+        "38",
+        "hôpital",
+        "siburu"
+      ],
+      "keywords_fr": [
+        "fièvre",
+        "dangereuse",
+        "infection",
+        "paludisme",
+        "malformation",
+        "38",
+        "température"
+      ],
+      "keywords_common": [
+        "fièvre",
+        "38°C",
+        "infection",
+        "paludisme",
+        "malaria"
+      ],
+      "importance": "high",
+      "source": "USAID/Neema p.24",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "urgence_006",
+      "category": "urgences_grossesse",
+      "question_wo": "Lan la convulsions di tekki ci ëmbë ?",
+      "question_fr": "Que sont les convulsions pendant la grossesse ?",
+      "question_bi": "Lan moy convulsions ci biir ëmbë ?",
+      "response_wo": "Convulsions manam say mooy ay crises yo xamni day dëgërël sa yaram di ko yëngël bu baax mooy éclampsie urgence la bu rëy te bakkan xajj na ci muy doom ji wala yaay ji. Demal gaaw hôpital ñu wutal la traitement!",
+      "response_fr": "Convulsions = crises où corps se raidit et secoue (éclampsie). URGENCE VITALE pouvant causer mort mère et bébé. Signes : perte connaissance, morsure langue, perte urines. Cause : HTA sévère non traitée. Hospitalisation immédiate obligatoire, traitement sulfate magnésium.",
+      "answer_bilingual": "Convulsions mooy crises yo xamni sa yaram day dëgër ba pare di la secoue. Urgence bu mak la. Mëna la faat yaak sa dom. Li koy waral mooy hypertension. Signes yi mooy xëm wala di faral di matt sa lamiñ. Demal gaaw hôpital di nañ la bindal traitement yi war.",
+      "keywords_wo": [
+        "convulsions",
+        "tekki",
+        "mooy",
+        "guddee",
+        "lakk",
+        "dela",
+        "tànk",
+        "des",
+        "urgence"
+      ],
+      "keywords_fr": [
+        "convulsions",
+        "crise",
+        "éclampsie",
+        "perte",
+        "connaissance",
+        "HTA",
+        "urgence",
+        "vitale"
+      ],
+      "keywords_common": [
+        "convulsions",
+        "éclampsie",
+        "HTA",
+        "sulfate magnésium",
+        "urgence"
+      ],
+      "importance": "critical",
+      "source": "USAID/Neema p.53-65",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "nutrition_001",
+      "category": "nutrition_grossesse",
+      "question_wo": "Lan lañu war lekk ci biir ëmbë?",
+      "question_fr": "Quelle alimentation pendant la grossesse ?",
+      "question_bi": "Bane alimentation la ñu ci biir ëmbë ?",
+      "response_wo": "Da nga war a lekk lekk bu bari ay ferñent te varié: War nga lekk protéine (mën nga ko fekk ci nen, jën, yàpp). calcium (am na ci meew, yaourt ak sow). feer (amna ci yapp ak lujum yu werte yi). War nga lekk tamit carotte, orange, limons, tamaté. Waañil kafé ak ataya boo lekké ba pare. Bayil tamit sangara ak cigaret. Yookal sa lekk. Bës bu ne del jël 4 repas. del nélaw bu baax.",
+      "response_fr": "Alimentation riche et variée : protéines (viande, poisson, œufs), calcium (lait, yaourt, fromage), fer (viande rouge, légumes verts foncés), vitamine A (carottes, légumes orangés), vitamine C (agrumes, tomates). Éviter café/thé après repas, alcool, tabac. Sel iodé. Au moins 1 repas supplémentaire/jour. Repos suffisant.",
+      "answer_bilingual": "So ëmbé da nga war a am alimentation bu riche te variée protéines (mën nga ko am ci yapp, jën ak nen), calcium (mën nga ko am ci meew, yaourt ak fromage), fer (ci viande rouge ak légume yu vert foncé yi), vitamine A (ci carotte ak légume yu orange yi), vitamine C (ci agrumes ak tamaté). Dél éviter café ak ataya bo lekke ba pare, alcool, ak cigaret. Del consommé tamit sel iodé te del jël aussi quatre repas par jour.",
+      "keywords_wo": [
+        "lan",
+        "lekk",
+        "alimentation",
+        "ferñent",
+        "jën",
+        "yàpp",
+        "meew",
+        "eumbe",
+        "fer",
+        "vitamin"
+      ],
+      "keywords_fr": [
+        "alimentation",
+        "manger",
+        "nutrition",
+        "viande",
+        "poisson",
+        "lait",
+        "légumes",
+        "fruits",
+        "vitamines"
+      ],
+      "keywords_common": [
+        "nutrition",
+        "protéines",
+        "calcium",
+        "fer",
+        "vitamine A",
+        "vitamine C",
+        "sel iodé"
+      ],
+      "importance": "high",
+      "source": "USAID/Neema p.11-12",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "nutrition_002",
+      "category": "nutrition_grossesse",
+      "question_wo": "Lu tax fer ak acide folique am njariñ ?",
+      "question_fr": "Pourquoi fer et acide folique sont importants ?",
+      "question_bi": "Lu tax fer ak acide folique am importance ci sama ëmbë ?",
+      "response_wo": "Fer bi da lay moussal ci anémie (maname manque deret). Acide folique nak da lay moussël ci malformation you mëna dal xale bi. Del jël benë doom bës bu ne ba ñatti weer ginaaw nga wëssine. Waye tamite mën na laa indil ay jafe-jafe yu seew yu melni biir buy daw, wathiou ak dem allë you ñuul. Lolu lu normal la.",
+      "response_fr": "Fer prévient anémie maternelle (sang pauvre), produit globules rouges pour mère et bébé. Acide folique prévient malformations tube neural (cerveau, moelle épinière). Prendre 1 comprimé/jour toute grossesse jusqu'à 3 mois post-partum. Effets secondaires possibles : diarrhée, vomissements, selles noires (normaux).",
+      "answer_bilingual": "Fer: prévient anémie, produit sang. Acide folique: prévient malformations cerveau. 1 cachet/jour toute grossesse + 3 mois. Effets: diarrhée, selles noires (normal).",
+      "keywords_wo": [
+        "fer",
+        "acide folique",
+        "manque",
+        "anémie",
+        "deret",
+        "malformation",
+        "dem alle",
+        "bopp"
+      ],
+      "keywords_fr": [
+        "fer",
+        "acide folique",
+        "anémie",
+        "sang",
+        "malformation",
+        "cerveau",
+        "comprimé"
+      ],
+      "keywords_common": [
+        "fer",
+        "acide folique",
+        "anémie",
+        "malformation",
+        "tube neural",
+        "60mg",
+        "400µg"
+      ],
+      "importance": "critical",
+      "source": "USAID/Neema p.11",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "nutrition_003",
+      "category": "nutrition_grossesse",
+      "question_wo": "Lu tax ñuy tere ataya wala kafé so lekké ba pare ?",
+      "question_fr": "Pourquoi éviter thé et café après les repas ?",
+      "question_bi": "Pourquoi ñuy tere ataya ak kafé so lekké ba pare ?",
+      "response_wo": "Ataaya ak kafé dañuy wañi ni sa yaram di naané fer bi. Ta fer daf lay moussël ci anémie. Lu gën mooy ngay naan zu bu am vitamin C (orange wala limon) bo lekke ba pare. lolu mooy yokkou ni sa yaram di naané fer.",
+      "response_fr": "Thé et café contiennent tanins qui réduisent absorption du fer. Le fer est essentiel pour prévenir l'anémie. Prendre fer avec thé/café = fer mal absorbé. Mieux : boire jus riches en vitamine C (oranges, citrons) après repas pour améliorer absorption fer.",
+      "answer_bilingual": "Ataya ak kafé dañuy wañi ni sa yaram di absorbé fer. Ta fer da fa essentiel pour prévenir anémie manam manque derete. Del faral di nane jus vitamine C comme orange ak limon sa bo lekké ba pare.",
+      "keywords_wo": [
+        "ataya",
+        "kafé",
+        "baxul",
+        "maytu",
+        "absorption",
+        "wañi",
+        "tere",
+        "vitamin C",
+        "jus"
+      ],
+      "keywords_fr": [
+        "thé",
+        "café",
+        "éviter",
+        "fer",
+        "absorption",
+        "tanins",
+        "vitamine C",
+        "jus"
+      ],
+      "keywords_common": [
+        "thé",
+        "café",
+        "fer",
+        "absorption",
+        "tanins",
+        "vitamine C"
+      ],
+      "importance": "medium",
+      "source": "USAID/Neema p.11-12",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "examens_001",
+      "category": "examens_medicaux",
+      "question_wo": "Yan examens wala test la war a def ?",
+      "question_fr": "Quels sont les 8 examens obligatoires pendant la grossesse ?",
+      "question_bi": "Yan examens wala test la war a def ci sama ëmbë ?",
+      "response_wo": "Faw nga def examen yi: Derete pour xam sa groupe. War nañu def tamit test drépanocytose ak bu sukër ak test Siphilis ak Sidaa. Di nañu xol-it sa saw ak say rein. test hépatite B bi tamite li gën mooy nga def ko",
+      "response_fr": "8 examens obligatoires : 1) Groupage sanguin + RAI si Rhésus négatif, 2) NFS (numération formule sanguine), 3) Test Emmel (drépanocytose), 4) Glycémie à jeun, 5) Sérologie syphilis (RPR/TPHA), 6) Test VIH avec counseling, 7) Albumine urinaire, 8) Créatininémie (fonction rénale). Conseillés : HBs, frottis cervico-vaginal.",
+      "answer_bilingual": "8 examens obligatoires: Groupage, NFS, Emmel (drépanocytose), Glycémie, Syphilis, VIH, Albumine urinaire, Créatinine. Conseillés: HBs, frottis.",
+      "keywords_wo": [
+        "test",
+        "examen",
+        "obligatoire",
+        "groupage",
+        "NFS",
+        "Yan",
+        "sukër",
+        "syphilis",
+        "VIH",
+        "albumine"
+      ],
+      "keywords_fr": [
+        "examens",
+        "obligatoires",
+        "test",
+        "groupage",
+        "NFS",
+        "Emmel",
+        "glycémie",
+        "syphilis",
+        "VIH"
+      ],
+      "keywords_common": [
+        "8",
+        "examens",
+        "groupage",
+        "NFS",
+        "Emmel",
+        "drépanocytose",
+        "glycémie",
+        "syphilis",
+        "VIH",
+        "albumine",
+        "créatinine"
+      ],
+      "importance": "high",
+      "source": "USAID/Neema p.11",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "examens_002",
+      "category": "examens_medicaux",
+      "question_wo": "Lu tax test sida bi am njariñ ?",
+      "question_fr": "Pourquoi le test VIH est-il important ?",
+      "question_bi": "Lu tax test VIH bi am njariñ ?",
+      "response_wo": "Test Sida lu am solo la bo tele xame nax am nga sida. mën nga fexe ba mussël ci xale bi ak garab yi ñu lay diox. Bu fekkee da nga am sida, dina ñu ci mëna mussël  xale bi ak traitement yu jaar yonn, ci ëmbë bi boy wëssine ak it boy nampal.",
+      "response_fr": "Test VIH permet de : savoir si on est infecté, prévenir transmission au bébé par traitement ARV. Si VIH+ : traitement mère pendant grossesse/accouchement, traitement bébé, allaitement maternel exclusif sous ARV. Avec traitement correct, risque transmission <2%. Sans traitement, risque 20-45%.",
+      "answer_bilingual": "Test VIH: dépistage + prévention transmission bébé. Si VIH+: ARV mère+bébé, allaitement sous ARV. Risque transmission <2% avec traitement vs 20-45% sans.",
+      "keywords_wo": [
+        "test",
+        "VIH",
+        "sida",
+        "traitement",
+        "ARV",
+        "xale",
+        "transmission",
+        "njariñ"
+      ],
+      "keywords_fr": [
+        "test",
+        "VIH",
+        "important",
+        "traitement",
+        "ARV",
+        "bébé",
+        "transmission",
+        "allaitement"
+      ],
+      "keywords_common": [
+        "VIH",
+        "ARV",
+        "PTME",
+        "transmission",
+        "2%",
+        "20-45%"
+      ],
+      "importance": "critical",
+      "source": "USAID/Neema p.12-13",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "preparation_001",
+      "category": "preparation_accouchement",
+      "question_wo": "Nooy waajale sa matu ?",
+      "question_fr": "Comment préparer un plan d'accouchement ?",
+      "question_bi": "Nooy waajale sa matu ci biir ëmbë ?",
+      "response_wo": "Ba laa ngaa matu, da nga war a waajal sa boppu. Tànnal hopital ak ki ngay andal te Wut ku lay mëna may deret. Waajal li ngay yobu tamite ci matukaay (ay sër yu sett ak saabu ak eau de zavel). wutal looy war booy dem. Waajalal xalis te Wut ko ciy waxtaanal waxtu bu jote. Bul fatte Wut koy wacce say dome. diémal tamit bokk ci benn assurance.",
+      "response_fr": "Plan d'accouchement (9 éléments) : 1) Choisir lieu (hôpital/centre de santé), 2) Identifier accompagnant, 3) Identifier donneur sang, 4) Rassembler matériel (5 pagnes propres, savon, javel), 5) Organiser transport, 6) Prévoir finances, 7) Discuter prise décisions (qui décide), 8) Prévoir garde autres enfants, 9) Adhérer mutuelle santé.",
+      "answer_bilingual": "9 points plan accouchement: 1) Lieu, 2) Accompagnant, 3) Donneur sang, 4) Matériel (5 pagnes, savon), 5) Transport, 6) Finances, 7) Décisions, 8) Garde enfants, 9) Mutuelle.",
+      "keywords_wo": [
+        "Nooy",
+        "accouchement",
+        "matu",
+        "waajal",
+        "donneur",
+        "deret",
+        "yobu",
+        "xalis",
+        "matukaay"
+      ],
+      "keywords_fr": [
+        "plan",
+        "accouchement",
+        "préparer",
+        "donneur",
+        "sang",
+        "transport",
+        "finances",
+        "matériel"
+      ],
+      "keywords_common": [
+        "plan accouchement",
+        "9",
+        "donneur sang",
+        "transport",
+        "mutuelle"
+      ],
+      "importance": "high",
+      "source": "USAID/Neema p.12, 25-26",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "preparation_002",
+      "category": "preparation_accouchement",
+      "question_wo": "Lu tax ma war a wut kumay may deret ?",
+      "question_fr": "Pourquoi identifier un donneur de sang à l'avance ?",
+      "question_bi": "Pourquoi ma war a identifier kumay may deret ?",
+      "response_wo": "bu urgence amé (nga ñakk deret bu bari), faaw nga am ku lay may derete. Tànnal ku lay may derete ci lu gaaw. Mën naa nék sa boroom kër wala sa mbokk bu la jege. Xolal tamit baxam sene derete ande na. Su urgence ame, lolu yëpp doko mën lijënti ci saas yi",
+      "response_fr": "Donneur sang essentiel en cas d'urgence (hémorragie grave). Permet d'avoir quelqu'un disponible immédiatement. Identifier donneur maintenant : doit être rapidement joignable, mari ou proche de confiance. Vérifier compatibilité groupes sanguins à l'avance. En urgence, pas le temps de chercher.",
+      "answer_bilingual": "Donneur sang: essentiel si urgence (hémorragie). Identifier maintenant: disponible immédiatement, groupe compatible vérifié. En urgence: pas le temps chercher.",
+      "keywords_wo": [
+        "donneur",
+        "sang",
+        "urgence",
+        "deret",
+        "lu tax",
+        "compatible",
+        "tànn",
+        "may",
+        "wut"
+      ],
+      "keywords_fr": [
+        "donneur",
+        "sang",
+        "urgence",
+        "hémorragie",
+        "groupe",
+        "compatible",
+        "identifier"
+      ],
+      "keywords_common": [
+        "donneur sang",
+        "urgence",
+        "hémorragie",
+        "groupe sanguin",
+        "compatibilité"
+      ],
+      "importance": "high",
+      "source": "USAID/Neema p.25-26",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "vaccin_001",
+      "category": "vaccins_grossesse",
+      "question_wo": "Ñaata pikir tatanos la war a jël ?",
+      "question_fr": "Combien de doses de vaccin VAT faut-il ?",
+      "question_bi": "Ñaata pikir tatanos la war a jël ci biir ëmbë ?",
+      "response_wo": "Juróomi pikir tetaanos nga war a jël ngir faggandiku sa giiru dundu. pikir bou njëkk ci sa wisit bu njëkk nga koy jël. ñaarelou pikir bi: ñenti semaines après pikir bu njëkk. ñatel bi: Juróom-benni weer ci ginaaw ñaareel bi. ñentel bi att ginaaw ñatel bi. juróomel bi: att tamit ginaaw nga jël ñentel pikir bi. Bu juróomi pikir yi matee nak, nga faggal sa boppu tataanos sa giiru dundu.",
+      "response_fr": "5 doses VAT pour protection complète à vie. VAT1 : dès CPN1. VAT2 : au moins 4 semaines après VAT1. VAT3 : au moins 6 mois après VAT2. VAT4 : au moins 1 an après VAT3. VAT5 : au moins 1 an après VAT4. Après VAT5 : protection toute la vie.",
+      "answer_bilingual": "5 doses VAT: VAT1 (CPN1) → VAT2 (+4sem) → VAT3 (+6mois) → VAT4 (+1an) → VAT5 (+1an). Protection vie.",
+      "keywords_wo": [
+        "ñaata",
+        "vaccin",
+        "VAT",
+        "tatanos",
+        "tetanos",
+        "jël",
+        "juróom",
+        "doses",
+        "semaines",
+        "weer",
+        "pikir",
+        "faggu"
+      ],
+      "keywords_fr": [
+        "combien",
+        "doses",
+        "vaccin",
+        "VAT",
+        "antitétanique",
+        "5",
+        "cinq",
+        "semaines",
+        "mois"
+      ],
+      "keywords_common": [
+        "VAT",
+        "VAT1",
+        "VAT2",
+        "VAT3",
+        "VAT4",
+        "VAT5",
+        "5",
+        "tétanos",
+        "doses"
+      ],
+      "importance": "critical",
+      "source": "USAID/Neema p.22-23",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "vaccin_002",
+      "category": "vaccins_grossesse",
+      "question_wo": "Lan mooy njariñu pikir tetanos ?",
+      "question_fr": "Pourquoi le vaccin VAT est-il important ?",
+      "question_bi": "Lan mooy njariñu pikir tetanos ci biir ëmbë ?",
+      "response_wo": "pikir tetaanoos day mussël ci doomu jangoro ji di tetaanoos. febar boobu woorul te mën naa faat yaay ak doom. tetaanoos mën naa waallé ci biir matu gi su fekke ci anam yu salte nga koy defe. pikir tetaanoos bi amna solo nax di nala mussël yaak sa doom",
+      "response_fr": "VAT (Vaccin Antitétanique) prévient le tétanos, maladie grave souvent mortelle pour bébé et mère. Tétanos contracté par cordon coupé dans conditions sales. VAT protège en produisant anticorps. 5 doses VAT = protection toute la vie. Tétanos tue en quelques jours, vaccin sauve des vies.",
+      "answer_bilingual": "VAT prévient tétanos (maladie mortelle bébé-mère). Infection cordon sale. 5 doses = protection vie. Vaccin sauve vies.",
+      "keywords_wo": [
+        "VAT",
+        "vaccin",
+        "pikir",
+        "lan",
+        "tatanos",
+        "tétanos",
+        "njariñu",
+        "jariñ",
+        "mussal",
+        "mucc",
+        "protection"
+      ],
+      "keywords_fr": [
+        "VAT",
+        "vaccin",
+        "antitétanique",
+        "tétanos",
+        "important",
+        "prévention",
+        "cordon",
+        "protection"
+      ],
+      "keywords_common": [
+        "VAT",
+        "tétanos",
+        "antitétanique",
+        "cordon",
+        "protection",
+        "5 doses"
+      ],
+      "importance": "critical",
+      "source": "USAID/Neema p.22-23",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "vih_001",
+      "category": "prevention_vih",
+      "question_wo": "Nooy def ba mussal sa doom si fébar sida ?",
+      "question_fr": "Comment éviter de transmettre le VIH au bébé ?",
+      "question_bi": "Nooy def ba mussal sa doom si fébar sida ci biir ëmbë ?",
+      "response_wo": "Boo ame sidaa, di nañ la may ay garab ci sa wisit bu njëkk bi. jël ko niñ la ko tektale ci biir ëmbë bi ak booy mattu. Xale bi itam di na am ay garab yu muy jël. juróom-beni weer yu njëkk yi da nga ko wara nampal booleko di jël sa garab yi. Boo jële garab yi ni mu ware, sa doom di na mën mucci ci domu jangoro bi di sida. Xale bi nak daa wara def test bu tollé ci juróom-beni semaine ak su ame juróom-ñenti weer ak su ame fukk ak juroom-ñatti weer.",
+      "response_fr": "Si VIH+ : prendre ARV régulièrement pendant grossesse et accouchement (selon ordonnance médicale). Bébé reçoit prophylaxie ARV. Allaitement maternel EXCLUSIF 6 mois sous ARV (protège bébé). Avec ARV bien pris : risque transmission <2%. Tests bébé : 6 semaines, 9 mois, 18 mois. Sans traitement : risque 20-45%.",
+      "answer_bilingual": "PTME VIH: ARV mère (grossesse+accouchement), ARV bébé, allaitement EXCLUSIF 6 mois sous ARV. Risque <2% avec ARV vs 20-45% sans. Tests bébé: 6sem, 9mois, 18mois.",
+      "keywords_wo": [
+        "VIH",
+        "sida",
+        "wallë",
+        "ARV",
+        "faj",
+        "xale",
+        "mussal",
+        "mucc",
+        "jangoro",
+        "test"
+      ],
+      "keywords_fr": [
+        "VIH",
+        "éviter",
+        "transmission",
+        "ARV",
+        "traitement",
+        "bébé",
+        "allaitement",
+        "PTME"
+      ],
+      "keywords_common": [
+        "VIH",
+        "PTME",
+        "ARV",
+        "transmission",
+        "2%",
+        "20-45%",
+        "allaitement exclusif"
+      ],
+      "importance": "critical",
+      "source": "USAID/Neema p.12-13",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "allaitement_001",
+      "category": "allaitement",
+      "question_wo": "Lu tax nampal sa doom kesse am solo ba pare diko baña jox lenene ?",
+      "question_fr": "Pourquoi l'allaitement maternel exclusif est-il important ?",
+      "question_bi": "Lu tax nampal sa doom kesse am solo ba pare diko baña jox lenene ci biir ëmbë ?",
+      "response_wo": "juróom-beni weer yu njëkk yi da nga ko wara nampal sa doom kessé. Bul ko jox lenene muy lekk. Nax Soowu yaay ji day mussël xale bi ci feebar ak bepp galangkor. Ta dina tax doom ji gëna takkë yaayam. Bu lolu jallee nga boole ko ak yenene lekk ba muy am ñaari at soga mëna ferr",
+      "response_fr": "Allaitement maternel EXCLUSIF 6 premiers mois = aliment complet parfait pour bébé, protège contre maladies (diarrhée, infections respiratoires, allergies), toujours disponible et gratuit, renforce lien mère-enfant. EXCLUSIF signifie : QUE lait maternel, pas d'eau, tisanes, autres liquides. Après 6 mois : continuer allaitement + alimentation complémentaire jusqu'à 2 ans.",
+      "answer_bilingual": "Allaitement EXCLUSIF 6 mois: complet, protège maladies, gratuit, lien mère-enfant. EXCLUSIF = QUE lait, pas eau. Après 6 mois: continuer + alimentation complémentaire.",
+      "keywords_wo": [
+        "Lu tax",
+        "nampal",
+        "solo",
+        "lekk",
+        "ferr",
+        "kesse",
+        "soowu",
+        "yaay",
+        "xale",
+        "doom",
+        "weer",
+        "mois"
+      ],
+      "keywords_fr": [
+        "allaitement",
+        "maternel",
+        "exclusif",
+        "sein",
+        "lait",
+        "bébé",
+        "6",
+        "mois"
+      ],
+      "keywords_common": [
+        "allaitement",
+        "exclusif",
+        "6 mois",
+        "sein",
+        "lait maternel"
+      ],
+      "importance": "critical",
+      "source": "USAID/Neema p.26-27",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "allaitement_002",
+      "category": "allaitement",
+      "question_wo": "Kañ la ñu war a nampal namp gu njëkk xale bi ?",
+      "question_fr": "Quand mettre le bébé au sein pour la première fois ?",
+      "question_bi": "Kañ la ñu war a nampal namp gu njëkk xale bi ci biir ëmbë ?",
+      "response_wo": "Da nga  war a nampal sa doom ci waxtu bu njëkk so matoo. Lolu day mussël sa doom ci feebar yi. Day yokk tamit soowu yaay ji, da lay gënë jegeel sa doom ta tamit day tax sa njurelu-kaay gi mëna delu.",
+      "response_fr": "Mettre bébé au sein dans la PREMIÈRE HEURE après accouchement. Crucial pour bébé reçoive colostrum, premier lait très riche en anticorps. Colostrum = 'vaccin naturel' protégeant bébé infections. Première tétée stimule aussi production lait, renforce lien mère-enfant, aide utérus à se contracter.",
+      "answer_bilingual": "Première tétée: DANS 1H après accouchement. Colostrum = vaccin naturel (anticorps). Stimule lait, lien mère-enfant, contraction utérus.",
+      "keywords_wo": [
+        "nampal",
+        "namp",
+        "njëkk",
+        "première",
+        "waxtu",
+        "Kañ",
+        "matu",
+        "colostrum",
+        "soowu"
+      ],
+      "keywords_fr": [
+        "première",
+        "tétée",
+        "sein",
+        "heure",
+        "accouchement",
+        "colostrum",
+        "anticorps"
+      ],
+      "keywords_common": [
+        "première tétée",
+        "1 heure",
+        "colostrum",
+        "anticorps"
+      ],
+      "importance": "high",
+      "source": "USAID/Neema p.26-27",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "travail_001",
+      "category": "travail_accouchement",
+      "question_wo": "Nan laay xame ne matu jotna ?",
+      "question_fr": "Quels sont les signes du début du travail ?",
+      "question_bi": "Nan laay xame ne matu jotna ci biir ëmbë ?",
+      "response_wo": "Siñ yi boo ci am xamal ne matu jotna. so yëgee ay contractions manam ay yëngetu ci sa njurelu-kaay. Bo yëgee métit ci sa biir wala sa dig ginaaw. So gissé ndox mu weex wala xonk jóge ci sa njureelukaay. Bu mbathie bopp gi tojee. Loo ci am rek demal gaaw kër doctor. Bul jaar feenë te wutal ko andal",
+      "response_fr": "Signes début travail : contractions régulières, progressivement douloureuses, rapprochées (toutes 5-10 minutes), douleurs bas du dos irradiant vers l'avant, pertes glaireuses ou ensanglantées (bouchon muqueux). Si ces signes : aller IMMÉDIATEMENT maternité. Ne pas attendre à la maison, être accompagnée.",
+      "answer_bilingual": "Signes travail: contractions régulières 5-10min, douleurs dos→avant, pertes glaireuses/sang (bouchon). Maternité IMMÉDIATEMENT.",
+      "keywords_wo": [
+        "signe",
+        "matu",
+        "jotna",
+        "métit",
+        "contraction",
+        "ndox",
+        "weex",
+        "xonk",
+        "bopp mbathie",
+        "njurelukaay"
+      ],
+      "keywords_fr": [
+        "signes",
+        "travail",
+        "accouchement",
+        "contractions",
+        "douleurs",
+        "dos",
+        "pertes",
+        "bouchon"
+      ],
+      "keywords_common": [
+        "travail",
+        "contractions",
+        "5-10 minutes",
+        "bouchon muqueux"
+      ],
+      "importance": "high",
+      "source": "USAID/Neema p.25-26",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "nouveau_ne_001",
+      "category": "soins_nouveau_ne",
+      "question_wo": "Lan lañuy njëkk def ginaaw bu xale judoo ?",
+      "question_fr": "Quels sont les soins immédiats du nouveau-né ?",
+      "question_bi": "Lan lañuy njëkk def ginaaw bu xale judoo ci biir ëmbë ?",
+      "response_wo": "Lu njëkk ci xale bi moy: xale bi bu judoo da nga koy fomp ak sër yu sett, ñu tekk xale bi si yaay ji ngir mu am tangaay. Dagg buumu njureel gi ak jumtukaay yu sët. Nampal tamit xale bi. Après am na ay examens yu xale bi war a def nax ñu natt weer gi yaram mam.",
+      "response_fr": "Soins immédiats nouveau-né : sécher immédiatement bébé avec linge propre et sec, placer peau à peau avec mère (chaleur), clamper et couper cordon avec matériel stérile, mettre au sein dans première heure, ne PAS aspirer si bébé pleure bien, examen complet (poids, taille, périmètre crânien), vitamine K, vaccins (BCG, Polio 0, HepB 0) dans 24h. Premier bain après 24h.",
+      "answer_bilingual": "Soins immédiats: sécher, peau à peau, cordon stérile, sein 1H, examen (poids, taille), vitamine K, vaccins 24h (BCG, Polio, HepB). Bain >24h.",
+      "keywords_wo": [
+        "soins",
+        "xale",
+        "njëkk",
+        "séew",
+        "peau à peau",
+        "cordon",
+        "téere",
+        "vaccin"
+      ],
+      "keywords_fr": [
+        "soins",
+        "nouveau-né",
+        "sécher",
+        "peau à peau",
+        "cordon",
+        "sein",
+        "vaccins"
+      ],
+      "keywords_common": [
+        "soins immédiats",
+        "peau à peau",
+        "cordon",
+        "BCG",
+        "Polio 0",
+        "HepB 0",
+        "24h"
+      ],
+      "importance": "critical",
+      "source": "USAID/Neema p.101-113",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "nouveau_ne_002",
+      "category": "soins_nouveau_ne",
+      "question_wo": "Lu tax tekk xale bi ci yaay ji am solo ?",
+      "question_fr": "Pourquoi le contact peau à peau est-il important ?",
+      "question_bi": "Lu tax tekk xale bi ci yaay ji am solo ci biir ëmbë ?",
+      "response_wo": "Xale bi bu judoo da ñu ko war a jox ndey ji mu tëye ko diir. Lolu day tax tangaayu yaramu xale bi jaar yoon, lolu tamit day dalal ni muy noyyé ak ni xol bi di ligëyee, day dalal xale bi, te yombal nampal bi. War nga ko def bene waxtu wala ñaari waxtu.",
+      "response_fr": "Contact peau à peau (placer bébé nu sur poitrine mère) immédiatement après naissance crucial pour : maintenir température bébé, stabiliser rythme cardiaque et respiration, calmer bébé, faciliter première tétée. Recommandé au moins 1-2 heures continues après naissance. Renforce lien mère-enfant, favorise allaitement.",
+      "answer_bilingual": "Peau à peau (bébé nu sur mère): température, rythme cardiaque stable, calme bébé, facilite tétée. 1-2h minimum. Renforce lien, favorise allaitement.",
+      "keywords_wo": [
+        "tekk xale",
+        "tëye",
+        "xale",
+        "judu",
+        "ndey",
+        "yaay",
+        "tangaayu yaram",
+        "battement",
+        "xol",
+        "nooyi"
+      ],
+      "keywords_fr": [
+        "peau à peau",
+        "contact",
+        "bébé",
+        "mère",
+        "température",
+        "cardiaque",
+        "tétée"
+      ],
+      "keywords_common": [
+        "peau à peau",
+        "température",
+        "lien mère-enfant",
+        "allaitement"
+      ],
+      "importance": "high",
+      "source": "USAID/Neema p.101-113",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "nouveau_ne_003",
+      "category": "soins_nouveau_ne",
+      "question_wo": "Kañ la ñu war a sangg liir bi sang bu njëkk ?",
+      "question_fr": "Quand donner le premier bain au bébé ?",
+      "question_bi": "Kañ la ñu war a sang liir bi sang bu njëkk ci biir ëmbë ?",
+      "response_wo": "Xaaral ba waxtu judu bi delussi-waat nga sooga sang xale bi. So ko teelee sangue rek mën na sedd wala ay jangoro toppu ko ci. Da nga koy sanguee saabu ak ndox mu ndugu te so pare rek fompu ko.",
+      "response_fr": "Premier bain : attendre AU MOINS 24 heures après naissance. À la naissance, bébé est recouvert de vernix caseosa (enduit protecteur) important pour sa santé. Si bain trop tôt : vernix retiré, bébé risque hypothermie et infections. Après 24h : bain avec eau tiède, savon doux, sécher immédiatement.",
+      "answer_bilingual": "Premier bain: ATTENDRE 24H. Vernix (enduit protecteur) important. Bain trop tôt: risque hypothermie+infections. Après 24h: eau tiède, savon doux, sécher.",
+      "keywords_wo": [
+        "sangg",
+        "njëkk",
+        "liir",
+        "bebe",
+        "xale",
+        "doom",
+        "xaar"
+      ],
+      "keywords_fr": [
+        "bain",
+        "premier",
+        "bébé",
+        "24",
+        "heures",
+        "attendre",
+        "vernix",
+        "hypothermie"
+      ],
+      "keywords_common": [
+        "premier bain",
+        "24 heures",
+        "vernix",
+        "hypothermie"
+      ],
+      "importance": "medium",
+      "source": "USAID/Neema p.101-113",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "complications_001",
+      "category": "complications_grossesse",
+      "question_wo": "Lan mooy pré-éclampsie ?",
+      "question_fr": "Qu'est-ce que la pré-éclampsie ?",
+      "question_bi": "Lan mooy pré-éclampsie ?",
+      "response_wo": "Pré-éclampsie complication la buy dal ñi ëmbë. Mën na laa indil bopp bu metit wala yaram bu tang.",
+      "response_fr": "Pré-éclampsie = HTA (≥140/90) + protéinurie après 20 semaines grossesse. Symptômes : maux de tête sévères, troubles vision, douleur épigastrique, œdèmes importants. Complication grave pouvant évoluer vers éclampsie (convulsions mortelles). Nécessite : hospitalisation immédiate, traitement anti-HTA, sulfate magnésium. Seul traitement définitif = accouchement.",
+      "answer_bilingual": "Pré-éclampsie: HTA ≥140/90 + protéinurie >20sem. Signes: maux tête, vision trouble, douleur, œdèmes. Risque éclampsie. Hôpital: anti-HTA, sulfate magnésium. Traitement final: accouchement.",
+      "keywords_wo": [
+        "pré-éclampsie",
+        "tànk",
+        "des",
+        "albumine",
+        "bopp",
+        "metit",
+        "éclampsie",
+        "convulsions"
+      ],
+      "keywords_fr": [
+        "pré-éclampsie",
+        "HTA",
+        "protéinurie",
+        "maux",
+        "tête",
+        "éclampsie",
+        "convulsions"
+      ],
+      "keywords_common": [
+        "pré-éclampsie",
+        "HTA",
+        "140/90",
+        "protéinurie",
+        "éclampsie",
+        "sulfate magnésium"
+      ],
+      "importance": "critical",
+      "source": "USAID/Neema p.53-65",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "postpartum_001",
+      "category": "soins_postnataux",
+      "question_wo": "Lan laa war a def ginaaw ma wëssin?",
+      "question_fr": "Quels sont les soins post-nataux recommandés ?",
+      "question_bi": "Lan laa war a def ginaaw ma wësine?",
+      "response_wo": "Boo wëssiné ba pare war nañ la seet juróom-beni waxtu ginaaw nga wëssine. Ak bene fan wala ñaar ginaaw nga wëssine ak it ci juróom-beni semaine yi. Da ngay continé di jël feer ba ñatti weer. Da nga wara sett tamit ci biir ak biti. Ngay dallu bu baax ta di lekk lekk gu baax te bari fer-ñent. Da nga war a def tamit planning. jafe-jafe boo giss demal gaaw kër doctor.",
+      "response_fr": "Soins post-nataux : consultation à 6h, 24-48h, 6 semaines post-partum. Continuer fer/acide folique 3 mois. Hygiène périnéale rigoureuse. Repos suffisant. Alimentation riche pour allaitement. Planification familiale dès post-partum. Surveiller signes danger : hémorragie, fièvre, douleurs abdominales, vomissements. Consulter immédiatement si signes.",
+      "answer_bilingual": "Consultations post-partum: 6h, 24-48h, 6sem. Fer 3 mois, hygiène, repos, nutrition, planification. Surveiller: hémorragie, fièvre, douleurs, vomissements → hôpital si signes.",
+      "keywords_wo": [
+        "soins",
+        "wësine",
+        "consultation",
+        "lan",
+        "ginaaw",
+        "wësine",
+        "fer",
+        "planing"
+      ],
+      "keywords_fr": [
+        "soins",
+        "post-nataux",
+        "consultation",
+        "6",
+        "heures",
+        "semaines",
+        "fer",
+        "hygiène",
+        "planification"
+      ],
+      "keywords_common": [
+        "post-partum",
+        "6h",
+        "24-48h",
+        "6 semaines",
+        "fer",
+        "planification familiale"
+      ],
+      "importance": "high",
+      "source": "USAID/Neema p.163-171",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "hygiene_001",
+      "category": "hygiene_grossesse",
+      "question_wo": "Lan lañu war def ngir sett ci biir ëmbë gi ?",
+      "question_fr": "Quelles règles d'hygiène pendant la grossesse ?",
+      "question_bi": "Lan lañu war def ngir sett ci biir ëmbë gi ?",
+      "response_wo": "So yoree ëmbë da nga wara sett. Da nga war a raxas say loxo ak saabu ba laa ngay lekk ak boo jugee si wana wi, sangu bes bu set ci wana yu sett. Fexel ba sa njurelu-kaay gi tamite mën na sett. Di naan ndox mu sett te di jafaniko lekk gu sett te sell. Bepp lujum wala fruit booy lekk nang ko raxas, nga fexe ba sa kër sett, di am air te ngay moytu saxaar.",
+      "response_fr": "Hygiène pendant grossesse : laver mains avant repas et après toilettes avec savon OBLIGATOIRE, toilettes propres, douche/bain quotidien, hygiène intime avec eau propre, boire eau potable uniquement, éviter aliments contaminés, laver fruits et légumes, maison propre et aérée, éviter fumée.",
+      "answer_bilingual": "Hygiène: laver mains savon (repas+WC) OBLIGATOIRE, douche quotidienne, hygiène intime eau propre, eau potable, laver fruits-légumes, maison propre-aérée, éviter fumée.",
+      "keywords_wo": [
+        "sett",
+        "hygiène",
+        "sank loxo",
+        "soap",
+        "WC",
+        "rew",
+        "ndox",
+        "bind",
+        "sëtt"
+      ],
+      "keywords_fr": [
+        "hygiène",
+        "laver",
+        "mains",
+        "savon",
+        "toilettes",
+        "douche",
+        "eau",
+        "propre"
+      ],
+      "keywords_common": [
+        "hygiène",
+        "lavage mains",
+        "savon",
+        "eau potable"
+      ],
+      "importance": "medium",
+      "source": "USAID/Neema p.26",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "repos_001",
+      "category": "repos_activite",
+      "question_wo": "Nooy wara liggéey ci biir ëmbë ?",
+      "question_fr": "Comment gérer repos et activité pendant la grossesse ?",
+      "question_bi": "Nooy wara liggéey ci biir ëmbë ?",
+      "response_wo": "Warnga nelaw juróom-ñatti ba fukki waxtu bes bu ne ak dallu benn wala ñaari waxtu. Moytu liggéey bu jafe (di yëkëti lu diss, wala taxaw lu yaggë). Del doxontu fann-weeri simili. Del nopalu boo sooné. Del tëdee sa coté thiaamoñ. waañil stress bi. Waañi tamit sa liggéey boo eggee ci juróom-ñenti weer yi.",
+      "response_fr": "Repos : 8-10h nuit + 1-2h sieste journée. Éviter travaux pénibles (port charges lourdes, station debout prolongée). Marche modérée quotidienne bénéfique (30 min). Se reposer dès fatigue. Dormir côté gauche (meilleure circulation). Éviter stress. Diminuer activités au 3ème trimestre. Discuter aménagements travail si nécessaire.",
+      "answer_bilingual": "Repos: 8-10h nuit + 1-2h sieste. Éviter travaux lourds. Marche 30min OK. Dormir côté gauche (circulation). Éviter stress. Réduire activités 3ème trimestre.",
+      "keywords_wo": [
+        "nelaw",
+        "dallu",
+        "ligëy",
+        "liggéey",
+        "doxantu",
+        "stress",
+        "eumbë",
+        "activité"
+      ],
+      "keywords_fr": [
+        "repos",
+        "sommeil",
+        "heures",
+        "travail",
+        "marche",
+        "stress",
+        "côté",
+        "gauche"
+      ],
+      "keywords_common": [
+        "repos",
+        "8-10h",
+        "sieste",
+        "marche",
+        "côté gauche",
+        "stress"
+      ],
+      "importance": "medium",
+      "source": "USAID/Neema p.26",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "droits_001",
+      "category": "droits_femmes",
+      "question_wo": "Lan mooy akkë ay yellefu jigéen ju ëmbë ?",
+      "question_fr": "Quels sont les 7 droits des femmes enceintes ?",
+      "question_bi": "Lan mooy akkë ay yellefu jigéen ju eumbë ?",
+      "response_wo": "Jigéen ju tollu ci digënte am na juróom-ñaari akkë ay yellef yu ko yoon may. Ken du ko tek lu meti wala lumu atanul. Ba laa ñu koy defal dara faw ñu laaj ko ba mu nangu.  Lu ñu koy defal warut siiw. Deñ ko war a jox respe ak dignité. Kenn waruko wax wax ju nakkari ci degg. Di lene yamale ak kumu mënti doon. War nañu ko fajj lu jaar yoon. Mu am liberte tannal boppam. akk yi ñëppa ko wara respecté.",
+      "response_fr": "7 droits fondamentaux des femmes enceintes : 1) Non-violence (absence préjudice et mauvais traitements), 2) Consentement éclairé (information avant tout soin), 3) Confidentialité des soins, 4) Dignité et respect (pas violence verbale), 5) Non-discrimination (égalité, pas discrimination âge/statut marital/profession), 6) Droit aux soins de qualité, 7) Liberté et autonomie. Établissements santé doivent respecter ces droits.",
+      "answer_bilingual": "7 droits femmes enceintes: 1) Non-violence, 2) Consentement éclairé, 3) Confidentialité, 4) Respect-dignité, 5) Non-discrimination, 6) Soins qualité, 7) Liberté-autonomie. Structures santé doivent respecter.",
+      "keywords_wo": [
+        "droit",
+        "eumbë",
+        "akkë",
+        "jigéen",
+        "respect",
+        "yellefu",
+        "lan mooy",
+        "liberté"
+      ],
+      "keywords_fr": [
+        "droits",
+        "femmes",
+        "enceintes",
+        "violence",
+        "consentement",
+        "respect",
+        "dignité",
+        "discrimination"
+      ],
+      "keywords_common": [
+        "7 droits",
+        "non-violence",
+        "consentement",
+        "confidentialité",
+        "dignité",
+        "qualité"
+      ],
+      "importance": "medium",
+      "source": "USAID/Neema p.9",
+      "domaine": "grossesse"
+    },
+    {
+      "id": "meno_comprendre_001",
+      "domaine": "menopause",
+      "category": "comprendre_menopause",
+      "question_wo": "Lan mooy menopause bi?",
+      "question_fr": "C'est quoi la menopause ?",
+      "question_bi": "Lan mooy menopause bi?",
+      "response_wo": "Menopause mooy bi regles yi di taxaw ba faw. Day am ndax ovaires yi (organes yu ndaw yi nekk ci biir jigeen, di defar oeufs ak hormones) bayyi liggeey. Du feebar. Etape bu normal la ci dundu jigeen ju nekk, ni puberte bi ci ndaw. Day am lu ep ci diggante 45 ak 55 at.",
+      "response_fr": "La menopause, c'est le moment ou les regles s'arretent pour toujours, parce que les ovaires cessent de fonctionner. Ce n'est pas une maladie. C'est une etape normale dans la vie de toute femme, comme la puberte. Cela arrive en general entre 45 et 55 ans.",
+      "answer_bilingual": "Menopause mooy bi say regles di taxaw pour toujours, ndax ovaires yi bayyi liggeey. Du maladie, etape normale la ci dundu jigeen, comme puberte. Day am entre 45 ak 55 ans.",
+      "keywords_wo": [
+        "lan mooy",
+        "menopause",
+        "regles",
+        "taxaw",
+        "ovaires",
+        "jigeen",
+        "hormones"
+      ],
+      "keywords_fr": [
+        "menopause",
+        "definition",
+        "c'est quoi",
+        "regles",
+        "ovaires",
+        "arret",
+        "hormones"
+      ],
+      "keywords_common": [
+        "menopause",
+        "45",
+        "55",
+        "puberte",
+        "regles"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Module 1.1"
+    },
+    {
+      "id": "meno_comprendre_002",
+      "domaine": "menopause",
+      "category": "comprendre_menopause",
+      "question_wo": "Kan la sama regles yi di taxaw? Ci ban at?",
+      "question_fr": "A quel age les regles vont-elles s'arreter ?",
+      "question_bi": "Ci ban age la regles yi di taxaw?",
+      "response_wo": "Ci Afrique, regles yi day faral di taxaw ci diggante 45 ak 50 at. Ci Europe, mooy lu jege 51 at. Jigeen ju nekk wuute na. Su sa regles taxawe balaa nga matal 40 at, wax ko gaaw ak doktoor.",
+      "response_fr": "En Afrique, les regles s'arretent souvent entre 45 et 50 ans. En Europe, c'est plutot vers 51 ans. Chaque femme est differente. Si tes regles s'arretent avant 40 ans, parles-en vite a un medecin.",
+      "answer_bilingual": "Ci Afrique, regles yi day taxaw entre 45 ak 50 ans. Ci Europe, vers 51 ans. Chaque femme differente la. Su nga taxaw avant 40 ans, parles-en gaaw ak doktoor.",
+      "keywords_wo": [
+        "kan",
+        "ban at",
+        "regles",
+        "taxaw",
+        "Afrique",
+        "at"
+      ],
+      "keywords_fr": [
+        "age",
+        "quand",
+        "regles",
+        "s'arretent",
+        "45",
+        "50",
+        "Afrique"
+      ],
+      "keywords_common": [
+        "age",
+        "45",
+        "50",
+        "51",
+        "40",
+        "menopause"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Module 1.3"
+    },
+    {
+      "id": "meno_comprendre_003",
+      "domaine": "menopause",
+      "category": "comprendre_menopause",
+      "question_wo": "Ndax menopause jot na ma deeg-deeg?",
+      "question_fr": "Suis-je vraiment menopausee ?",
+      "question_bi": "Ndax menopause bi jot na ma vraiment?",
+      "response_wo": "Nuy wax ni jigeen menopause na bu sa regles taxawe ba mat benn at (12 weer yu toftaloo, te genn regle amul). Balaa loolu, danuy wax perimenopause. Doktoor mën na def analyse deret ngir seet ko.",
+      "response_fr": "On dit qu'une femme est menopausee quand ses regles ont arrete depuis 1 an complet (12 mois d'affilee, sans aucune regle). Avant ce delai, on parle de perimenopause. Un medecin peut faire une analyse de sang pour verifier.",
+      "answer_bilingual": "Nuy wax menopause bu say regles taxaw depuis 1 an complet (12 mois sans aucune regle). Balaa loolu, perimenopause la. Doktoor mën na def analyse de sang ngir verifier.",
+      "keywords_wo": [
+        "ndax",
+        "menopause",
+        "deeg-deeg",
+        "12 weer",
+        "benn at",
+        "regles",
+        "taxaw"
+      ],
+      "keywords_fr": [
+        "vraiment",
+        "menopausee",
+        "12 mois",
+        "1 an",
+        "confirmer",
+        "analyse",
+        "sang"
+      ],
+      "keywords_common": [
+        "12 mois",
+        "1 an",
+        "perimenopause",
+        "menopause installee"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Module 1.1"
+    },
+    {
+      "id": "meno_comprendre_004",
+      "domaine": "menopause",
+      "category": "comprendre_menopause",
+      "question_wo": "Lan mooy perimenopause bi?",
+      "question_fr": "C'est quoi la perimenopause ?",
+      "question_bi": "Lan mooy perimenopause bi?",
+      "response_wo": "Perimenopause mooy jamono ju jaadu ju jiitu menopause bi. Mën na yagg ay at. Ci jamono jooju: regles yi di am ay xeju (leneen yu jege, leneen yu sori), cycles yi di gaaw walla di yagg, premiers symptomes yi mën nañ feeñ, te grossesse mën na am ba leegi.",
+      "response_fr": "La perimenopause est la periode de transition avant la menopause. Elle peut durer plusieurs annees. Pendant cette periode : les regles deviennent irregulieres (parfois rapprochees, parfois espacees), les cycles plus courts ou plus longs, les premiers symptomes peuvent apparaitre, et une grossesse reste possible.",
+      "answer_bilingual": "Perimenopause mooy periode de transition bi jiitu menopause. Mën na dur plusieurs annees. Say regles di am irregularites, premiers symptomes di feeñ, te grossesse encore possible.",
+      "keywords_wo": [
+        "perimenopause",
+        "jamono",
+        "transition",
+        "regles",
+        "xeju",
+        "irregulier"
+      ],
+      "keywords_fr": [
+        "perimenopause",
+        "transition",
+        "avant",
+        "regles",
+        "irregulieres",
+        "cycles"
+      ],
+      "keywords_common": [
+        "perimenopause",
+        "transition",
+        "regles irregulieres"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Module 1.2"
+    },
+    {
+      "id": "meno_comprendre_005",
+      "domaine": "menopause",
+      "category": "comprendre_menopause",
+      "question_wo": "Lu tax sama regles yi di am ay xeju (irreguliers)?",
+      "question_fr": "Pourquoi mes regles deviennent-elles irregulieres ?",
+      "question_bi": "Lu tax sama regles yi di devenir irreguliers?",
+      "response_wo": "Balaa menopause, ovaires yi di defar hormones yu neew-neew. Looloo tax regles yi di am ay xeju: leneen yu jege, leneen yu sori, leneen yu bari walla yu neew. Lu normal la ci perimenopause. Mën na yagg ay at balaa mu taxaw ba-faw.",
+      "response_fr": "Avant la menopause, les ovaires fabriquent de moins en moins d'hormones. Les regles deviennent alors irregulieres : parfois rapprochees, parfois espacees, parfois abondantes ou tres legeres. C'est normal pendant la perimenopause. Cela peut durer plusieurs annees avant l'arret complet.",
+      "answer_bilingual": "Avant menopause, ovaires yi di defar hormones yu neew-neew. Looloo tax say regles di devenir irreguliers. Normal la ci perimenopause, mën na yagg ay at.",
+      "keywords_wo": [
+        "lu tax",
+        "regles",
+        "xeju",
+        "irregulier",
+        "hormones",
+        "ovaires"
+      ],
+      "keywords_fr": [
+        "pourquoi",
+        "regles",
+        "irregulieres",
+        "hormones",
+        "cycles",
+        "perimenopause"
+      ],
+      "keywords_common": [
+        "regles irregulieres",
+        "hormones",
+        "perimenopause"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 1.2"
+    },
+    {
+      "id": "meno_comprendre_006",
+      "domaine": "menopause",
+      "category": "comprendre_menopause",
+      "question_wo": "Ndax mën naa em ci jamonu menopause bi?",
+      "question_fr": "Est-ce que je peux encore tomber enceinte pendant la menopause ?",
+      "question_bi": "Ndax mën naa tomber enceinte ci perimenopause bi?",
+      "response_wo": "Ci perimenopause (balaa regles yi taxaw ba-faw), grossesse mën na am doonte sax regles yi am nañu ay xeju. Bu regles yi taxawe ba mat 12 weer, grossesse bu yomb mënatul am. Soo tchangee, jefandikool benn contraception ba doktoor wax la ni menopause bi jot na.",
+      "response_fr": "Pendant la perimenopause (avant que les regles s'arretent totalement), une grossesse est encore possible meme si les regles sont irregulieres. Apres 12 mois sans regles, la grossesse naturelle n'est plus possible. Si tu n'es pas sure, utilise une contraception jusqu'a ce qu'un medecin confirme la menopause.",
+      "answer_bilingual": "Ci perimenopause, grossesse encore possible mëme si regles irreguliers. Apres 12 mois sans regles, grossesse naturelle impossible. Soo sure-ul, jefandikool contraception ba doktoor confirmer menopause bi.",
+      "keywords_wo": [
+        "ndax",
+        "em",
+        "grossesse",
+        "enceinte",
+        "perimenopause",
+        "contraception"
+      ],
+      "keywords_fr": [
+        "enceinte",
+        "grossesse",
+        "tomber",
+        "perimenopause",
+        "contraception",
+        "12 mois"
+      ],
+      "keywords_common": [
+        "grossesse",
+        "contraception",
+        "perimenopause",
+        "12 mois"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Module 6"
+    },
+    {
+      "id": "meno_comprendre_007",
+      "domaine": "menopause",
+      "category": "comprendre_menopause",
+      "question_wo": "Menopause, ndax feebar la?",
+      "question_fr": "La menopause, est-ce une maladie ?",
+      "question_bi": "Menopause bi, ndax maladie la?",
+      "response_wo": "Deedeet. Menopause du feebar. Etape bu normal la ci dundu. Jigeen yepp ci aduna dañu thiye jaar. Symptomes yi mën nañ la jaaxal, waaye mën nañ leen faj. Waaye menopause ci boppam du lu nu war a faj, lu nu war a accompagne la.",
+      "response_fr": "Non. La menopause n'est pas une maladie. C'est une etape naturelle de la vie. Toutes les femmes du monde la traversent. Certains symptomes peuvent etre genants et se soignent. Mais la menopause elle-meme n'est pas quelque chose qu'on doit guerir : c'est quelque chose qu'on accompagne.",
+      "answer_bilingual": "Deedeet, menopause du maladie. Etape naturelle la ci dundu, jigeen yepp di thiye jaar. Symptomes yi mën nañ etre genants, mais mën leen soigner. Mais menopause ci boppam, du lu nu war a guerir.",
+      "keywords_wo": [
+        "ndax",
+        "feebar",
+        "maladie",
+        "menopause",
+        "normal",
+        "etape"
+      ],
+      "keywords_fr": [
+        "maladie",
+        "normale",
+        "naturelle",
+        "etape",
+        "pas une maladie"
+      ],
+      "keywords_common": [
+        "maladie",
+        "etape naturelle",
+        "normal"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Module 1.5"
+    },
+    {
+      "id": "meno_comprendre_008",
+      "domaine": "menopause",
+      "category": "comprendre_menopause",
+      "question_wo": "Lu tax menopause di am?",
+      "question_fr": "Pourquoi la menopause arrive-t-elle ?",
+      "question_bi": "Lu tax menopause bi di am?",
+      "response_wo": "Jigeen day judoo ak benn stock ovules ci ay ovaires. Stock boobu day jeex ak at yi. Bu dessatoul lu doy, ovaires yi di wanni te di taxaw defar hormones yu jigeen (rawatina oestrogenes). Wanni gu hormones yooyu mooy indi soppekou yepp.",
+      "response_fr": "La femme nait avec un stock d'ovules dans ses ovaires. Ce stock s'epuise avec les annees. Quand il n'en reste plus assez, les ovaires reduisent puis arretent de produire les hormones feminines (surtout les oestrogenes). C'est cette baisse d'hormones qui provoque tous les changements.",
+      "answer_bilingual": "Jigeen day judoo ak stock ovules ci ovaires yi. Stock bi day jeex ak at yi. Bu jeexee, ovaires yi di arrete defar hormones (oestrogenes). Baisse hormones boobu mooy indi changements yepp.",
+      "keywords_wo": [      
+        "lu tax",
+        "menopause",
+        "ovules",
+        "ovaires",
+        "hormones",
+        "oestrogenes",
+        "jeex"
+      ],
+      "keywords_fr": [
+        "pourquoi",
+        "ovules",
+        "ovaires",
+        "hormones",
+        "oestrogenes",
+        "epuise",
+        "cause"
+      ],
+      "keywords_common": [
+        "ovules",
+        "ovaires",
+        "oestrogenes",
+        "hormones"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 1.4"
+    },
+    {
+      "id": "meno_comprendre_009",
+      "domaine": "menopause",
+      "category": "comprendre_menopause",
+      "question_wo": "Lan mooy menopause bu gaaw (avant 40 at)?",
+      "question_fr": "Qu'est-ce que la menopause precoce ?",
+      "question_bi": "Lan mooy menopause precoce bi?",
+      "response_wo": "Ay yoon, regles yi day taxaw lu gaaw, balaa 40 at. Nuy koy woowe insuffisance ovarienne prematuree (IOP) walla menopause bu gaaw. Su sa regles taxawe balaa 45 at, am na solo nga gis doktoor, ndax menopause bu gaaw day yokk risques yi ci yax ak xol.",
+      "response_fr": "Parfois, les regles s'arretent tres tot, avant 40 ans. On appelle cela une insuffisance ovarienne prematuree (IOP) ou menopause precoce. Si vos regles s'arretent avant 45 ans, il est important de consulter un medecin, car une menopause precoce augmente les risques pour les os et le coeur.",
+      "answer_bilingual": "Ay yoon, regles yi di taxaw avant 40 ans: nuy ko wooye insuffisance ovarienne prematuree (IOP) walla menopause precoce. Su taxawe avant 45 ans, consultel doktoor, ndax day augmente risques os ak coeur.",
+      "keywords_wo": [
+        "menopause precoce",
+        "gaaw",
+        "40 at",
+        "IOP",
+        "insuffisance ovarienne",
+        "doktoor"
+      ],
+      "keywords_fr": [
+        "menopause precoce",
+        "IOP",
+        "insuffisance ovarienne prematuree",
+        "avant 40 ans",
+        "tot"
+      ],
+      "keywords_common": [
+        "menopause precoce",
+        "IOP",
+        "40 ans",
+        "45 ans"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Module 1.6"
+    },
+    {
+      "id": "meno_comprendre_010",
+      "domaine": "menopause",
+      "category": "comprendre_menopause",
+      "question_wo": "Lan mooy li mën a indi menopause bu gaaw?",
+      "question_fr": "Quelles sont les causes d'une menopause precoce ?",
+      "question_bi": "Lan mooy causes yu menopause precoce bi?",
+      "response_wo": "Li mën a indi menopause bu gaaw: heredite (mbokk yi am ko), opperasiyon bu jele ovaires yi, garab yu melni chimiotherapie, ay feebar auto-immunes, sigaret walla xiif bu metti (malnutrition). Su sa regles taxawe lu gaaw, gisal doktoor.",
+      "response_fr": "Les causes possibles d'une menopause precoce : facteurs genetiques (heredite familiale), chirurgie ayant retire les ovaires, traitements medicaux comme la chimiotherapie, certaines maladies auto-immunes, tabagisme ou malnutrition severe. Si tes regles s'arretent tot, consulte un medecin.",
+      "answer_bilingual": "Causes menopause precoce: heredite (famille), chirurgie ovaires, chimiotherapie, maladies auto-immunes, tabac walla malnutrition severe. Su nga taxaw tot, consultel doktoor.",
+      "keywords_wo": [
+        "causes",
+        "menopause precoce",
+        "heredite",
+        "chimiotherapie",
+        "sigaret",
+        "ovaires"
+      ],
+      "keywords_fr": [
+        "causes",
+        "menopause precoce",
+        "genetique",
+        "heredite",
+        "chimiotherapie",
+        "tabac",
+        "chirurgie"
+      ],
+      "keywords_common": [
+        "menopause precoce",
+        "genetique",
+        "chimiotherapie",
+        "tabac"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 1.6"
+    },
+    {
+      "id": "meno_symptome_001",
+      "domaine": "menopause",
+      "category": "symptomes_menopause",
+      "question_wo": "Ndax symptomes yi nekk benn ci jigeen yepp?",
+      "question_fr": "Est-ce que toutes les femmes ont les memes symptomes ?",
+      "question_bi": "Ndax jigeen yepp am nañ memes symptomes yi?",
+      "response_wo": "Deedeet. Jigeen ju nekk wuute na. Yenn jigeen am nañ symptomes yu bari, yeneen lu tuuti rekk. Yenn symptomes yi bari nañ, yeneen yi neew. Lii lepp lu normal la.",
+      "response_fr": "Non. Chaque femme est differente. Certaines femmes ont beaucoup de symptomes, d'autres presque aucun. Certains symptomes sont tres frequents, d'autres plus rares. Tout cela est normal.",
+      "answer_bilingual": "Deedeet, chaque femme differente la. Yenn jigeen am symptomes yu bari, yeneen presque aucun. Lii lepp normal la.",
+      "keywords_wo": [
+        "symptomes",
+        "jigeen yepp",
+        "wuute",
+        "normal",
+        "differente"
+      ],
+      "keywords_fr": [
+        "symptomes",
+        "memes",
+        "differente",
+        "chaque femme",
+        "normal"
+      ],
+      "keywords_common": [
+        "symptomes",
+        "normal",
+        "variable"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 2"
+    },
+    {
+      "id": "meno_symptome_002",
+      "domaine": "menopause",
+      "category": "symptomes_menopause",
+      "question_wo": "Am naa ay tangaay yu gaaw ci sama yaram, louko waral?",
+      "question_fr": "J'ai des bouffees de chaleur, qu'est-ce que c'est ?",
+      "question_bi": "Am naa ay bouffees de chaleur, louko waral?",
+      "response_wo": "Mooy benn tangaay bu gaaw bu dal sa yaram bepp, rawatina kanam ak baat. Der bi di xonk te yaram bi di tukki ndox. Day yagg ay segond ba ay simili. Mooy symptome bi gena siw ci menopause. Day dal 6 jigeen ci 10. Ngir dimbali: solal yere yu yomb, naanal ndox mu sedd, bayil epices, kafe ak ataaya.",
+      "response_fr": "C'est une sensation soudaine de chaleur intense dans tout le corps, surtout le visage et le cou. La peau rougit et on transpire. Ca dure de quelques secondes a quelques minutes. C'est le symptome de menopause le plus connu : il touche 6 femmes sur 10. Pour soulager : vetements legers, eau fraiche, eviter les epices fortes et le cafe.",
+      "answer_bilingual": "Bouffees de chaleur mooy benn chaleur bu gaaw ci yaram bepp, surtout kanam ak baat. Der bi di xonk, di tukki ndox. Day touche 6 femmes sur 10. Pour soulager: yere yu legers, ndox mu sedd, bayil epices ak kafe.",
+      "keywords_wo": [
+        "tangaay",
+        "bouffees de chaleur",
+        "yaram",
+        "xonk",
+        "tukki ndox",
+        "kanam"
+      ],
+      "keywords_fr": [
+        "bouffees de chaleur",
+        "chaleur",
+        "transpiration",
+        "rougeur",
+        "visage",
+        "soulager"
+      ],
+      "keywords_common": [
+        "bouffees de chaleur",
+        "60-80%",
+        "chaleur",
+        "transpiration"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Module 2.1"
+    },
+    {
+      "id": "meno_symptome_003",
+      "domaine": "menopause",
+      "category": "symptomes_menopause",
+      "question_wo": "Naka laa mën a wanni bouffees de chaleur yi?",
+      "question_fr": "Comment soulager les bouffees de chaleur ?",
+      "question_bi": "Naka laa mën a soulager bouffees de chaleur yi?",
+      "response_wo": "Ngir wanni bouffees de chaleur: solal yere yu yomb, yu yaatu te yu coton. Naanal ndox mu sedd bu tambalee. Jefandikool eupoukay. Bayil epices yu metti, kafe, ataaya bu metti ak sangara ci ngoon. Defal sa neeg mu sedd te am ngelaw.",
+      "response_fr": "Pour soulager les bouffees de chaleur : porter des vetements legers, amples et en coton ; boire de l'eau fraiche quand ca commence ; utiliser un eventail ; eviter les epices fortes, le cafe, le the fort et l'alcool le soir ; garder la chambre fraiche et aeree.",
+      "answer_bilingual": "Pour soulager bouffees de chaleur: yere yu legers ak coton, ndox mu sedd, eventail, bayil epices, kafe, ataaya ak alcool ci ngoon, neeg mu sedd te aere.",
+      "keywords_wo": [
+        "naka",
+        "wanni",
+        "bouffees de chaleur",
+        "yere",
+        "ndox sedd",
+        "eventail"
+      ],
+      "keywords_fr": [
+        "soulager",
+        "bouffees de chaleur",
+        "vetements",
+        "coton",
+        "eau fraiche",
+        "conseils"
+      ],
+      "keywords_common": [
+        "bouffees de chaleur",
+        "coton",
+        "eau fraiche",
+        "eventail"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 2.1"
+    },
+    {
+      "id": "meno_symptome_004",
+      "domaine": "menopause",
+      "category": "symptomes_menopause",
+      "question_wo": "Lu tax mënatuma nelaw bu baax?",
+      "question_fr": "Pourquoi je ne dors plus bien ?",
+      "question_bi": "Lu tax mënatuma nelaw bu baax ci guddi?",
+      "response_wo": "Sueurs nocturnes (tukki ndox ci guddi) mën nañ la yee ay yoon ci benn guddi. Wanni gu hormones it day jaaxal nelaw gi. Lu bari la ci menopause. Jeemal nga def sa neeg mu sedd, di tedd ci benn waxtu wu wóor, te bayi ekran yi ci ngoon.",
+      "response_fr": "Les sueurs nocturnes peuvent te reveiller plusieurs fois par nuit. La baisse des hormones perturbe aussi directement le sommeil. C'est tres frequent pendant la menopause. Essaie de garder ta chambre fraiche, de te coucher a heure fixe et d'eviter les ecrans le soir.",
+      "answer_bilingual": "Sueurs nocturnes mën nañ la reveiller plusieurs fois ci guddi. Baisse hormones it day perturbe nelaw gi. Frequent la ci menopause. Defal neeg mu sedd, teddal a heure fixe, bayil ekran yi ci ngoon.",
+      "keywords_wo": [
+        "nelaw",
+        "guddi",
+        "sueurs nocturnes",
+        "hormones",
+        "neeg",
+        "yee"
+      ],
+      "keywords_fr": [
+        "sommeil",
+        "dormir",
+        "insomnie",
+        "sueurs nocturnes",
+        "nuit",
+        "reveil"
+      ],
+      "keywords_common": [
+        "sommeil",
+        "insomnie",
+        "sueurs nocturnes"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 2.2"
+    },
+    {
+      "id": "meno_symptome_005",
+      "domaine": "menopause",
+      "category": "symptomes_menopause",
+      "question_wo": "Dama di mer ak naqar te xamuma lu tax, ndax normal na?",
+      "question_fr": "Je suis souvent irritee et triste, est-ce normal ?",
+      "question_bi": "Dama di irritee ak triste, ndax normal na?",
+      "response_wo": "Waaw, lu bari la lool. Wanni gu hormones day jaaxal humeur bi. Mën nga di mer, di jaaxle walla naqar te xamo lu tax. Du wopp. Waaye su naqar gi metti te yagg lu ep 2 ayubés, gisal doktoor.",
+      "response_fr": "Oui, c'est tres courant. La baisse des hormones affecte directement l'humeur. Tu peux te sentir irritee, anxieuse ou triste sans raison apparente. Ce n'est pas une faiblesse. Si cette tristesse dure longtemps (plus de 2 semaines) et est tres forte, consulte un medecin.",
+      "answer_bilingual": "Waaw, courant la. Baisse hormones day affecte humeur bi. Mën nga di irritee, anxieuse walla triste sans raison. Du faiblesse. Su tristesse bi dur plus de 2 semaines te fort, consultel doktoor.",
+      "keywords_wo": [
+        "mer",
+        "naqar",
+        "triste",
+        "humeur",
+        "hormones",
+        "jaaxle",
+        "normal"
+      ],
+      "keywords_fr": [
+        "irritee",
+        "triste",
+        "humeur",
+        "anxiete",
+        "tristesse",
+        "normal",
+        "depression"
+      ],
+      "keywords_common": [
+        "humeur",
+        "tristesse",
+        "irritabilite",
+        "anxiete",
+        "2 semaines"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 2.3"
+    },
+    {
+      "id": "meno_symptome_006",
+      "domaine": "menopause",
+      "category": "symptomes_menopause",
+      "question_wo": "Kan laa war a gis doktoor ngir naqar gi?",
+      "question_fr": "Quand faut-il consulter pour la tristesse ou la depression ?",
+      "question_bi": "Kan laa war a consulter ngir tristesse bi?",
+      "response_wo": "Su naqar gi gena metti te yagg lu ep 2 ayubés, sudé amatuloo bëgg-bëgg ci dara, walla sudé am nguaay xalaat yu nyuul (bëgg a sonn sa bopp), waxal ko doktoor walla benn nit bo wóoloul lu gaaw. Mën na nekk depression bu war a am faj.",
+      "response_fr": "Si la tristesse devient tres forte et dure plus de 2 semaines, si tu n'as plus envie de rien, si tu as des pensees sombres (envie de te faire du mal) : parles-en a un medecin ou a une personne de confiance. Ce peut etre une depression qui necessite un soin.",
+      "answer_bilingual": "Su tristesse bi devient tres forte te dur plus de 2 semaines, su amatuloo envie ci dara, walla pensees sombres: waxal ko doktoor lu gaaw. Mën nekk depression bu war am soin.",
+      "keywords_wo": [
+        "kan",
+        "consulter",
+        "naqar",
+        "depression",
+        "pensees sombres",
+        "doktoor"
+      ],
+      "keywords_fr": [
+        "quand consulter",
+        "tristesse",
+        "depression",
+        "pensees sombres",
+        "2 semaines"
+      ],
+      "keywords_common": [
+        "depression",
+        "2 semaines",
+        "pensees sombres",
+        "consulter"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Module 2.3"
+    },
+    {
+      "id": "meno_symptome_007",
+      "domaine": "menopause",
+      "category": "symptomes_menopause",
+      "question_wo": "Am naa metit ci sama bopp-jigeen (zone intime), lan laa war a def?",
+      "question_fr": "J'ai mal dans ma partie intime, que faire ?",
+      "question_bi": "Am naa metit ci sama partie intime, lan laa war def?",
+      "response_wo": "Wowoum vagin (secheresse vaginale) mooy symptome bu bari bou wésso menopause, waaye nit yi dugnu ko wax ndax kersa. Am na ay cremes hydratantes vaginales ci pharmacie. Doktoor it mën na bind traitements locaux yu baax. Bul am kersa ngir ko wax doktoor walla sage-femme.",
+      "response_fr": "La secheresse vaginale est un symptome tres frequent apres la menopause, mais souvent tu par pudeur. Des cremes hydratantes vaginales existent en pharmacie. Un medecin peut aussi prescrire des traitements locaux efficaces. N'aie pas honte d'en parler.",
+      "answer_bilingual": "Secheresse vaginale mooy symptome frequent ginnaaw menopause, waaye nit yi du ko wax par pudeur. Am na cremes hydratantes ci pharmacie, doktoor it mën na prescrire traitements locaux. Bul am honte ngir ko wax.",
+      "keywords_wo": [
+        "metit",
+        "partie intime",
+        "secheresse vaginale",
+        "wow",
+        "creme",
+        "pharmacie"
+      ],
+      "keywords_fr": [
+        "secheresse vaginale",
+        "douleur",
+        "intime",
+        "rapports",
+        "creme",
+        "lubrifiant",
+        "SGUM"
+      ],
+      "keywords_common": [
+        "secheresse vaginale",
+        "SGUM",
+        "creme",
+        "lubrifiant"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Module 2.4"
+    },
+    {
+      "id": "meno_symptome_008",
+      "domaine": "menopause",
+      "category": "symptomes_menopause",
+      "question_wo": "Am naa metit ci sama yax ak articulations, ndax menopause la?",
+      "question_fr": "J'ai des douleurs aux os et articulations, est-ce la menopause ?",
+      "question_bi": "Am naa douleurs ci articulations yi, ndax menopause la?",
+      "response_wo": "Waaw, metit ci articulations yi mooy symptome bu bari thiye menopause, rawatina ci Afrique. Hormones yi dañ doon aar articulations yi. Su nu diekhe, oom, hanches ak baaraam yi mën nañ metti, rawatina ci suba. Doxantu bés bu nekk day dimbali lool.",
+      "response_fr": "Oui, les douleurs articulaires sont un symptome tres frequent, surtout en Afrique. Les hormones aidaient a proteger les articulations. Sans elles, les genoux, hanches et doigts peuvent faire mal, surtout le matin. La marche quotidienne aide beaucoup.",
+      "answer_bilingual": "Waaw, douleurs articulaires mooy symptome tres frequent, surtout ci Afrique. Hormones yi dañ doon proteger articulations. Genoux, hanches ak doigts mën nañ metti, surtout suba. Doxantu bés bu nekk day dimbali.",
+      "keywords_wo": [
+        "metit",
+        "yax",
+        "articulations",
+        "oom",
+        "baaraam",
+        "suba",
+        "doxantu"
+      ],
+      "keywords_fr": [
+        "douleurs articulaires",
+        "os",
+        "genoux",
+        "hanches",
+        "doigts",
+        "Afrique",
+        "matin"
+      ],
+      "keywords_common": [
+        "douleurs articulaires",
+        "articulations",
+        "Afrique",
+        "marche"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Module 2.5"
+    },
+    {
+      "id": "meno_symptome_009",
+      "domaine": "menopause",
+      "category": "symptomes_menopause",
+      "question_wo": "Saw bi day genn ci sama bopp su ma sëqeete walla reee, ndax normal na?",
+      "question_fr": "J'ai des fuites d'urine quand je tousse ou ris, est-ce normal ?",
+      "question_bi": "Am naa fuites d'urine su ma toussee walla riree, ndax normal na?",
+      "response_wo": "Waaw, normal la ci jamonu menopause ak bou wesso. Muscles yi taxaw ci vessie bi dañuy woyof ndax niak hormones. Du kersa. Doktoor mën na la jox ay exercices walla ay traitements. Meune neu niak ngua dund ak jafe-jafe boobu.",
+      "response_fr": "Oui, c'est normal pendant et apres la menopause. Les muscles autour de la vessie s'affaiblissent sans hormones. Ce n'est pas une honte. Un medecin peut proposer des exercices ou des traitements. Tu n'es pas obligee de vivre avec ce probleme.",
+      "answer_bilingual": "Waaw, normal la pendant ak apres menopause. Muscles yi ci vessie dañuy woyof sans hormones. Du honte. Doktoor mën na proposer exercices walla traitements. Obligee wougnla ngua dund ak probleme boobu.",
+      "keywords_wo": [
+        "saw",
+        "fuites urine",
+        "sëq",
+        "ree",
+        "vessie",
+        "muscles",
+        "woyof"
+      ],
+      "keywords_fr": [
+        "fuites urinaires",
+        "incontinence",
+        "tousser",
+        "rire",
+        "vessie",
+        "urine"
+      ],
+      "keywords_common": [
+        "fuites urinaires",
+        "incontinence",
+        "vessie"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 2.6"
+    },
+    {
+      "id": "meno_symptome_010",
+      "domaine": "menopause",
+      "category": "symptomes_menopause",
+      "question_wo": "Dama di am ay infections urinaires yu toftaloo, lu tax?",
+      "question_fr": "Pourquoi ai-je des infections urinaires a repetition ?",
+      "question_bi": "Lu tax dama di am infections urinaires yu bari?",
+      "response_wo": "Ginnaaw menopause, niakk hormones day woyofal zone intime bi ak voies urinaires yi, looloo tax infections urinaires (cystites) yi di faral di nieuw foum tollou, ak metit bu tang soy tour ndokh. Lu bokk la ci syndrome genito-urinaire de la menopause (SGUM). Gisal doktoor, am na faj.",
+      "response_fr": "Apres la menopause, la baisse des hormones fragilise la zone intime et les voies urinaires, ce qui provoque des infections urinaires (cystites) a repetition, avec brulement en urinant. Cela fait partie du syndrome genito-urinaire de la menopause (SGUM). Consulte un medecin, il existe des traitements.",
+      "answer_bilingual": "Ginnaaw menopause, baisse hormones day fragiliser zone intime ak voies urinaires. Looloo tax cystites yi di repeter ak brulement su ngay uriner. Bokk na ci SGUM. Consultel doktoor, am na traitements.",
+      "keywords_wo": [
+        "infections urinaires",
+        "cystites",
+        "saw",
+        "tang",
+        "SGUM",
+        "hormones"
+      ],
+      "keywords_fr": [
+        "infections urinaires",
+        "cystite",
+        "repetition",
+        "brulure",
+        "SGUM",
+        "urines"
+      ],
+      "keywords_common": [
+        "infections urinaires",
+        "cystite",
+        "SGUM"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 2.4 / 2.6"
+    },
+    {
+      "id": "meno_symptome_011",
+      "domaine": "menopause",
+      "category": "symptomes_menopause",
+      "question_wo": "Dama di fatte lu bari, ragal naa sama xel dem, louko waral?",
+      "question_fr": "J'oublie beaucoup, j'ai peur de perdre la tete, est-ce grave ?",
+      "question_bi": "Dama di oublier lu bari, ndax sama memoire dafa wopp?",
+      "response_wo": "Fatte gu ndaw ak jafe-jafe ci concentration lu bari la ci menopause. Lu new la, lu jem ci hormones ak nakku nelaw. Yaw, sa xel doo dem . Mën na gen ak waxtu yi ak benn suivi medical bu baax.",
+      "response_fr": "Les petits oublis et les difficultes de concentration sont frequents pendant la menopause. C'est temporaire et lie aux hormones et au manque de sommeil. Tu n'es pas en train de 'perdre la tete'. Cela peut s'ameliorer avec le temps et un bon suivi medical.",
+      "answer_bilingual": "Petits oublis ak difficultes de concentration lou frequents la ci menopause. Temporaire la, lie ci hormones ak manque de sommeil. Doo perdre la tete. Mën na ameliorer ak temps ak suivi medical.",
+      "keywords_wo": [
+        "fatte",
+        "memoire",
+        "concentration",
+        "xel",
+        "hormones",
+        "nelaw"
+      ],
+      "keywords_fr": [
+        "oublis",
+        "memoire",
+        "concentration",
+        "cerveau",
+        "temporaire",
+        "Alzheimer"
+      ],
+      "keywords_common": [
+        "memoire",
+        "concentration",
+        "oublis",
+        "temporaire"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 2.7 / 3.3"
+    },
+    {
+      "id": "meno_symptome_012",
+      "domaine": "menopause",
+      "category": "symptomes_menopause",
+      "question_wo": "Ndax menopause moo tax ma am poids (lëmm)?",
+      "question_fr": "Est-ce que j'ai grossi a cause de la menopause ?",
+      "question_bi": "Ndax menopause bi moo tax ma grossir?",
+      "response_wo": "Menopause du la reuyeul thi sassi. Waaye day soppi fu graisses yi di dëkk: di leen yobbu ci biir. Lekk gu baax ak doxantu 30 simili bés bu nekk mën na la dimbali bu baax ngir ngua kontrolee sa poids.",
+      "response_fr": "La menopause ne fait pas grossir directement. Mais elle redistribue les graisses vers le ventre. Manger plus sainement et marcher 30 minutes par jour peut vraiment aider a controler ton poids.",
+      "answer_bilingual": "Menopause du la grossir directement, waaye day redistribuer graisses yi vers le ventre. Manger sainement ak marcher 30 minutes bés bu nekk mën na aider ngir controler sa poids bi.",
+      "keywords_wo": [
+        "poids",
+        "lëmm",
+        "grossir",
+        "graisses",
+        "biir",
+        "doxantu"
+      ],
+      "keywords_fr": [
+        "poids",
+        "grossir",
+        "prise de poids",
+        "graisses",
+        "ventre",
+        "alimentation"
+      ],
+      "keywords_common": [
+        "poids",
+        "graisses",
+        "ventre",
+        "30 minutes"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 2.8"
+    },
+    {
+      "id": "meno_symptome_013",
+      "domaine": "menopause",
+      "category": "symptomes_menopause",
+      "question_wo": "Lan moy yeneen coppite yu mën a am ci yaram (der, kawar, wee)?",
+      "question_fr": "Quels autres changements du corps peuvent arriver (peau, cheveux, ongles) ?",
+      "question_bi": "Lan moy changements yu yaram yi: peau, cheveux, ongles?",
+      "response_wo": "Yaram bi mën na soppiku ci menopause: der bi di wow te di niakk elasticite (karite africain baax na lool ngir hydrater), kawar yi mën nañ rot tuuti walla sew, wee yi di woyof, ak ween yi di soppi melo. Lekk gu baax ak ndox mu doy day dimbali.",
+      "response_fr": "Le corps peut changer pendant la menopause : la peau devient plus seche et moins elastique (le karite africain est excellent pour hydrater), les cheveux peuvent tomber un peu plus ou s'affiner, les ongles devenir fragiles, et les seins changer de forme. Une bonne alimentation et assez d'eau aident.",
+      "answer_bilingual": "Yaram bi mën soppiku: peau seche (karite baax na ngir hydrater), cheveux mën nañ tomber tuuti, ongles fragiles, seins di soppi forme. Bonne alimentation ak ndox mu doy day aider.",
+      "keywords_wo": [
+        "coppite",
+        "yaram",
+        "der",
+        "kawar",
+        "weñ",
+        "karite",
+        "wow"
+      ],
+      "keywords_fr": [
+        "peau",
+        "cheveux",
+        "ongles",
+        "seins",
+        "secheresse",
+        "karite",
+        "corps"
+      ],
+      "keywords_common": [
+        "peau seche",
+        "cheveux",
+        "ongles",
+        "karite"
+      ],
+      "importance": "low",
+      "source": "YOONU Jigeen - Module 2.8"
+    },
+    {
+      "id": "meno_symptome_014",
+      "domaine": "menopause",
+      "category": "symptomes_menopause",
+      "question_wo": "Lan moy symptomes yi gena neew xam (mettit bopp, palpitations...)?",
+      "question_fr": "Quels sont les signes moins connus de la menopause ?",
+      "question_bi": "Lan moy signes yu neew xam yu menopause?",
+      "response_wo": "Am na yeneen symptomes yu neew xam: mettit bopp (cephalees/migraines), palpitations (xol buy daw gaaw), gemmiñ gu wow ak gout metallique, jënguj (vertiges), ak wanni gu bëgg-bëgg sexuel. Su benn ci ñoom am, gisal doktoor.",
+      "response_fr": "Il existe d'autres symptomes moins connus : maux de tete (cephalees, migraines), palpitations (coeur qui s'emballe), bouche seche avec gout metallique, vertiges, et baisse du desir sexuel. Si l'un de ces symptomes est tres genant, consulte un medecin.",
+      "answer_bilingual": "Am na signes yu neew connus: maux de tete, palpitations, bouche seche, vertiges, ak baisse libido. Su benn metti na, consultel doktoor.",
+      "keywords_wo": [
+        "mettit bopp",
+        "palpitations",
+        "xilingo",
+        "fourmillements",
+        "vertiges",
+        "libido"
+      ],
+      "keywords_fr": [
+        "maux de tete",
+        "palpitations",
+        "fourmillements",
+        "bouche seche",
+        "vertiges",
+        "libido"
+      ],
+      "keywords_common": [
+        "maux de tete",
+        "palpitations",
+        "vertiges",
+        "libido"
+      ],
+      "importance": "low",
+      "source": "YOONU Jigeen - Module 2.9"
+    },
+    {
+      "id": "meno_risque_001",
+      "domaine": "menopause",
+      "category": "risques_long_terme",
+      "question_wo": "Lan mooy osteoporose (yax yu woyof)?",
+      "question_fr": "Qu'est-ce que l'osteoporose ?",
+      "question_bi": "Lan mooy osteoporose bi?",
+      "response_wo": "Osteoporose mooy benn feebar bu woyofal yax yi. Hormones yi dañ doon dëgëral yax yi; apres menopause, yax yi di niakk densite te di woyof. Benn jigeen ci 4 day koy am. Day woyof te du metti ba bés bu yax bi damm (fracture). Ngir aar: lekkal calcium, jotal jant, te doxantu.",
+      "response_fr": "L'osteoporose est une maladie qui fragilise les os. Les hormones feminines aidaient a garder les os solides ; apres la menopause, les os perdent leur densite et deviennent fragiles. 1 femme sur 4 en developpera. C'est silencieux jusqu'a la fracture (poignet, vertebres, hanche). Pour prevenir : calcium, soleil et exercice.",
+      "answer_bilingual": "Osteoporose mooy maladie bu fragilise yax yi. Apres menopause, os yi di perdre densite, di devenir fragiles. 1 femme sur 4 day koy am. Silencieux la ba fracture bi am. Pour prevenir: calcium, soleil (vitamine D), exercice.",
+      "keywords_wo": [
+        "osteoporose",
+        "yax",
+        "woyof",
+        "fracture",
+        "damm",
+        "calcium",
+        "densite"
+      ],
+      "keywords_fr": [
+        "osteoporose",
+        "os",
+        "fragiles",
+        "fracture",
+        "densite",
+        "calcium",
+        "vitamine D"
+      ],
+      "keywords_common": [
+        "osteoporose",
+        "fracture",
+        "1 femme sur 4",
+        "calcium"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Module 3.1"
+    },
+    {
+      "id": "meno_risque_002",
+      "domaine": "menopause",
+      "category": "risques_long_terme",
+      "question_wo": "Naka laa mën a aar sama yax ci osteoporose?",
+      "question_fr": "Comment prevenir l'osteoporose ?",
+      "question_bi": "Naka laa mën a prevenir osteoporose bi?",
+      "response_wo": "Ngir aar yax yi ci osteoporose: lekkal lekk yu bari calcium (meew, yaourt, fromage, sardines, lujum yu wert), jotal jant 15-20 simili bés bu nekk (vitamine D), doxantu/fecc/yeg eskalye (exercices yu am poids dañuy dëgëral yax), bayil sigaret ak sangara, te gisal doktoor ngir benn bilan osseux su ame ay risques.",
+      "response_fr": "Pour prevenir l'osteoporose : manger des aliments riches en calcium (lait, yaourt, fromage, sardines, legumes verts), s'exposer au soleil 15 a 20 minutes par jour (vitamine D), marcher, danser, monter les escaliers (les exercices avec le poids du corps renforcent les os), eviter le tabac et l'alcool, et consulter un medecin pour un bilan osseux si facteurs de risque.",
+      "answer_bilingual": "Pour prevenir osteoporose: lekkal calcium (meew, yaourt, sardines, lujum yu wert), jant 15-20 min (vitamine D), marcher, danser, monter escaliers, bayil tabac ak alcool, ak bilan osseux su am risques.",
+      "keywords_wo": [
+        "aar",
+        "yax",
+        "osteoporose",
+        "calcium",
+        "jant",
+        "doxantu",
+        "vitamine D"
+      ],
+      "keywords_fr": [
+        "prevenir",
+        "osteoporose",
+        "calcium",
+        "soleil",
+        "vitamine D",
+        "exercice",
+        "os"
+      ],
+      "keywords_common": [
+        "osteoporose",
+        "calcium",
+        "vitamine D",
+        "exercice"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Module 3.1"
+    },
+    {
+      "id": "meno_risque_003",
+      "domaine": "menopause",
+      "category": "risques_long_terme",
+      "question_wo": "Ndax menopause day yokk ay risques thi xol bi (maladies cardiovasculaires)?",
+      "question_fr": "La menopause augmente-t-elle les risques pour le coeur ?",
+      "question_bi": "Ndax menopause day augmente risques cardiovasculaires?",
+      "response_wo": "Waaw. Balaa menopause, hormones yi dañ doon aar xol bi ni benn bouclier. Apres menopause, bouclier boobu day dem, te risque maladies du coeur (infarctus, AVC) day yokku ndank-ndank. Looloo tax war nga toppatoo sa xol ak lekk gu baax ak doxin.",
+      "response_fr": "Oui. Avant la menopause, les hormones feminines protegent le coeur comme un bouclier. Apres, ce bouclier disparait et le risque de maladies cardiaques (infarctus, AVC) augmente progressivement. Il faut donc prendre soin de son coeur avec une bonne alimentation et du mouvement.",
+      "answer_bilingual": "Waaw. Avant menopause, hormones yi dañ doon proteger xol bi comme un bouclier. Apres, bouclier bi day disparaitre, risque cardiaque (infarctus, AVC) day augmenter. Toppatool sa coeur ak bonne alimentation ak mouvement.",
+      "keywords_wo": [
+        "xol",
+        "coeur",
+        "cardiovasculaire",
+        "infarctus",
+        "AVC",
+        "bouclier",
+        "risque"
+      ],
+      "keywords_fr": [
+        "coeur",
+        "cardiovasculaire",
+        "infarctus",
+        "AVC",
+        "risque",
+        "hormones",
+        "tension"
+      ],
+      "keywords_common": [
+        "coeur",
+        "cardiovasculaire",
+        "infarctus",
+        "AVC"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Module 3.2"
+    },
+    {
+      "id": "meno_risque_004",
+      "domaine": "menopause",
+      "category": "risques_long_terme",
+      "question_wo": "Naka laa mën a aar sama xol ginnaaw menopause?",
+      "question_fr": "Comment proteger son coeur apres la menopause ?",
+      "question_bi": "Naka laa mën a proteger sama coeur ginnaaw menopause?",
+      "response_wo": "Ngir aar sa xol: bul tux, doxantu 30 simili lu tuuti bés bu nekk, lekkal xorom bu neew, diw bu neew, lujum yu bari, saytul sa tension, kontroleel sa poids, te kontroleel sukkar ci sa deret su am risque diabete.",
+      "response_fr": "Pour proteger son coeur : ne pas fumer, marcher au moins 30 minutes par jour, manger moins de sel, moins de graisses, plus de legumes, surveiller sa tension arterielle, controler son poids, et controler son taux de sucre dans le sang si risque de diabete.",
+      "answer_bilingual": "Pour proteger coeur: bul fumer, marcher 30 minutes bés bu nekk, manger moins de sel ak graisses, plus de lujum, surveiller tension, controler poids, ak sucre dans le sang su am risque diabete.",
+      "keywords_wo": [
+        "aar",
+        "xol",
+        "coeur",
+        "tux",
+        "doxantu",
+        "xorom",
+        "tension"
+      ],
+      "keywords_fr": [
+        "proteger coeur",
+        "tabac",
+        "marche",
+        "sel",
+        "tension",
+        "poids",
+        "diabete"
+      ],
+      "keywords_common": [
+        "coeur",
+        "tension",
+        "30 minutes",
+        "sel"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 3.2"
+    },
+    {
+      "id": "meno_risque_005",
+      "domaine": "menopause",
+      "category": "risques_long_terme",
+      "question_wo": "Ndax menopause day yokk risque diabete ak cholesterol?",
+      "question_fr": "La menopause augmente-t-elle le risque de diabete et de cholesterol ?",
+      "question_bi": "Ndax menopause day augmente diabete ak cholesterol?",
+      "response_wo": "Waaw. Ginnaaw menopause, yaram bi day dëkkal graisses yu bari, rawatina ci wetu biir bi. Looloo moy yokk risque diabete de type 2 ak jafe-jafe cholesterol. Li koy yokk: nakku doxin, lekk gu bari sukkar ak diw, stress, ak nakku nelaw. Cereales yu dëkk bi (dugub, sorgho) ak niebe baax nañ lool.",
+      "response_fr": "Oui. Apres la menopause, le corps stocke plus de graisses, surtout autour du ventre, ce qui augmente le risque de diabete de type 2 et de problemes de cholesterol. Ce qui aggrave : manque d'activite, alimentation riche en sucres et graisses, stress, manque de sommeil. Les cereales locales (mil, sorgho) et le niebe sont excellents.",
+      "answer_bilingual": "Waaw. Apres menopause, yaram bi day stocker graisses surtout ci ventre, looloo augmente diabete type 2 ak cholesterol. Cereales locales (dugub, sorgho) ak niebe baax nañ pour controler sucre bi.",
+      "keywords_wo": [
+        "diabete",
+        "cholesterol",
+        "graisses",
+        "sukkar",
+        "biir",
+        "dugub",
+        "niebe"
+      ],
+      "keywords_fr": [
+        "diabete",
+        "cholesterol",
+        "graisses",
+        "sucre",
+        "ventre",
+        "cereales",
+        "niebe"
+      ],
+      "keywords_common": [
+        "diabete",
+        "cholesterol",
+        "diabete type 2"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 3.4"
+    },
+    {
+      "id": "meno_risque_006",
+      "domaine": "menopause",
+      "category": "risques_long_terme",
+      "question_wo": "Lu tax war naa di gis doktoor lou beuri ginnaaw menopause?",
+      "question_fr": "Pourquoi consulter un medecin regulierement apres la menopause ?",
+      "question_bi": "Lu tax war naa consulter doktoor regulierement?",
+      "response_wo": "Ginnaaw menopause, war nga di gis doktoor at mu nekk ngir saytu sa wér-gi-yaram te gis jafe-jafe yi lu gaaw. Doktoor mën na: natt sa tension ak poids, saytu sukkar ak cholesterol ci deret, saytu yax yi su aajowoo, def examen gynecologique, ak bind depistages yi (cancer du sein, col de l'uterus).",
+      "response_fr": "Apres la menopause, un suivi medical annuel est recommande pour surveiller la sante et detecter les problemes tot. Un medecin peut : mesurer la tension et le poids, verifier le sucre et le cholesterol, evaluer la sante des os si necessaire, faire un examen gynecologique, discuter des symptomes et prescrire les depistages recommandes (cancer du sein, col de l'uterus).",
+      "answer_bilingual": "Apres menopause, suivi medical annuel recommande la ngir surveiller sante ak detecter problemes tot. Doktoor mën na: natt tension ak poids, verifier sucre ak cholesterol, examen gynecologique, ak depistages (sein, col uterus).",
+      "keywords_wo": [
+        "gis doktoor",
+        "suivi",
+        "annuel",
+        "tension",
+        "depistage",
+        "gynecologique"
+      ],
+      "keywords_fr": [
+        "consulter",
+        "suivi medical",
+        "annuel",
+        "depistage",
+        "gynecologique",
+        "prevention"
+      ],
+      "keywords_common": [
+        "suivi medical",
+        "annuel",
+        "depistage",
+        "gynecologique"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 3.5"
+    },
+    {
+      "id": "meno_traitement_001",
+      "domaine": "menopause",
+      "category": "traitements_menopause",
+      "question_wo": "Ndax am na ay garab ngir wanni symptomes yi?",
+      "question_fr": "Y a-t-il des medicaments pour soulager les symptomes ?",
+      "question_bi": "Ndax am na ay medicaments ngir soulager symptomes yi?",
+      "response_wo": "Waaw. Garab bi gena am njariñ mooy traitement hormonal de la menopause (THM). Am na it ay traitements non hormonaux ngir jigeen yi mënul jel hormones. Te coppite ci dundin bi (lekk, doxin) day dimbali lool. Gisal doktoor ngir xam lu la jaadu.",
+      "response_fr": "Oui. Le traitement le plus efficace est le traitement hormonal de la menopause (THM). Il existe aussi des traitements non hormonaux pour les femmes qui ne peuvent pas prendre d'hormones. Et les changements de mode de vie (alimentation, sport) aident beaucoup. Consulte un medecin pour savoir ce qui te convient.",
+      "answer_bilingual": "Waaw. Traitement bi gena efficace mooy THM (traitement hormonal). Am na it traitements non hormonaux ngir ñi mënul hormones, ak changements de mode de vie (alimentation, sport). Consultel doktoor ngir xam lu la convient.",
+      "keywords_wo": [
+        "garab",
+        "medicaments",
+        "THM",
+        "traitement",
+        "symptomes",
+        "wanni"
+      ],
+      "keywords_fr": [
+        "medicaments",
+        "traitement",
+        "THM",
+        "hormonal",
+        "non hormonal",
+        "symptomes"
+      ],
+      "keywords_common": [
+        "THM",
+        "traitement",
+        "medicaments"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Module 4 / 6"
+    },
+    {
+      "id": "meno_traitement_002",
+      "domaine": "menopause",
+      "category": "traitements_menopause",
+      "question_wo": "Lan moy coppite yu dundin bi (mode de vie) yu may def bu njëkk?",
+      "question_fr": "Quels changements de mode de vie faire en premier ?",
+      "question_bi": "Lan moy changements de mode de vie yu may def bu njëkk?",
+      "response_wo": "Balaa benn garab, coppite ci dundin bi mooy sosu wér-gi-yaram bu baax. Baax nañ, amul ay ayib, te yepp mën nañ leen def. Maanaam: lekk lujum ak fruits yu bari, doxantu 30 simili bés bu nekk, nelaw bu baax, wanni stress (priere, meditation, waxtaan ak xarit), bayi sigaret ak sangara, te naan ndox mu doy.",
+      "response_fr": "Avant tout medicament, les changements de mode de vie sont la base d'une bonne sante. Ils sont efficaces, sans danger et accessibles a toutes : manger plus de legumes et de fruits, marcher 30 minutes par jour, bien dormir (heure fixe, chambre fraiche), reduire le stress (priere, meditation, parler a des amies), arreter le tabac et limiter l'alcool, et boire assez d'eau.",
+      "answer_bilingual": "Balaa garab, changements de mode de vie mooy la base. Efficaces, sans danger: manger lujum ak fruits, marcher 30 min, bien dormir, reduire stress (priere, meditation), bayi tabac ak alcool, naan ndox mu doy.",
+      "keywords_wo": [
+        "mode de vie",
+        "coppite",
+        "lekk",
+        "doxantu",
+        "nelaw",
+        "stress",
+        "ndox"
+      ],
+      "keywords_fr": [
+        "mode de vie",
+        "alimentation",
+        "sport",
+        "sommeil",
+        "stress",
+        "tabac",
+        "hygiene de vie"
+      ],
+      "keywords_common": [
+        "mode de vie",
+        "alimentation",
+        "sport",
+        "30 minutes"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Module 4.1"
+    },
+    {
+      "id": "meno_traitement_003",
+      "domaine": "menopause",
+      "category": "traitements_menopause",
+      "question_wo": "Ndax mën nañ jefandikoo garabu xeer (plantes) ngir menopause?",
+      "question_fr": "Peut-on utiliser des plantes pour la menopause ?",
+      "question_bi": "Ndax mën naa jefandikoo plantes ngir menopause bi?",
+      "response_wo": "Yenn garabu xeer (plantes) mën nañ dimbali ngir symptomes yu woyof (ni soja walla actee a grappes noires). Waaye yepp jaagul jigeen yepp. Waxal ko doktoor walla pharmacien balaa nga ko tambali.",
+      "response_fr": "Certaines plantes peuvent aider pour les symptomes legers (comme le soja ou l'actee a grappes noires). Mais elles ne conviennent pas a toutes les femmes. Parles-en toujours a un medecin ou un pharmacien avant de commencer.",
+      "answer_bilingual": "Yenn plantes mën nañ aider symptomes legers (soja, actee a grappes noires). Waaye jaadul jigeen yepp. Waxal ko doktoor walla pharmacien balaa nga commencer.",
+      "keywords_wo": [
+        "plantes",
+        "garabu xeer",
+        "soja",
+        "phyto-oestrogenes",
+        "cancer",
+        "pharmacien"
+      ],
+      "keywords_fr": [
+        "plantes",
+        "remedes naturels",
+        "soja",
+        "phyto-oestrogenes",
+        "actee",
+        "naturel"
+      ],
+      "keywords_common": [
+        "plantes",
+        "phyto-oestrogenes",
+        "soja",
+        "naturel"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 4.2 / 6"
+    },
+    {
+      "id": "meno_traitement_004",
+      "domaine": "menopause",
+      "category": "traitements_menopause",
+      "question_wo": "Lan mooy traitement hormonal de la menopause (THM)?",
+      "question_fr": "Qu'est-ce que le traitement hormonal de la menopause (THM) ?",
+      "question_bi": "Lan mooy THM bi (traitement hormonal)?",
+      "response_wo": "THM mooy jox jigeen ji hormones yu remplacer yi ovaires defaratul. Mooy traitement bi gena am njariñ ngir symptomes yi. Mën na faj: bouffees de chaleur ak sueurs nocturnes, secheresse vaginale, jafe-jafe nelaw, humeur, ak aar la ci osteoporose. Day melni 'recharger la pile' bi ovaires yi chargeatul.",
+      "response_fr": "Le THM consiste a donner a la femme des hormones pour remplacer celles que les ovaires ne produisent plus. C'est le traitement le plus efficace pour les symptomes. Il peut traiter : bouffees de chaleur et sueurs nocturnes, secheresse vaginale, troubles du sommeil, humeur, et prevenir l'osteoporose. C'est comme 'recharger la pile' que les ovaires ne chargent plus.",
+      "answer_bilingual": "THM mooy jox jigeen ji hormones yu remplacer yu ovaires yi produiratul. Traitement bi gena efficace la pour symptomes. Day traiter: bouffees de chaleur, secheresse vaginale, sommeil, humeur, ak prevenir osteoporose. Comme recharger la pile.",
+      "keywords_wo": [
+        "THM",
+        "traitement hormonal",
+        "hormones",
+        "ovaires",
+        "bouffees",
+        "osteoporose"
+      ],
+      "keywords_fr": [
+        "THM",
+        "traitement hormonal",
+        "hormones",
+        "estradiol",
+        "progesterone",
+        "efficace"
+      ],
+      "keywords_common": [
+        "THM",
+        "traitement hormonal",
+        "hormones"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Module 4.3"
+    },
+    {
+      "id": "meno_traitement_005",
+      "domaine": "menopause",
+      "category": "traitements_menopause",
+      "question_wo": "Ndax THM bi am na ay risque (dangereux la)?",
+      "question_fr": "Est-ce que le traitement hormonal est dangereux ?",
+      "question_bi": "Ndax THM bi dangereux la?",
+      "response_wo": "THM ragalal nit ci les annees 2000 ndax benn etude americaine. Ginnaaw loolu, recherches yi wone nañ ni niou bari ci jigeen yu 50 ba 60 at, THM gena na am njariñ ay risque su tambalee ci 10 at yu njëkk yu menopause. Waaye decision personnel la, war nga ko jel ak doktoor. Ci 2025, societes savantes yepp confirme nañ njariñ THM ngir niou bari ci jigeen yi.",
+      "response_fr": "Le THM a fait peur dans les annees 2000 a cause d'une grande etude americaine. Depuis, les recherches ont montre que pour la plupart des femmes de 50 a 60 ans, le THM est plus benefique que dangereux s'il est commence dans les 10 premieres annees de la menopause. C'est une decision personnelle a prendre avec un medecin. En 2025, toutes les societes savantes confirment ce benefice pour la plupart des femmes.",
+      "answer_bilingual": "THM ragalal nit ci annees 2000 (etude americaine). Ginnaaw loolu, recherches wone nañ ni pour plupart femmes 50-60 ans, THM gena benefique su commence ci 10 premieres annees. Decision personnelle ak doktoor. En 2025, societes savantes confirment benefice bi.",
+      "keywords_wo": [
+        "THM",
+        "risque",
+        "dangereux",
+        "50 at",
+        "60 at",
+        "decision",
+        "doktoor"
+      ],
+      "keywords_fr": [
+        "THM",
+        "dangereux",
+        "risque",
+        "benefice",
+        "50 ans",
+        "60 ans",
+        "2025"
+      ],
+      "keywords_common": [
+        "THM",
+        "risque",
+        "benefice",
+        "50-60 ans",
+        "10 ans"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Module 4.3 / 6"
+    },
+    {
+      "id": "meno_traitement_006",
+      "domaine": "menopause",
+      "category": "traitements_menopause",
+      "question_wo": "Kan laa war a bañ a jel THM (contre-indications)?",
+      "question_fr": "Quelles sont les contre-indications du THM ?",
+      "question_bi": "Lan moy contre-indications yu THM bi?",
+      "response_wo": "Am na yenn jigeen yu war a bañ a jel THM: ñi am antecedent personnel cancer du sein, yenn cancers hormonodependants, ñi am ay deret yu joge ci njureelu-kaay yu nu xamul li ko waral, ak feebar thromboembolique bu metti bu nu faju. Looloo tax war nga ko waxtaan ak doktoor bu la ko bindee.",
+      "response_fr": "Certaines femmes ne doivent pas prendre le THM : antecedent personnel de cancer du sein, certains cancers hormonodependants, saignements vaginaux inexpliques, maladie thromboembolique grave non traitee. C'est pourquoi il faut toujours en discuter avec un medecin avant de le prescrire.",
+      "answer_bilingual": "Certaines femmes war nañ bañ THM: antecedent cancer du sein, cancers hormonodependants, saignements inexpliques, maladie thromboembolique grave non traitee. Toujours waxtaan ak doktoor balaa prescription.",
+      "keywords_wo": [
+        "contre-indications",
+        "THM",
+        "bañ",
+        "cancer du sein",
+        "saignements",
+        "doktoor"
+      ],
+      "keywords_fr": [
+        "contre-indications",
+        "THM",
+        "cancer du sein",
+        "saignements",
+        "thrombose",
+        "interdit"
+      ],
+      "keywords_common": [
+        "contre-indications",
+        "THM",
+        "cancer du sein"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Module 4.3"
+    },
+    {
+      "id": "meno_traitement_007",
+      "domaine": "menopause",
+      "category": "traitements_menopause",
+      "question_wo": "Lan moy traitements non hormonaux yi (ngir ñi mënul THM)?",
+      "question_fr": "Quels sont les traitements non hormonaux ?",
+      "question_bi": "Lan moy traitements non hormonaux yi?",
+      "response_wo": "Ngir jigeen yi mënul walla bëggul THM, am na yeneen yoon: yenn anti-depresseurs (ISRS) dañuy wanni bouffees de chaleur sax fu depression amul, gabapentine ak clonidine (ci ordonnance), garab yu bees (NK3, 2025) yu am njariñ lool ci bouffees sans hormones, therapie cognitivo-comportementale, ak hypnose clinique. Yepp ci ordonnance doktoor.",
+      "response_fr": "Pour les femmes qui ne peuvent pas ou ne veulent pas prendre de THM, il existe des alternatives : certains anti-depresseurs (ISRS) reduisent les bouffees de chaleur meme sans depression, la gabapentine et la clonidine (sur prescription), de nouveaux medicaments (NK3, 2025) tres efficaces sans hormones, la therapie cognitivo-comportementale et l'hypnose clinique.",
+      "answer_bilingual": "Ngir ñi mënul THM: anti-depresseurs (ISRS) dañuy reduire bouffees sax sans depression, gabapentine, clonidine (sur prescription), garab yu bees NK3 (2025) sans hormones, therapie cognitivo-comportementale, ak hypnose. Yepp sur prescription.",
+      "keywords_wo": [
+        "traitements non hormonaux",
+        "ISRS",
+        "gabapentine",
+        "NK3",
+        "bouffees",
+        "ordonnance"
+      ],
+      "keywords_fr": [
+        "non hormonal",
+        "ISRS",
+        "antidepresseur",
+        "gabapentine",
+        "NK3",
+        "alternative"
+      ],
+      "keywords_common": [
+        "non hormonal",
+        "ISRS",
+        "NK3",
+        "gabapentine"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 4.4"
+    },
+    {
+      "id": "meno_traitement_008",
+      "domaine": "menopause",
+      "category": "traitements_menopause",
+      "question_wo": "Lan laa war a laaj doktoor ci sama consultation?",
+      "question_fr": "Quelles questions poser au medecin lors d'une consultation ?",
+      "question_bi": "Lan laa war a laaj doktoor ci consultation bi?",
+      "response_wo": "Su nga gis doktoor, mën nga ko laaj: ndax sama symptomes yi jouge nañ ci menopause? Ndax soxla naa traitement walla coppite mode de vie rekk? Lan moy risque ak njariñu THM ngir man? Ndax am na ay contre-indications ci sama cas? Ban traitement moo ma gena jaadu? Naka la traitement bi di yagg? Lan moy signes yu may war a yeewu?",
+      "response_fr": "Lors d'une consultation, tu peux poser ces questions : mes symptomes sont-ils bien lies a la menopause ? Ai-je besoin d'un traitement ou seulement de changements de mode de vie ? Quels sont les risques et benefices du THM pour moi ? Y a-t-il des contre-indications dans mon cas ? Quel traitement serait le plus adapte ? Combien de temps durera-t-il ? Quels signes doivent m'alerter ?",
+      "answer_bilingual": "Su nga gis doktoor, laajal ko: ndax sama symptomes jem nañ ci menopause? Soxla naa traitement walla mode de vie rekk? Risque ak benefice THM ngir man? Contre-indications? Ban traitement moo gena adapte? Naka mu di durer? Lan moy signes yu war a alerter?",
+      "keywords_wo": [
+        "laaj",
+        "doktoor",
+        "consultation",
+        "questions",
+        "traitement",
+        "THM"
+      ],
+      "keywords_fr": [
+        "questions",
+        "medecin",
+        "consultation",
+        "demander",
+        "traitement",
+        "THM"
+      ],
+      "keywords_common": [
+        "consultation",
+        "questions",
+        "medecin",
+        "THM"
+      ],
+      "importance": "low",
+      "source": "YOONU Jigeen - Module 4.5"
+    },
+    {
+      "id": "meno_contexte_001",
+      "domaine": "menopause",
+      "category": "contexte_africain",
+      "question_wo": "Lu tax menopause day am lu gaaw ci Afrique?",
+      "question_fr": "Pourquoi la menopause arrive-t-elle plus tot en Afrique ?",
+      "question_bi": "Lu tax menopause di am plus tot ci Afrique?",
+      "response_wo": "Etudes scientifiques wone nañ ni jigeen yu Afrique subsaharienne dañuy dugg ci menopause lu gaaw ci jigeen yu Europe: lu jege 47-48 at ci Afrique, 51 at ci Europe. Li koy waral: lekk, jot ci soins yi, ay feebar yu yagg (VIH), dundin, ak heredite. Looloo tax su sa regles ame ay xethiou ginnaaw 40 at, mooy waxtu nga xamal sa yaram.",
+      "response_fr": "Des etudes scientifiques montrent que les femmes d'Afrique subsaharienne entrent en menopause un peu plus tot que les Europeennes : environ 47-48 ans en Afrique contre 51 ans en Europe. Les facteurs : alimentation, acces aux soins, infections chroniques (VIH), mode de vie, genetique. C'est pourquoi, si les regles deviennent irregulieres apres 40 ans, c'est le moment de s'informer.",
+      "answer_bilingual": "Etudes wone nañ ni jigeen yu Afrique dugg ci menopause plus tot: 47-48 ans ci Afrique vs 51 ans ci Europe. Facteurs: alimentation, acces aux soins, VIH, mode de vie, genetique. Su say regles am irregularites apres 40 ans, mooy waxtu nga s'informer.",
+      "keywords_wo": [
+        "Afrique",
+        "menopause",
+        "gaaw",
+        "47 at",
+        "VIH",
+        "lekk",
+        "heredite"
+      ],
+      "keywords_fr": [
+        "Afrique",
+        "age",
+        "47 ans",
+        "48 ans",
+        "plus tot",
+        "VIH",
+        "facteurs"
+      ],
+      "keywords_common": [
+        "Afrique",
+        "47-48 ans",
+        "51 ans",
+        "VIH"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 5.1"
+    },
+    {
+      "id": "meno_contexte_002",
+      "domaine": "menopause",
+      "category": "contexte_africain",
+      "question_wo": "Lan moy symptomes yi jigeen yu Afrique gena wax?",
+      "question_fr": "Quels symptomes les femmes africaines signalent-elles le plus ?",
+      "question_bi": "Lan moy symptomes yi femmes africaines gena signaler?",
+      "response_wo": "Etudes yu Afrique wone nañ ni jigeen yu Afrique du wax memes symptomes ni jigeen yu Europe. Yu bari ci Afrique: metit ci articulations ak muscles, fatigue, metit bopp, ak jafe-jafe nelaw. Yu neew wax: bouffees de chaleur (am nañ waaye nu wax leen lu neew). Yu nu faral di fatte: secheresse vaginale (tabou), troubles urinaires, ak humeur. Jigeen ju am metit oom ak ginnaaw te nelawul bu baax, mën na nekk menopause.",
+      "response_fr": "Les etudes menees en Afrique montrent que les femmes africaines ne signalent pas les memes symptomes que les Europeennes. Tres frequents en Afrique : douleurs articulaires et musculaires, fatigue, maux de tete, troubles du sommeil. Moins signalees : les bouffees de chaleur (reelles mais peu rapportees). Souvent negliges : secheresse vaginale (tabou), troubles urinaires, sautes d'humeur. Une femme qui a mal aux genoux, mal au dos et dort mal a peut-etre la menopause.",
+      "answer_bilingual": "Ci Afrique, femmes du signaler memes symptomes ni Europe. Tres frequents: douleurs articulaires, fatigue, maux de tete, troubles du sommeil. Moins signalees: bouffees de chaleur. Negliges: secheresse vaginale (tabou), troubles urinaires. Jigeen ju am mal genoux ak dos te nelawul, mën nekk menopause.",
+      "keywords_wo": [
+        "symptomes",
+        "Afrique",
+        "articulations",
+        "fatigue",
+        "metit bopp",
+        "tabou"
+      ],
+      "keywords_fr": [
+        "symptomes",
+        "africaines",
+        "douleurs articulaires",
+        "fatigue",
+        "tabou",
+        "bouffees"
+      ],
+      "keywords_common": [
+        "Afrique",
+        "douleurs articulaires",
+        "fatigue",
+        "tabou"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 5.2"
+    },
+    {
+      "id": "meno_contexte_003",
+      "domaine": "menopause",
+      "category": "contexte_africain",
+      "question_wo": "Naka la kultur ak ngëm yi gis menopause ci Afrique?",
+      "question_fr": "Comment la culture et les croyances voient-elles la menopause ?",
+      "question_bi": "Naka la culture ak croyances yi gis menopause ci Afrique?",
+      "response_wo": "Ci bari ci askan yu Afrique, menopause du dara lu nu faral di tudd walla nangu ni evenement medical. Ci yenn dëkk, jigeen ju menopause nu koy teral, gis ko ni ku am xam-xam te goreel. Ci yeneen, mën nañ ko gis ni nakku jigeenaay. Symptomes yu biir (secheresse, libido) nu leen di sutura ndax kersa. YOONU Jigeen day respekte kultur yepp, du atte, day jox xam-xam bu wér te bu yomb.",
+      "response_fr": "Dans de nombreuses societes africaines, la menopause n'est pas toujours nommee ou reconnue comme un evenement medical. Dans certaines communautes, la femme menopausee est respectee, consideree comme sage et liberee. Dans d'autres, elle peut etre vecue comme une perte de feminite. Les symptomes intimes sont souvent tus par pudeur. YOONU Jigeen respecte toutes les cultures, ne juge pas, et apporte une information scientifique simple.",
+      "answer_bilingual": "Ci askan yu Afrique, menopause du toujours nommee ni evenement medical. Yenn dëkk: jigeen menopausee respectee, sage, liberee. Yeneen: vecue ni perte de feminite. Symptomes intimes nu leen di taire par pudeur. YOONU Jigeen day respecter cultures yepp, du juger.",
+      "keywords_wo": [
+        "kultur",
+        "ngëm",
+        "croyances",
+        "tabou",
+        "kersa",
+        "respekte",
+        "askan"
+      ],
+      "keywords_fr": [
+        "culture",
+        "croyances",
+        "tabou",
+        "pudeur",
+        "representations",
+        "respect"
+      ],
+      "keywords_common": [
+        "culture",
+        "croyances",
+        "tabou",
+        "YOONU Jigeen"
+      ],
+      "importance": "low",
+      "source": "YOONU Jigeen - Module 5.3"
+    },
+    {
+      "id": "meno_contexte_004",
+      "domaine": "menopause",
+      "category": "contexte_africain",
+      "question_wo": "Lu tax jot ci soins yi jafe ci Afrique ngir menopause?",
+      "question_fr": "Pourquoi l'acces aux soins est-il difficile en Afrique pour la menopause ?",
+      "question_bi": "Lu tax acces aux soins jafe ci Afrique ngir menopause?",
+      "response_wo": "Ci bari ci reew yu Afrique, jigeen yu menopause amul jot bu yomb ci xibaar ak soins yu jaadu. Jafe-jafe yi: amul professionnels de sante yu nu jang ci menopause, njëgu consultations ak garab, sori bu structures de sante yi, amul THM ci yenn reew, tabou ci symptomes intimes, ak nattu xibaar. Looloo tax YOONU Jigeen am: jox xibaar jigeen yi directement, te ci seen lakk.",
+      "response_fr": "Dans de nombreux pays africains, les femmes menopausees n'ont pas facilement acces a l'information et aux soins. Les obstacles : manque de professionnels formes sur la menopause, cout des consultations et medicaments, eloignement des structures de sante, absence de THM dans certains pays, tabou autour des symptomes intimes, faible niveau d'information. C'est exactement pourquoi YOONU Jigeen existe : apporter l'information directement aux femmes, dans leur langue.",
+      "answer_bilingual": "Ci reew yu Afrique, jigeen yu menopause amul acces bu yomb ci information ak soins. Obstacles: manque de professionnels formes, cout, eloignement, pas de THM, tabou, faible information. Looloo tax YOONU Jigeen am: jox information directement, ci seen lakk.",
+      "keywords_wo": [
+        "acces",
+        "soins",
+        "jafe",
+        "Afrique",
+        "professionnels",
+        "njëg",
+        "YOONU Jigeen"
+      ],
+      "keywords_fr": [
+        "acces aux soins",
+        "obstacles",
+        "cout",
+        "Afrique",
+        "professionnels",
+        "information"
+      ],
+      "keywords_common": [
+        "acces aux soins",
+        "obstacles",
+        "YOONU Jigeen"
+      ],
+      "importance": "low",
+      "source": "YOONU Jigeen - Module 5.4"
+    },
+    {
+      "id": "meno_sexualite_001",
+      "domaine": "menopause",
+      "category": "sexualite_menopause",
+      "question_wo": "Ndax menopause mooy mujju ci dund sexuel bi?",
+      "question_fr": "Est-ce que la menopause signifie la fin de la sexualite ?",
+      "question_bi": "Ndax menopause mooy fin de la sexualite?",
+      "response_wo": "Deedeet! Menopause du mujju dund sexuel bi. Bari ci jigeen ñu gëna am benn dund sexuel bu neex ginnaaw menopause. Mën na am yenn ajustements (cremes lubrifiantes, traitement local) waaye dund intime mën na am, te mën na sax gëna goreel ndax grossesse amssi.",
+      "response_fr": "Non ! La menopause n'est pas la fin de la vie sexuelle. Beaucoup de femmes continuent d'avoir une vie sexuelle epanouie apres la menopause. Certains ajustements peuvent etre necessaires (cremes lubrifiantes, traitement local) mais la vie intime reste possible et peut meme etre plus liberee sans risque de grossesse.",
+      "answer_bilingual": "Deedeet! Menopause du fin de la sexualite. Bari ci jigeen continuer am vie sexuelle epanouie ginnaaw menopause. Ajustements (cremes lubrifiantes, traitement local) waaye vie intime possible la, te mën gena liberee sans risque grossesse.",
+      "keywords_wo": [
+        "sexualite",
+        "dund sexuel",
+        "menopause",
+        "lubrifiant",
+        "intime",
+        "mujju"
+      ],
+      "keywords_fr": [
+        "sexualite",
+        "vie sexuelle",
+        "intime",
+        "lubrifiant",
+        "desir",
+        "rapports"
+      ],
+      "keywords_common": [
+        "sexualite",
+        "vie sexuelle",
+        "lubrifiant"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 6 / 8.4"
+    },
+    {
+      "id": "meno_sexualite_002",
+      "domaine": "menopause",
+      "category": "sexualite_menopause",
+      "question_wo": "Bëgg-bëgg sexuel bi wanni na, ndax normal la?",
+      "question_fr": "J'ai moins envie de rapports, est-ce normal ?",
+      "question_bi": "Sama desir sexuel wanni na, ndax normal la?",
+      "response_wo": "Waaw, wanni gu bëgg-bëgg sexuel (libido) lu bari na ci menopause. Mën na jem ci nakku hormones, ci secheresse vaginale bu metti rapports yi, ci fatigue walla ci yëf yu emotionnel. Sujet medical bu normal la, mën nga ko waxtaan ak sa doktoor.",
+      "response_fr": "Oui, la baisse du desir sexuel (libido) est frequente a la menopause. Elle peut etre liee a la baisse des hormones, a la secheresse vaginale qui rend les rapports douloureux, a la fatigue ou a des facteurs emotionnels. C'est un sujet medical normal que tu peux aborder avec ton medecin.",
+      "answer_bilingual": "Waaw, baisse du desir sexuel (libido) frequente la ci menopause. Mën jem ci baisse hormones, secheresse vaginale, fatigue walla facteurs emotionnels. Sujet medical normal la, mën nga ko aborder ak doktoor.",
+      "keywords_wo": [
+        "bëgg-bëgg",
+        "libido",
+        "desir sexuel",
+        "wanni",
+        "secheresse",
+        "normal"
+      ],
+      "keywords_fr": [
+        "libido",
+        "desir",
+        "sexuel",
+        "baisse",
+        "rapports",
+        "normal"
+      ],
+      "keywords_common": [
+        "libido",
+        "desir sexuel",
+        "baisse"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 6 / 2.9"
+    },
+    {
+      "id": "meno_sexualite_003",
+      "domaine": "menopause",
+      "category": "sexualite_menopause",
+      "question_wo": "Ndax war naa aar sama bopp (IST) ginnaaw menopause?",
+      "question_fr": "Faut-il se proteger des infections sexuelles apres la menopause ?",
+      "question_bi": "Ndax war naa proteger sama bopp ci IST ginnaaw menopause?",
+      "response_wo": "Waaw. Doonte grossesse risque amatoul ginnaaw menopause, infections sexuellement transmissibles (IST) ni VIH mën nañ am ba leegi. Looloo tax war nga di aar sa bopp su nga am benn partenaire bu bees walla bu nga xamul bu baax.",
+      "response_fr": "Oui. Meme apres la menopause, alors qu'il n'y a plus de risque de grossesse, les infections sexuellement transmissibles (IST) comme le VIH restent possibles. Il faut donc continuer a se proteger, surtout avec un nouveau partenaire.",
+      "answer_bilingual": "Waaw. Mëme apres menopause, grossesse risque-atul, waaye IST ni VIH possible nañ ba leegi. Looloo tax war nga continuer proteger sa bopp, surtout ak nouveau partenaire.",
+      "keywords_wo": [
+        "IST",
+        "aar bopp",
+        "VIH",
+        "protection",
+        "partenaire",
+        "menopause"
+      ],
+      "keywords_fr": [
+        "IST",
+        "protection",
+        "VIH",
+        "infections sexuelles",
+        "preservatif",
+        "partenaire"
+      ],
+      "keywords_common": [
+        "IST",
+        "VIH",
+        "protection"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 8.4"
+    },
+    {
+      "id": "meno_urgence_001",
+      "domaine": "menopause",
+      "category": "urgences_menopause",
+      "question_wo": "Am naa deret ginnaaw menopause, ndax normal la?",
+      "question_fr": "J'ai un saignement apres la menopause, est-ce normal ?",
+      "question_bi": "Am naa saignement ginnaaw menopause, ndax normal la?",
+      "response_wo": "Deedeet, du normal. Bepp deret bu joge ci njureelu-kaay ginnaaw bi sa regles taxaw lu ep benn at, war nga ko consulte ci ñaari ayubés. Mën na nekk signe bu cancer utérus, te booniou ko gaawe gis mën nañ ko faj. Demal gaaw kër doktoor.",
+      "response_fr": "Non, ce n'est pas normal. Tout saignement vaginal plus d'un an apres l'arret des regles doit etre consulte dans les 2 semaines. Cela peut etre un signe de cancer de l'uterus, traitable s'il est detecte tot. Consulte rapidement un medecin.",
+      "answer_bilingual": "Deedeet, normal-ul. Tout saignement ginnaaw un an sans regles war nga ko consulte ci 2 semaines. Mën nekk signe cancer utérus, mais traitable boo ko detecte tot. Demal gaaw hopital.",
+      "keywords_wo": [
+        "deret",
+        "saignement",
+        "ginnaaw menopause",
+        "njureelu-kaay",
+        "cancer",
+        "urgence"
+      ],
+      "keywords_fr": [
+        "saignement",
+        "apres menopause",
+        "cancer uterus",
+        "urgence",
+        "consulter",
+        "anormal"
+      ],
+      "keywords_common": [
+        "saignement",
+        "cancer uterus",
+        "urgence",
+        "2 semaines"
+      ],
+      "importance": "critical",
+      "source": "YOONU Jigeen - Module 7.1"
+    },
+    {
+      "id": "meno_urgence_002",
+      "domaine": "menopause",
+      "category": "urgences_menopause",
+      "question_wo": "Lan moy signes yi may wann ni war na gaaw gis doktoor (urgences)?",
+      "question_fr": "Quels sont les signes d'urgence qui necessitent une consultation rapide ?",
+      "question_bi": "Lan moy signes d'urgence yi war consultation rapide?",
+      "response_wo": "Signes yi war nga teela gis doktoor: deret bu joge ci njureelu-kaay ginnaaw menopause; metit bu metti ci dënn ak noyyi bu jafe (risque xol); loxo walla kanam bu yëngotul ak jafe-jafe wax (risque AVC); mettit bopp bu metti lool bu nu miinul; benn boule ci weenu jigeen; metit bu metti ci suufu biir; ak naqar bu metti ak xalaat yu nyuul. Bul xaar, gisal doktoor lu gaaw.",
+      "response_fr": "Les signes qui necessitent de consulter rapidement : saignement vaginal apres la menopause ; douleur forte dans la poitrine et essoufflement soudain (risque cardiaque) ; bras ou visage qui ne bougent plus, difficulte a parler (risque d'AVC) ; mal de tete brutal et tres intense, inhabituel ; grosseur dans le sein ; douleur pelvienne forte et persistante ; grande tristesse avec pensees sombres. Ne pas attendre, consulter vite.",
+      "answer_bilingual": "Signes d'urgence: saignement apres menopause; douleur poitrine ak essoufflement (cardiaque); bras/visage yëngotul ak difficulte parler (AVC); mal de tete brutal; grosseur ci sein; douleur pelvienne forte; tristesse ak pensees sombres. Bul xaar, consultel gaaw.",
+      "keywords_wo": [
+        "signes",
+        "urgence",
+        "dënn",
+        "AVC",
+        "weenu jigeen",
+        "metit",
+        "gaaw"
+      ],
+      "keywords_fr": [
+        "urgence",
+        "signes",
+        "poitrine",
+        "AVC",
+        "sein",
+        "pelvienne",
+        "consulter"
+      ],
+      "keywords_common": [
+        "urgence",
+        "AVC",
+        "douleur thoracique",
+        "grosseur sein"
+      ],
+      "importance": "critical",
+      "source": "YOONU Jigeen - Module 7.1"
+    },
+    {
+      "id": "meno_urgence_004",
+      "domaine": "menopause",
+      "category": "urgences_menopause",
+      "question_wo": "Lan moy depistages yi may war a def ginnaaw menopause?",
+      "question_fr": "Quels examens de depistage faire apres la menopause ?",
+      "question_bi": "Lan moy depistages yi war def ginnaaw menopause?",
+      "response_wo": "Ginnaaw menopause, am na ay examens de depistage yu nu digal: mammographie (ween) at yu ñaar yu nekk ci 50 ba 74 at; frottis cervical (col de l'uterus) at yu juroom yu nekk ba 65 at; bilan sanguin at mu nekk (sukkar, cholesterol, tension); bilan osseux su am ay risque; ak consultation gynecologique at mu nekk. Depistages yooyu dañuy gis cancers yi lu gaaw, te faj gi gena yomb.",
+      "response_fr": "Apres la menopause, certains depistages reguliers sont recommandes : mammographie (sein) tous les 2 ans de 50 a 74 ans ; frottis cervical (col de l'uterus) tous les 5 ans jusqu'a 65 ans ; bilan sanguin chaque annee (sucre, cholesterol, tension) ; bilan osseux en debut de menopause si facteurs de risque ; consultation gynecologique tous les ans. Ces depistages permettent de detecter les cancers tot, quand ils se soignent mieux.",
+      "answer_bilingual": "Ginnaaw menopause, depistages recommandes: mammographie (sein) tous les 2 ans 50-74 ans; frottis (col uterus) tous les 5 ans ba 65 ans; bilan sanguin chaque annee (sucre, cholesterol, tension); bilan osseux su am risque; consultation gynecologique chaque annee.",
+      "keywords_wo": [
+        "depistage",
+        "mammographie",
+        "frottis",
+        "bilan",
+        "ween",
+        "cancer"
+      ],
+      "keywords_fr": [
+        "depistage",
+        "mammographie",
+        "frottis",
+        "bilan sanguin",
+        "cancer",
+        "examen"
+      ],
+      "keywords_common": [
+        "depistage",
+        "mammographie",
+        "frottis",
+        "2 ans",
+        "5 ans"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Module 7.2"
+    },
+    {
+      "id": "meno_soin_001",
+      "domaine": "menopause",
+      "category": "prendre_soin",
+      "question_wo": "Lan laa war a lekk ci jamonu menopause ak apres?",
+      "question_fr": "Quelle alimentation pendant et apres la menopause ?",
+      "question_bi": "Lan laa war a lekk pendant ak apres menopause?",
+      "response_wo": "Ngir wér-gi-yaram bu baax: calcium ngir yax yu dëgër (meew, yaourt, fromage, sardines ak seen yax, lujum yu wert ni bissap ak moringa); vitamine D (jant 15-20 simili, jën yu diw, nen); proteine ngir muscles (jën, yapp wu sew, niebe, lentilles); fibres (cereales completes ni dugub ak sorgho, lujum, fruits); diw yu baax tuuti (huile d'olive, gerte, avocat). Wanni: xorom, sukkar yu gaaw, diw yu bari, sangara. Bayi: sigaret.",
+      "response_fr": "Pour une bonne sante : calcium pour des os solides (lait, yaourt, fromage, sardines avec aretes, legumes verts comme le bissap et le moringa) ; vitamine D (soleil 15-20 min, poissons gras, oeufs) ; proteines pour les muscles (poisson, viande maigre, niebe, lentilles) ; fibres (cereales completes comme le mil et le sorgho, legumes, fruits) ; bonnes graisses en petites quantites (huile d'olive, arachide, avocat). A reduire : sel, sucres rapides, graisses saturees, alcool. A eviter : le tabac.",
+      "answer_bilingual": "Pour bonne sante: calcium (meew, yaourt, sardines, bissap, moringa); vitamine D (jant, jën yu diw, nen); proteines (jën, niebe, lentilles); fibres (dugub, sorgho); bonnes graisses tuuti. Wanni: xorom, sukkar, alcool. Bayi: tabac.",
+      "keywords_wo": [
+        "lekk",
+        "alimentation",
+        "calcium",
+        "vitamine D",
+        "proteine",
+        "niebe",
+        "bissap"
+      ],
+      "keywords_fr": [
+        "alimentation",
+        "nutrition",
+        "calcium",
+        "vitamine D",
+        "proteines",
+        "fibres",
+        "manger"
+      ],
+      "keywords_common": [
+        "calcium",
+        "vitamine D",
+        "proteines",
+        "niebe",
+        "bissap"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Module 8.1"
+    },
+    {
+      "id": "meno_soin_002",
+      "domaine": "menopause",
+      "category": "prendre_soin",
+      "question_wo": "Lan moy lekk yu am calcium yu may war a lekk ngir sama yax?",
+      "question_fr": "Quels aliments riches en calcium manger pour mes os ?",
+      "question_bi": "Lan moy aliments riches en calcium ngir yax yi?",
+      "response_wo": "Lekk yu am calcium yu baax ngir yax yi: meew, yaourt, fromage, sardines (ak seen yax), ak lujum yu wert yu nyuul ni bissap ak moringa. Benn lekk bu baax ci Afrique: ndox jën bu am yaxu sardine walla thiof, ak lujum yu wert yu dëkk bi. Bu am calcium ak fer bu bari, baax na ngir jigeen yu menopause.",
+      "response_fr": "Les aliments riches en calcium pour les os : lait, yaourt, fromage, sardines (avec leurs aretes), et legumes verts fonces comme le bissap et le moringa. Une bonne recette africaine : le bouillon de poisson avec des aretes de sardine ou de thiof, accompagne de legumes verts locaux comme le bissap ou les feuilles de moringa. Riche en calcium et en fer, excellent pour les femmes menopausees.",
+      "answer_bilingual": "Aliments riches en calcium: meew, yaourt, fromage, sardines (ak yax), legumes verts ni bissap ak moringa. Recette africaine: bouillon de poisson ak aretes de sardine walla thiof, ak bissap walla moringa. Riche en calcium ak fer.",
+      "keywords_wo": [
+        "calcium",
+        "yax",
+        "meew",
+        "sardines",
+        "bissap",
+        "moringa",
+        "thiof"
+      ],
+      "keywords_fr": [
+        "calcium",
+        "os",
+        "lait",
+        "sardines",
+        "bissap",
+        "moringa",
+        "recette"
+      ],
+      "keywords_common": [
+        "calcium",
+        "sardines",
+        "bissap",
+        "moringa"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 8.1"
+    },
+    {
+      "id": "meno_soin_003",
+      "domaine": "menopause",
+      "category": "prendre_soin",
+      "question_wo": "Lan moy exercices yu jaadu ngir jigeen yu menopause?",
+      "question_fr": "Quels exercices physiques sont adaptes a la menopause ?",
+      "question_bi": "Lan moy exercices yu adaptes ngir menopause?",
+      "response_wo": "Doxin (activite physique) mooy benn ci li gena baax ngir wér-gi-yaram ginnaaw menopause: day aar yax yi ak xol bi, dimbali kontrole poids, te baaxal humeur. Exercices yu baax: dox 30 simili bés bu nekk, fecc (danse), liggeeyu tool (jardinage), feey ci ndox, yeg eskalye, ak exercices respiration (yoga, meditation). Su amuloo waxtu, sax 10 simili ci suba ak 10 ci ngoon am njariñ. Demal marse ci tank!",
+      "response_fr": "L'activite physique est l'une des meilleures choses pour la sante apres la menopause : elle protege les os et le coeur, aide a controler le poids et ameliore l'humeur. De bons exercices : marcher 30 minutes par jour, danser, jardiner, nager, monter les escaliers, et faire des exercices de respiration (yoga, meditation). Si tu manques de temps, meme 10 minutes le matin et 10 le soir font une difference. Aller au marche a pied compte aussi !",
+      "answer_bilingual": "Activite physique mooy benn ci li gena baax ginnaaw menopause: aar yax ak coeur, controler poids, ameliorer humeur. Marcher 30 min, danser, jardiner, nager, monter escaliers, yoga. Su amuloo temps: 10 min suba ak 10 ngoon. Demal marse ci tank!",
+      "keywords_wo": [
+        "exercices",
+        "doxin",
+        "doxantu",
+        "fecc",
+        "danse",
+        "yoga",
+        "yax"
+      ],
+      "keywords_fr": [
+        "exercice",
+        "activite physique",
+        "marche",
+        "danse",
+        "sport",
+        "yoga",
+        "os"
+      ],
+      "keywords_common": [
+        "exercice",
+        "marche",
+        "30 minutes",
+        "danse"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 8.2"
+    },
+    {
+      "id": "meno_soin_004",
+      "domaine": "menopause",
+      "category": "prendre_soin",
+      "question_wo": "Naka laa mën a topptoo sama xel ak xol (sante mentale)?",
+      "question_fr": "Comment prendre soin de sa sante mentale et emotionnelle ?",
+      "question_bi": "Naka laa mën a prendre soin sama sante mentale?",
+      "response_wo": "Menopause mën na jaaxal humeur bi. Toppatoo sa xel am na solo ni sa yaram. Li mën a dimbali: waxal sa symptomes ak ay xarit walla njaboot (wakhsi day dimbali lool), bokk ci benn group jigeen (association, group religieux), dell julli, meditation, walla pleine conscience, continue activites yu la neex, noppalu te bul am tiis, te gisal doktoor su naqar gi metti lool.",
+      "response_fr": "La menopause peut affecter le moral. Prendre soin de sa sante emotionnelle est aussi important que la sante physique. Ce qui aide : parler de ses symptomes a des amies ou a la famille (briser le silence aide beaucoup), rejoindre un groupe de femmes (association, groupe religieux, groupe de soutien), pratiquer la priere, la meditation ou la pleine conscience, continuer des activites qui font plaisir, se reposer sans culpabilite, et consulter un medecin si la tristesse est trop forte.",
+      "answer_bilingual": "Menopause mën affecter moral. Prendre soin sante emotionnelle aussi important ni sante physique. Waxal symptomes ak xarit/famille, bokk group jigeen, defal priere/meditation, continue activites yu neex, noppalu sans culpabilite, ak consultel doktoor su tristesse metti.",
+      "keywords_wo": [
+        "sante mentale",
+        "xel",
+        "humeur",
+        "stress",
+        "julli",
+        "meditation",
+        "xarit"
+      ],
+      "keywords_fr": [
+        "sante mentale",
+        "emotionnelle",
+        "moral",
+        "stress",
+        "soutien",
+        "priere",
+        "groupe"
+      ],
+      "keywords_common": [
+        "sante mentale",
+        "soutien",
+        "stress",
+        "groupe"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 8.3"
+    },
+    {
+      "id": "meno_soin_005",
+      "domaine": "menopause",
+      "category": "prendre_soin",
+      "question_wo": "Naka la sama njaboot ak jëkkër mën a ma dimbali ci menopause?",
+      "question_fr": "Comment l'entourage et le mari peuvent-ils aider pendant la menopause ?",
+      "question_bi": "Naka la entourage ak jëkkër mën a dimbali ci menopause?",
+      "response_wo": "Jëkkër, njaboot ak xarit am nañ benn role bu mag ci nan jigeen di dunde menopause bi. Li nu mën a def: déglu la te bañ a atte, xam ni sautes d'humeur ak fatigue du 'mauvaise volonte', dimbali ci liggeey bi so sonne, xiir ko ci gis doktoor. YOONU Jigeen mën na jox version bu yomb ngir jëkkër yi, te leeral ci wolof lan mooy menopause.",
+      "response_fr": "Le mari, la famille et les amies jouent un role important dans la facon dont une femme vit sa menopause. Ce qu'ils peuvent faire : ecouter sans juger, comprendre que les sautes d'humeur et la fatigue ne sont pas 'de la mauvaise volonte', aider aux taches quand elle est fatiguee, encourager la consultation medicale. YOONU Jigeen peut proposer une version simplifiee pour les conjoints et expliquer la menopause en wolof.",
+      "answer_bilingual": "Jëkkër, famille ak xarit am nañ role bu mag. Li nu mën def: ecouter sans juger, xam ni sautes d'humeur ak fatigue du mauvaise volonte, aider taches, encourager consultation. YOONU Jigeen mën jox version simplifiee ngir conjoints.",
+      "keywords_wo": [
+        "njaboot",
+        "jëkkër",
+        "entourage",
+        "dimbali",
+        "dégtu",
+        "muñ",
+        "soutien"
+      ],
+      "keywords_fr": [
+        "entourage",
+        "mari",
+        "famille",
+        "soutien",
+        "ecouter",
+        "patience",
+        "couple"
+      ],
+      "keywords_common": [
+        "entourage",
+        "mari",
+        "soutien",
+        "couple"
+      ],
+      "importance": "low",
+      "source": "YOONU Jigeen - Module 8.5"
+    },
+    {
+      "id": "meno_idee_001",
+      "domaine": "menopause",
+      "category": "idees_recues",
+      "question_wo": "Sama yaay menopause na lu gaaw, ndax man itam dinaa ko am lu gaaw?",
+      "question_fr": "Ma mere a eu la menopause tot, l'aurai-je tot aussi ?",
+      "question_bi": "Sama maman am na menopause tot, ndax man itam tot?",
+      "response_wo": "Lu tuuti rekk. Heredite am na role, waaye du moom rekk a koy waral. Lekk, dundin, ak yenn feebar dañuy lall tamit ci waxtu menopause bi. Du benn certitude, waaye xibaar bu am njariñ la nga xam.",
+      "response_fr": "Partiellement. L'heredite joue un role, mais elle n'est pas la seule cause. L'alimentation, le mode de vie et certaines maladies influencent aussi l'age de la menopause. Ce n'est pas une certitude, mais c'est une information utile a connaitre.",
+      "answer_bilingual": "Partiellement. Heredite am na role, waaye du seule cause. Alimentation, mode de vie ak yenn maladies influencent tamit age menopause. Du certitude, waaye information utile la.",
+      "keywords_wo": [
+        "yaay",
+        "heredite",
+        "gaaw",
+        "menopause",
+        "famille",
+        "age"
+      ],
+      "keywords_fr": [
+        "heredite",
+        "mere",
+        "genetique",
+        "age",
+        "famille",
+        "idee recue"
+      ],
+      "keywords_common": [
+        "heredite",
+        "genetique",
+        "age"
+      ],
+      "importance": "low",
+      "source": "YOONU Jigeen - Module 6"
+    },
+    {
+      "id": "meno_idee_003",
+      "domaine": "menopause",
+      "category": "idees_recues",
+      "question_wo": "Ndax ginnaaw menopause jigeen ji mag na (devient vieille)?",
+      "question_fr": "Apres la menopause, la femme devient-elle vieille ?",
+      "question_bi": "Ndax apres menopause jigeen ji devient vieille?",
+      "response_wo": "Deedeet. Menopause mooy mujju regles yi, du mujju ndaw walla doole. Bari ci jigeen yu menopause dañuy yeg seen bopp fekh, am doole ak kataan. Mooy benn xaaj bu bees ci dund bi, du mujju.",
+      "response_fr": "Non. La menopause marque la fin des regles, pas la fin de la jeunesse ou de la vitalite. Beaucoup de femmes menopausees se sentent libres, energiques et epanouies. C'est un nouveau chapitre de la vie, pas une fin.",
+      "answer_bilingual": "Deedeet. Menopause mooy fin des regles, du fin de la jeunesse walla vitalite. Bari ci jigeen menopausees yeg seen bopp libres, energiques, epanouies. Nouveau chapitre la, du fin.",
+      "keywords_wo": [
+        "mag",
+        "vieille",
+        "menopause",
+        "ndaw",
+        "doole",
+        "idee recue"
+      ],
+      "keywords_fr": [
+        "vieille",
+        "jeunesse",
+        "vitalite",
+        "idee recue",
+        "fin",
+        "vieillir"
+      ],
+      "keywords_common": [
+        "vieillesse",
+        "jeunesse",
+        "idee recue"
+      ],
+      "importance": "low",
+      "source": "YOONU Jigeen - Module 6"
+    },
+    {
+      "id": "meno_glossaire_001",
+      "domaine": "menopause",
+      "category": "definitions",
+      "question_wo": "Lan mooy SGUM (syndrome genito-urinaire de la menopause)?",
+      "question_fr": "Qu'est-ce que le SGUM (syndrome genito-urinaire de la menopause) ?",
+      "question_bi": "Lan mooy SGUM bi?",
+      "response_wo": "SGUM (syndrome genito-urinaire de la menopause) mooy ay symptomes yu jem ci nakku hormones ci zone intime ak voies urinaires: secheresse vaginale (wow gu vagin), metit ci rapports, infections urinaires yu toftaloo, ak besin bu gaaw bu saw. Am na ay faj yu baax: cremes hydratantes ak traitements locaux. Waxal ko doktoor.",
+      "response_fr": "Le SGUM (syndrome genito-urinaire de la menopause) regroupe les symptomes lies a la baisse des hormones dans la zone intime et les voies urinaires : secheresse vaginale, douleurs lors des rapports, infections urinaires a repetition, et besoins urgents d'uriner. Il existe des traitements efficaces : cremes hydratantes et traitements locaux. Parles-en a un medecin.",
+      "answer_bilingual": "SGUM mooy ay symptomes yu lie ci baisse hormones ci zone intime ak voies urinaires: secheresse vaginale, douleurs rapports, infections urinaires, besoin urgent saw. Am na traitements: cremes hydratantes ak traitements locaux.",
+      "keywords_wo": [
+        "SGUM",
+        "secheresse vaginale",
+        "urinaire",
+        "zone intime",
+        "hormones"
+      ],
+      "keywords_fr": [
+        "SGUM",
+        "syndrome genito-urinaire",
+        "secheresse vaginale",
+        "urinaire",
+        "intime"
+      ],
+      "keywords_common": [
+        "SGUM",
+        "secheresse vaginale",
+        "genito-urinaire"
+      ],
+      "importance": "medium",
+      "source": "YOONU Jigeen - Module 2.4 / Glossaire"
+    },
+    {
+      "id": "meno_glossaire_002",
+      "domaine": "menopause",
+      "category": "definitions",
+      "question_wo": "Lan mooy oestrogenes ak progesterone?",
+      "question_fr": "Que sont les oestrogenes et la progesterone ?",
+      "question_bi": "Lan mooy oestrogenes ak progesterone yi?",
+      "response_wo": "Oestrogenes ak progesterone ñooy hormones yu jigeen yi ovaires yi di defar. Oestrogenes ñooy yi gena am njariñ ci yax, xol, der ak zone intime; dañuy wanni ci menopause, looloo di indi symptomes yi. Progesterone mooy beneen hormone bu jigeen, nu koy boole ak oestrogenes ci THM ngir aar utérus bi.",
+      "response_fr": "Les oestrogenes et la progesterone sont les hormones feminines fabriquees par les ovaires. Les oestrogenes protegent notamment les os, le coeur, la peau et la zone intime ; ils baissent a la menopause, ce qui provoque les symptomes. La progesterone est une autre hormone feminine, associee aux oestrogenes dans le THM pour proteger l'uterus.",
+      "answer_bilingual": "Oestrogenes ak progesterone ñooy hormones feminines yi ovaires defar. Oestrogenes day proteger os, coeur, peau, zone intime; dañuy baisser ci menopause. Progesterone nu koy associer ak oestrogenes ci THM ngir proteger uterus bi.",
+      "keywords_wo": [
+        "oestrogenes",
+        "progesterone",
+        "hormones",
+        "ovaires",
+        "THM",
+        "uterus"
+      ],
+      "keywords_fr": [
+        "oestrogenes",
+        "progesterone",
+        "hormones",
+        "feminines",
+        "ovaires",
+        "THM"
+      ],
+      "keywords_common": [
+        "oestrogenes",
+        "progesterone",
+        "hormones"
+      ],
+      "importance": "low",
+      "source": "YOONU Jigeen - Glossaire"
+    },
+    {
+      "id": "meno_glossaire_003",
+      "domaine": "menopause",
+      "category": "definitions",
+      "question_wo": "Lan mooy AVC (accident vasculaire cerebral)?",
+      "question_fr": "Qu'est-ce qu'un AVC (accident vasculaire cerebral) ?",
+      "question_bi": "Lan mooy AVC bi?",
+      "response_wo": "AVC (accident vasculaire cerebral) mooy benn feebar bu metti bu jem ci ndimbalu deret ci yuxu (cerveau). Signes yi: loxo walla kanam bu yëngotul (rawatina ci benn wet), gemmiñ gu tëdd walla wax bu jafe, ak mettit bopp bu metti lool. Risque AVC day yokku ginnaaw menopause. Su nga gis signes yooyu, demal gaaw hopital, urgence la.",
+      "response_fr": "Un AVC (accident vasculaire cerebral) est un probleme grave lie a la circulation du sang dans le cerveau. Les signes : bras ou visage qui ne bougent plus (surtout d'un cote), bouche deviee ou difficulte a parler, et mal de tete tres intense. Le risque d'AVC augmente apres la menopause. Si tu vois ces signes, va immediatement a l'hopital : c'est une urgence.",
+      "answer_bilingual": "AVC (accident vasculaire cerebral) mooy probleme grave ci circulation deret ci cerveau. Signes: bras/visage yëngotul (benn cote), bouche deviee walla difficulte parler, mal de tete intense. Risque day augmenter ginnaaw menopause. Su nga gis signes yi, demal gaaw hopital, urgence la.",
+      "keywords_wo": [
+        "AVC",
+        "cerveau",
+        "deret",
+        "loxo",
+        "kanam",
+        "urgence",
+        "hopital"
+      ],
+      "keywords_fr": [
+        "AVC",
+        "accident vasculaire cerebral",
+        "cerveau",
+        "paralysie",
+        "urgence"
+      ],
+      "keywords_common": [
+        "AVC",
+        "urgence",
+        "cerveau"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Module 7 / Glossaire"
+    },
+    {
+      "id": "meno_global_001",
+      "domaine": "menopause",
+      "category": "comprendre_menopause",
+      "question_wo": "Menopause na ma, lan laa war a def?",
+      "question_fr": "Je suis menopausee, que dois-je faire maintenant ?",
+      "question_bi": "Menopause na ma, lan laa war def leegi?",
+      "response_wo": "Su nga menopause, lii moo war: (1) xamal ni du feebar, etape normal la; (2) toppatool sa lekk (calcium, lujum, jën) ak doxin 30 simili bés bu nekk; (3) gisal doktoor at mu nekk te defal depistages yi (mammographie, frottis, tension, sukkar); (4) su am symptomes yu metti, waxal ko doktoor, am na ay faj (THM walla yeneen); (5) bul am kersa ngir wax sa symptomes yu biir. Te lii moo gena am solo: bepp deret ginnaaw menopause, gisal doktoor lu gaaw.",
+      "response_fr": "Si tu es menopausee, voici l'essentiel : (1) comprends que ce n'est pas une maladie, c'est une etape normale ; (2) soigne ton alimentation (calcium, legumes, poisson) et marche 30 minutes par jour ; (3) consulte un medecin chaque annee et fais les depistages (mammographie, frottis, tension, sucre) ; (4) si tu as des symptomes genants, parles-en au medecin, il existe des traitements (THM ou autres) ; (5) n'aie pas honte de parler de tes symptomes intimes. Et surtout : tout saignement apres la menopause doit etre vu rapidement par un medecin.",
+      "answer_bilingual": "Su nga menopausee: (1) xam ni du maladie, etape normale la; (2) soigne alimentation (calcium, lujum, jën) ak marche 30 min; (3) consultel doktoor chaque annee ak depistages (mammographie, frottis, tension, sucre); (4) su am symptomes genants, waxal doktoor, am na traitements; (5) bul am honte. Surtout: tout saignement apres menopause, consultel gaaw.",
+      "keywords_wo": [
+        "menopause na ma",
+        "lan laa war def",
+        "lekk",
+        "doxin",
+        "doktoor",
+        "depistage"
+      ],
+      "keywords_fr": [
+        "que faire",
+        "menopausee",
+        "conseils",
+        "depistage",
+        "alimentation",
+        "suivi"
+      ],
+      "keywords_common": [
+        "que faire",
+        "depistage",
+        "suivi",
+        "menopause"
+      ],
+      "importance": "high",
+      "source": "YOONU Jigeen - Synthese Modules 1-8"
+    }
+  ]
+}

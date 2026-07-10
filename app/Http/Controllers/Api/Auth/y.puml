@@ -1,0 +1,90 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+
+actor "Patient" as P
+actor "Médecin / Cabinet" as M
+actor "Administrateur" as A
+
+rectangle "Application d'intermédiation médicale" {
+
+  ' ---- Authentification (commun) ----
+  usecase "S'inscrire" as UC1
+  usecase "S'authentifier" as UC2
+  usecase "Gérer son profil" as UC3
+
+  ' ---- Patient ----
+  usecase "Rechercher un médecin / cabinet" as UC4
+  usecase "Consulter un profil médecin" as UC5
+  usecase "Prendre un rendez-vous" as UC6
+  usecase "Annuler / modifier un RDV" as UC7
+  usecase "Obtenir un ticket de file d'attente" as UC8
+  usecase "Suivre sa position en temps réel" as UC9
+  usecase "Effectuer un paiement mobile" as UC10
+  usecase "Consulter son dossier médical" as UC11
+  usecase "Gérer le consentement d'accès" as UC12
+  usecase "Évaluer une consultation" as UC13
+
+  ' ---- Médecin ----
+  usecase "Demander une adhésion" as UC14
+  usecase "Gérer son agenda / disponibilités" as UC15
+  usecase "Gérer les rendez-vous\n(accepter/refuser)" as UC16
+  usecase "Gérer la file d'attente\n(appeler patient suivant)" as UC17
+  usecase "Accéder au dossier du patient" as UC18
+  usecase "Rédiger une ordonnance" as UC19
+
+  ' ---- Administrateur ----
+  usecase "Valider les médecins / cabinets" as UC20
+  usecase "Gérer les utilisateurs" as UC21
+  usecase "Superviser la plateforme" as UC22
+  usecase "Consulter les statistiques" as UC23
+
+  ' ---- Commun (notifications) ----
+  usecase "Recevoir des notifications" as UC24
+}
+
+' ===== Relations Patient =====
+P --> UC1
+P --> UC2
+P --> UC3
+P --> UC4
+P --> UC5
+P --> UC6
+P --> UC7
+P --> UC8
+P --> UC9
+P --> UC10
+P --> UC11
+P --> UC12
+P --> UC13
+P --> UC24
+
+' ===== Relations Médecin =====
+M --> UC14
+M --> UC2
+M --> UC3
+M --> UC15
+M --> UC16
+M --> UC17
+M --> UC18
+M --> UC19
+M --> UC24
+
+' ===== Relations Administrateur =====
+A --> UC2
+A --> UC20
+A --> UC21
+A --> UC22
+A --> UC23
+
+' ===== Relations include / extend =====
+UC6 ..> UC2 : <<include>>
+UC6 ..> UC10 : <<include>>
+UC6 ..> UC8 : <<include>>
+UC8 ..> UC9 : <<extend>>
+UC18 ..> UC12 : <<include>>
+UC16 ..> UC24 : <<include>>
+UC20 ..> UC14 : <<include>>
+
+@enduml

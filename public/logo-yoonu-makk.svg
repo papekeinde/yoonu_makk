@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-label="YOONU JIGEEN logo">
+  <!-- Halo pâle -->
+  <circle cx="74" cy="86" r="66" fill="#FBE3EC"/>
+  <!-- Halo rose doux autour de l'anneau -->
+  <circle cx="74" cy="86" r="44" fill="none" stroke="#F8BBD0" stroke-width="24" opacity="0.4"/>
+  <!-- Anneau magenta franc -->
+  <circle cx="74" cy="86" r="44" fill="none" stroke="#E91E63" stroke-width="13"/>
+  <!-- Lettre Y : tracé fin à bouts arrondis, rose clair -->
+  <g fill="none" stroke="#F4A6BC" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M55 63 L74 87"/>
+    <path d="M93 63 L74 87"/>
+    <path d="M74 87 L74 108"/>
+  </g>
+  <!-- Trois points en traînée, haut-droite -->
+  <circle cx="124" cy="30" r="9" fill="#8B1A47"/>
+  <circle cx="141" cy="21" r="5" fill="#E91E63" opacity="0.9"/>
+  <circle cx="152" cy="33" r="3" fill="#F4A6BC" opacity="0.85"/>
+</svg>
