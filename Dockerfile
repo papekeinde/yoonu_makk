@@ -30,8 +30,15 @@ WORKDIR /var/www/html
 # Copy project
 COPY . .
 
+# Create SQLite database for temporary testing if needed
+RUN touch database/database.sqlite
+RUN chmod 666 database/database.sqlite
+
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
+
+# Run migrations (force)
+# RUN php artisan migrate --force --seed # Only if we want to seed immediately
 
 # Install Node dependencies and build assets
 RUN npm install && npm run build
