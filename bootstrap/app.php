@@ -18,6 +18,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Faire confiance aux proxys (nécessaire pour Render/HTTPS)
+        $middleware->trustProxies(at: '*');
+
         // Headers de sécurité HTTP sur toutes les requêtes API
         $middleware->appendToGroup('api', SecureHeaders::class);
 
