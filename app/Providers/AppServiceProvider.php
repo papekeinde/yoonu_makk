@@ -7,12 +7,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 
+use Illuminate\Support\Facades\URL;
+
 class AppServiceProvider extends ServiceProvider
 {
     public function register(): void {}
 
     public function boot(): void
     {
+        // Forcer le HTTPS en production (fix pour Render/Cloud)
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
+
         $this->configureRateLimiting();
     }
 
