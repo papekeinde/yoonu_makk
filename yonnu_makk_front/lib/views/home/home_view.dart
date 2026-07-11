@@ -209,36 +209,38 @@ class _HomeGrossesse extends StatelessWidget {
 
             const SizedBox(height: 12),
 
-            GridView.count(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              crossAxisCount: 2,
-              crossAxisSpacing: 12,
-              mainAxisSpacing: 12,
-              childAspectRatio: 1.2,
-              children: [
-                QuickAccessCard(
-                  icon: Icons.pregnant_woman, titre: 'Ma grossesse',
-                  sousTitre: 'Tableau de bord', iconColor: _accent,
-                  onTap: () => Navigator.pushNamed(context, Routes.grossesse),
-                ),
-                QuickAccessCard(
-                  icon: Icons.child_care_rounded, titre: 'Mouvements bébé',
-                  sousTitre: 'Enregistrer les kicks', iconColor: _accent,
-                  onTap: () => Navigator.pushNamed(context, Routes.mouvements),
-                ),
-                QuickAccessCard(
-                  icon: Icons.assignment_rounded, titre: 'Mes suivis',
-                  sousTitre: 'Historique médical', iconColor: AppColors.primary,
-                  onTap: () => Navigator.pushNamed(context, Routes.grossesse),
-                ),
-                QuickAccessCard(
-                  icon: Icons.smart_toy_rounded, titre: 'Chatbot IA',
-                  sousTitre: 'Questions & conseils', iconColor: AppColors.primary,
-                  onTap: () => Navigator.pushNamed(context, Routes.chatbot),
-                ),
-              ],
-            ),
+            LayoutBuilder(builder: (context, constraints) {
+              return GridView.count(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                crossAxisCount: constraints.maxWidth > 600 ? 3 : 2,
+                crossAxisSpacing: 12,
+                mainAxisSpacing: 12,
+                childAspectRatio: constraints.maxWidth > 600 ? 1.5 : 1.2,
+                children: [
+                  QuickAccessCard(
+                    icon: Icons.pregnant_woman, titre: 'Ma grossesse',
+                    sousTitre: 'Tableau de bord', iconColor: _accent,
+                    onTap: () => Navigator.pushNamed(context, Routes.grossesse),
+                  ),
+                  QuickAccessCard(
+                    icon: Icons.child_care_rounded, titre: 'Mouvements bébé',
+                    sousTitre: 'Enregistrer les kicks', iconColor: _accent,
+                    onTap: () => Navigator.pushNamed(context, Routes.mouvements),
+                  ),
+                  QuickAccessCard(
+                    icon: Icons.assignment_rounded, titre: 'Mes suivis',
+                    sousTitre: 'Historique médical', iconColor: AppColors.primary,
+                    onTap: () => Navigator.pushNamed(context, Routes.grossesse),
+                  ),
+                  QuickAccessCard(
+                    icon: Icons.smart_toy_rounded, titre: 'Chatbot IA',
+                    sousTitre: 'Questions & conseils', iconColor: AppColors.primary,
+                    onTap: () => Navigator.pushNamed(context, Routes.chatbot),
+                  ),
+                ],
+              );
+            }),
           ],
         ),
       ),
@@ -358,41 +360,43 @@ class _HomeMenopause extends StatelessWidget {
 
             const SizedBox(height: 12),
 
-            GridView.count(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              crossAxisCount: 2,
-              crossAxisSpacing: 12,
-              mainAxisSpacing: 12,
-              childAspectRatio: 1.2,
-              children: [
-                QuickAccessCard(
-                  icon: Icons.favorite_rounded, titre: 'Symptômes',
-                  sousTitre: '', iconColor: AppColors.primary,
-                  onTap: () => Navigator.pushNamed(context, Routes.symptomes),
-                ),
-                QuickAccessCard(
-                  icon: Icons.smart_toy_rounded, titre: 'Chatbot IA',
-                  sousTitre: '', iconColor: AppColors.primaryDark,
-                  onTap: () => Navigator.pushNamed(context, Routes.chatbot),
-                ),
-                QuickAccessCard(
-                  icon: Icons.calendar_month_rounded, titre: 'Rendez-vous',
-                  sousTitre: '', iconColor: AppColors.primary,
-                  onTap: () => Navigator.pushNamed(context, Routes.rendezVous),
-                ),
-                QuickAccessCard(
-                  icon: Icons.menu_book_rounded, titre: 'Éducation',
-                  sousTitre: '', iconColor: AppColors.primaryDark,
-                  onTap: () => Navigator.pushNamed(context, Routes.conseils),
-                ),
-                QuickAccessCard(
-                  icon: Icons.people_rounded, titre: 'Spécialistes',
-                  sousTitre: '', iconColor: AppColors.primary,
-                  onTap: () => Navigator.pushNamed(context, Routes.specialistes),
-                ),
-              ],
-            ),
+            LayoutBuilder(builder: (context, constraints) {
+              return GridView.count(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                crossAxisCount: constraints.maxWidth > 600 ? 3 : 2,
+                crossAxisSpacing: 12,
+                mainAxisSpacing: 12,
+                childAspectRatio: constraints.maxWidth > 600 ? 1.5 : 1.2,
+                children: [
+                  QuickAccessCard(
+                    icon: Icons.favorite_rounded, titre: 'Symptômes',
+                    sousTitre: '', iconColor: AppColors.primary,
+                    onTap: () => Navigator.pushNamed(context, Routes.symptomes),
+                  ),
+                  QuickAccessCard(
+                    icon: Icons.smart_toy_rounded, titre: 'Chatbot IA',
+                    sousTitre: '', iconColor: AppColors.primaryDark,
+                    onTap: () => Navigator.pushNamed(context, Routes.chatbot),
+                  ),
+                  QuickAccessCard(
+                    icon: Icons.calendar_month_rounded, titre: 'Rendez-vous',
+                    sousTitre: '', iconColor: AppColors.primary,
+                    onTap: () => Navigator.pushNamed(context, Routes.rendezVous),
+                  ),
+                  QuickAccessCard(
+                    icon: Icons.menu_book_rounded, titre: 'Éducation',
+                    sousTitre: '', iconColor: AppColors.primaryDark,
+                    onTap: () => Navigator.pushNamed(context, Routes.conseils),
+                  ),
+                  QuickAccessCard(
+                    icon: Icons.people_rounded, titre: 'Spécialistes',
+                    sousTitre: '', iconColor: AppColors.primary,
+                    onTap: () => Navigator.pushNamed(context, Routes.specialistes),
+                  ),
+                ],
+              );
+            }),
           ],
         ),
       ),
@@ -470,31 +474,33 @@ class _HomeDiscovery extends StatelessWidget {
 
             const SizedBox(height: 12),
 
-            GridView.count(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              crossAxisCount: 2,
-              crossAxisSpacing: 12,
-              mainAxisSpacing: 12,
-              childAspectRatio: 1.2,
-              children: [
-                QuickAccessCard(
-                  icon: Icons.menu_book_rounded, titre: 'Conseils',
-                  sousTitre: 'Contenus éducatifs', iconColor: AppColors.primary,
-                  onTap: () => Navigator.pushNamed(context, Routes.conseils),
-                ),
-                QuickAccessCard(
-                  icon: Icons.smart_toy_rounded, titre: 'Chatbot IA',
-                  sousTitre: 'Posez vos questions', iconColor: AppColors.primaryDark,
-                  onTap: () => Navigator.pushNamed(context, Routes.chatbot),
-                ),
-                QuickAccessCard(
-                  icon: Icons.people_rounded, titre: 'Spécialistes',
-                  sousTitre: 'Trouver un médecin', iconColor: AppColors.primary,
-                  onTap: () => Navigator.pushNamed(context, Routes.specialistes),
-                ),
-              ],
-            ),
+            LayoutBuilder(builder: (context, constraints) {
+              return GridView.count(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                crossAxisCount: constraints.maxWidth > 600 ? 3 : 2,
+                crossAxisSpacing: 12,
+                mainAxisSpacing: 12,
+                childAspectRatio: constraints.maxWidth > 600 ? 1.5 : 1.2,
+                children: [
+                  QuickAccessCard(
+                    icon: Icons.menu_book_rounded, titre: 'Conseils',
+                    sousTitre: 'Contenus éducatifs', iconColor: AppColors.primary,
+                    onTap: () => Navigator.pushNamed(context, Routes.conseils),
+                  ),
+                  QuickAccessCard(
+                    icon: Icons.smart_toy_rounded, titre: 'Chatbot IA',
+                    sousTitre: 'Posez vos questions', iconColor: AppColors.primaryDark,
+                    onTap: () => Navigator.pushNamed(context, Routes.chatbot),
+                  ),
+                  QuickAccessCard(
+                    icon: Icons.people_rounded, titre: 'Spécialistes',
+                    sousTitre: 'Trouver un médecin', iconColor: AppColors.primary,
+                    onTap: () => Navigator.pushNamed(context, Routes.specialistes),
+                  ),
+                ],
+              );
+            }),
           ],
         ),
       ),

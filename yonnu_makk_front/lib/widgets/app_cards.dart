@@ -26,7 +26,7 @@ class StatCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(12), // Un peu moins de padding pour les petits écrans
         decoration: BoxDecoration(
           color: AppColors.surface,
           borderRadius: BorderRadius.circular(16),
@@ -41,34 +41,42 @@ class StatCard extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              width: 44, height: 44,
+              width: 40, height: 40,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: color.withValues(alpha: 0.12),
               ),
-              child: Icon(icon, color: color, size: 22),
+              child: Icon(icon, color: color, size: 20),
             ),
-            const SizedBox(width: 12),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.baseline,
-                  textBaseline: TextBaseline.alphabetic,
-                  children: [
-                    Text(value, style: TextStyle(
-                      fontSize: 26, fontWeight: FontWeight.w800, color: color,
-                    )),
-                    const SizedBox(width: 3),
-                    Text(unit, style: const TextStyle(
-                      fontSize: 12, color: AppColors.ink2,
-                    )),
-                  ],
-                ),
-                Text(label, style: const TextStyle(
-                  fontSize: 12, color: AppColors.ink2,
-                )),
-              ],
+            const SizedBox(width: 10),
+            Expanded( // Permet au texte de prendre la place restante sans déborder
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  FittedBox( // Adapte la taille du texte si trop long
+                    fit: BoxFit.scaleDown,
+                    alignment: Alignment.centerLeft,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: [
+                        Text(value, style: TextStyle(
+                          fontSize: 22, fontWeight: FontWeight.w800, color: color,
+                        )),
+                        const SizedBox(width: 3),
+                        Text(unit, style: const TextStyle(
+                          fontSize: 11, color: AppColors.ink2,
+                        )),
+                      ],
+                    ),
+                  ),
+                  Text(label, 
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(fontSize: 11, color: AppColors.ink2, height: 1.1)),
+                ],
+              ),
             ),
           ],
         ),
@@ -100,24 +108,29 @@ class QuickAccessCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.all(18),
+        padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: AppColors.surface,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(color: AppColors.border),
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center, // Centré verticalement
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(icon, color: color, size: 32),
-            const SizedBox(height: 10),
-            Text(titre, style: const TextStyle(
-              fontSize: 14, fontWeight: FontWeight.w700, color: AppColors.ink,
-            )),
-            const SizedBox(height: 2),
-            Text(sousTitre, style: const TextStyle(
-              fontSize: 12, color: AppColors.ink2,
-            )),
+            Icon(icon, color: color, size: 28),
+            const SizedBox(height: 8),
+            Text(titre, 
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: AppColors.ink)),
+            if (sousTitre.isNotEmpty) ...[
+              const SizedBox(height: 2),
+              Text(sousTitre, 
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(fontSize: 11, color: AppColors.ink2)),
+            ],
           ],
         ),
       ),

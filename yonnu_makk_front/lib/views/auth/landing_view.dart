@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import '../../config/theme.dart';
 import '../../config/routes.dart';
 import '../../widgets/logo_widget.dart';
 
 // ─── VUE LANDING (PAGE D'ACCUEIL / SPLASH) ───────────────────────────────────
-// Première page visible. Présente l'application et propose de se connecter
-// ou de créer un compte. Correspond exactement aux screenshots de design.
 class LandingView extends StatefulWidget {
   const LandingView({super.key});
 
@@ -15,6 +14,36 @@ class LandingView extends StatefulWidget {
 
 class _LandingViewState extends State<LandingView> {
   String _langue = 'Français';
+  final FlutterTts _tts = FlutterTts();
+
+  @override
+  void initState() {
+    super.initState();
+    _initTts();
+  }
+
+  Future<void> _initTts() async {
+    await _tts.setLanguage('fr-FR');
+    await _tts.setSpeechRate(0.5);
+  }
+
+  Future<void> _parler() async {
+    String text;
+    if (_langue == 'Wolof') {
+      text = "Suivez votre santé à chaque étape de votre vie de femme. Yoonu Jigeen mooy sa yoonu santé.";
+      await _tts.setLanguage('fr-FR'); // Trick: Wolof doesn't exist in TTS, but we can try to read phonetically or just use French for now
+    } else {
+      text = "Suivez votre santé à chaque étape de votre vie de femme. Yoonu Jigeen, votre compagnon santé.";
+      await _tts.setLanguage('fr-FR');
+    }
+    await _tts.speak(text);
+  }
+
+  @override
+  void dispose() {
+    _tts.stop();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,16 +90,27 @@ class _LandingViewState extends State<LandingView> {
 
                 const SizedBox(height: 24),
 
-                // Accroche
-                const Text(
-                  'Suivez votre santé à chaque étape\nde votre vie de femme',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: AppColors.ink,
-                    fontWeight: FontWeight.w500,
-                    height: 1.5,
-                  ),
+                // Accroche + Bouton Énoncer
+                Column(
+                  children: [
+                    const Text(
+                      'Suivez votre santé à chaque étape\nde votre vie de femme',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: AppColors.ink,
+                        fontWeight: FontWeight.w500,
+                        height: 1.5,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    TextButton.icon(
+                      onPressed: _parler,
+                      icon: const Icon(Icons.volume_up_rounded, size: 20),
+                      label: const Text('Énoncer', style: TextStyle(fontWeight: FontWeight.w600)),
+                      style: TextButton.styleFrom(foregroundColor: AppColors.primary),
+                    ),
+                  ],
                 ),
 
                 const Spacer(flex: 3),

@@ -36,14 +36,8 @@ class ApiService {
   ApiService._();
   static final ApiService instance = ApiService._();
 
-  // URL de base calculée selon la plateforme
-  String get _base {
-    if (kIsWeb) return 'http://localhost:8000/api';
-    try {
-      if (Platform.isAndroid) return 'http://10.0.2.2:8000/api';
-    } catch (_) {}
-    return AppConfig.apiBaseUrl;
-  }
+  // URL de base
+  String get _base => AppConfig.apiBaseUrl;
 
   // En-têtes HTTP standards (JSON + token si disponible)
   Future<Map<String, String>> _headers() async {

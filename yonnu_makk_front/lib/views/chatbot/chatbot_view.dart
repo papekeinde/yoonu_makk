@@ -38,19 +38,17 @@ class _ChatbotViewState extends State<ChatbotView> {
       'Laajal sama ay laaj ci ëmbë ak suivi prénatal, '
       'ci bindëfu wala ak mikro 🎤. Mën naa tamit la tontu ak xam-xam.';
 
-  final List<_Msg> _messages = [
-    _Msg(text: _msgAccueilFr, isUser: false),
-  ];
+  final List<_Msg> _messages = [];
 
   @override
   void initState() {
     super.initState();
+    _messages.add(_Msg(text: _msgAccueilFr, isUser: false));
     _initTts();
     _chargerHistorique();
   }
 
   Future<void> _initTts() async {
-    // Privilégier le moteur Google (voix neuronales de meilleure qualité) sur Android.
     try {
       final moteurs = (await _tts.getEngines) as List?;
       if (moteurs != null && moteurs.contains('com.google.android.tts')) {
@@ -61,14 +59,12 @@ class _ChatbotViewState extends State<ChatbotView> {
     await _tts.setLanguage('fr-FR');
     await _choisirMeilleureVoixFr();
 
-    await _tts.setSpeechRate(0.46);  // débit posé, plus naturel
-    await _tts.setPitch(1.05);       // timbre légèrement plus chaleureux
+    await _tts.setSpeechRate(0.46);
+    await _tts.setPitch(1.05);
     await _tts.setVolume(1.0);
     await _tts.awaitSpeakCompletion(true);
   }
 
-  /// Sélectionne la voix française la plus naturelle parmi celles installées
-  /// (préférence aux voix réseau/améliorées, puis à une voix féminine).
   Future<void> _choisirMeilleureVoixFr() async {
     try {
       final voix = (await _tts.getVoices) as List?;
@@ -83,7 +79,7 @@ class _ChatbotViewState extends State<ChatbotView> {
       int score(Map v) {
         final n = (v['name'] ?? '').toString().toLowerCase();
         var s = 0;
-        if (n.contains('network')) s += 4;       // voix réseau = plus naturelle
+        if (n.contains('network')) s += 4;
         if (n.contains('enhanced') || n.contains('premium')) s += 3;
         if (RegExp(r'(fr-fr|fre)').hasMatch((v['locale'] ?? '').toString().toLowerCase())) s += 2;
         if (n.contains('female') || n.contains('-f-') || n.endsWith('f')) s += 1;
@@ -96,7 +92,7 @@ class _ChatbotViewState extends State<ChatbotView> {
         'name':   meilleure['name'].toString(),
         'locale': meilleure['locale'].toString(),
       });
-    } catch (_) {/* on garde la voix par défaut si indisponible */}
+    } catch (_) {}
   }
 
   @override
@@ -109,15 +105,12 @@ class _ChatbotViewState extends State<ChatbotView> {
     super.dispose();
   }
 
-  /// Lit un message à voix haute.
-  /// - En mode wolof : joue l'audio pré-enregistré uniquement (pas de TTS synthétique).
-  /// - En mode français : audio serveur si présent, sinon TTS local.
   Future<void> _parler(_Msg m) async {
     await _tts.stop();
+    await _player.stop();
     if (m.audioUrl != null) {
       try { await _player.play(UrlSource(m.audioUrl!)); return; } catch (_) {}
     }
-    // En wolof, on ne tombe pas en fallback TTS (qualité trop mauvaise).
     if (_langue == 'wo') return;
     final texte = m.text.trim();
     if (texte.isNotEmpty) {
@@ -125,28 +118,26 @@ class _ChatbotViewState extends State<ChatbotView> {
     }
   }
 
-  /// Bascule la langue FR ↔ WO et remet un message d'accueil adapté.
   void _toggleLangue() {
     _tts.stop();
+    _player.stop();
     setState(() {
       _langue = _langue == 'fr' ? 'wo' : 'fr';
-      // Réinitialise la conversation avec le bon message d'accueil.
-      _messages
-        ..clear()
-        ..add(_Msg(
+      _messages.clear();
+      _messages.add(_Msg(
             text: _langue == 'wo' ? _msgAccueilWo : _msgAccueilFr,
             isUser: false));
       _sessionId = null;
     });
+    _chargerHistorique();
   }
 
-  // ── Historique ──────────────────────────────────────────────────────────────
   Future<void> _chargerHistorique() async {
     final res = await ApiService.instance.get('/patient/chatbot/historique');
     if (!mounted || !res.ok) return;
     final data = (res.data['data'] as List? ?? []);
     if (data.isEmpty) return;
-    // L'API renvoie du plus récent au plus ancien → on remet dans l'ordre.
+    
     final items = data.reversed
         .map((e) => _Msg(
               text:   e['message'] as String? ?? '',
@@ -154,15 +145,13 @@ class _ChatbotViewState extends State<ChatbotView> {
             ))
         .toList();
     setState(() {
-      _messages
-        ..clear()
-        ..addAll(items);
+      _messages.clear();
+      _messages.addAll(items);
       _sessionId = data.first['session_id'] as String?;
     });
     _scrollToBottom();
   }
 
-  // ── Envoi texte ───────────────────────────────────────────────────────────
   Future<void> _send([String? preset]) async {
     final text = (preset ?? _ctrl.text).trim();
     if (text.isEmpty || _loading) return;
@@ -176,7 +165,7 @@ class _ChatbotViewState extends State<ChatbotView> {
     final res = await ApiService.instance.post('/patient/chatbot', body: {
       'message':    text,
       'langue':     _langue,
-      'session_id': ?_sessionId,
+      'session_id': _sessionId,
     });
     if (!mounted) return;
 
@@ -203,7 +192,6 @@ class _ChatbotViewState extends State<ChatbotView> {
     _scrollToBottom();
   }
 
-  // ── Enregistrement vocal ────────────────────────────────────────────────────
   Future<void> _toggleRecord() async {
     if (kIsWeb) {
       _snack('La saisie vocale est disponible sur l\'application mobile.');
@@ -231,7 +219,7 @@ class _ChatbotViewState extends State<ChatbotView> {
     final res = await ApiService.instance.postMultipart('/patient/chatbot/audio',
       fields: {
         'langue':     _langue,
-        'session_id': ?_sessionId,
+        'session_id': _sessionId ?? '',
       },
       files: {'audio': path},
     );
@@ -264,7 +252,7 @@ class _ChatbotViewState extends State<ChatbotView> {
     content: Text(m), behavior: SnackBarBehavior.floating));
 
   void _scrollToBottom() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    Future.delayed(const Duration(milliseconds: 100), () {
       if (_scroll.hasClients) {
         _scroll.animateTo(_scroll.position.maxScrollExtent,
           duration: const Duration(milliseconds: 300), curve: Curves.easeOut);
@@ -282,75 +270,55 @@ class _ChatbotViewState extends State<ChatbotView> {
         titleSpacing: 0,
         title: Row(
           children: [
+            const SizedBox(width: 8),
             const CircleAvatar(
               radius: 18,
               backgroundColor: AppColors.primarySoft,
               child: Icon(Icons.smart_toy_rounded, color: AppColors.primary, size: 20),
             ),
             const SizedBox(width: 10),
-            Column(
+            const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Assistant IA YOONU JIGEEN',
+                Text('Assistant Santé',
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: AppColors.ink)),
-                Row(children: [
-                  Container(width: 7, height: 7,
-                    decoration: const BoxDecoration(color: AppColors.success, shape: BoxShape.circle)),
-                  const SizedBox(width: 4),
-                  const Text('En ligne', style: TextStyle(fontSize: 11, color: AppColors.success)),
-                ]),
+                Text('En ligne', style: TextStyle(fontSize: 11, color: AppColors.success)),
               ],
             ),
           ],
         ),
         actions: [
-          // ── Bascule langue FR / WO ──────────────────────────────────────
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
             child: GestureDetector(
               onTap: _toggleLangue,
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
+              child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
                   color: _langue == 'wo' ? AppColors.primary : AppColors.primarySoft,
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(
-                    color: _langue == 'wo' ? AppColors.primary : AppColors.border,
-                    width: 1.5,
-                  ),
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
-                  _langue == 'wo' ? '🇸🇳 WO' : '🇫🇷 FR',
+                  _langue == 'wo' ? 'WO' : 'FR',
                   style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
+                    fontSize: 12, fontWeight: FontWeight.w700,
                     color: _langue == 'wo' ? Colors.white : AppColors.primary,
                   ),
                 ),
               ),
             ),
           ),
-          // ── Volume ──────────────────────────────────────────────────────
           IconButton(
             icon: Icon(
               _voiceOn ? Icons.volume_up_rounded : Icons.volume_off_rounded,
-              color: _voiceOn ? AppColors.primary : AppColors.ink2,
+              color: _voiceOn ? AppColors.primary : AppColors.ink2, size: 20,
             ),
-            tooltip: _voiceOn ? 'Couper la voix' : 'Activer la voix',
             onPressed: () {
               setState(() => _voiceOn = !_voiceOn);
-              if (!_voiceOn) _tts.stop();
+              if (!_voiceOn) { _tts.stop(); _player.stop(); }
             },
           ),
-          IconButton(
-            icon: const Icon(Icons.delete_outline_rounded, color: AppColors.ink2),
-            tooltip: 'Effacer la conversation',
-            onPressed: () {
-              _tts.stop();
-              setState(() => _messages.removeRange(1, _messages.length));
-            },
-          ),
+          const SizedBox(width: 4),
         ],
       ),
       body: Column(
@@ -366,7 +334,6 @@ class _ChatbotViewState extends State<ChatbotView> {
                 final m = _messages[i];
                 return _MessageBubble(
                   msg: m,
-                  // Toute réponse de l'assistant peut être écoutée (audio serveur ou synthèse vocale).
                   onPlay: m.isUser ? null : () => _parler(m),
                 );
               },
@@ -381,12 +348,10 @@ class _ChatbotViewState extends State<ChatbotView> {
           ),
         ],
       ),
-      bottomNavigationBar: const BottomNav(currentIndex: 2),
     );
   }
 }
 
-// ─── MODÈLE MESSAGE ──────────────────────────────────────────────────────────
 class _Msg {
   final String   text;
   final bool     isUser;
@@ -395,7 +360,6 @@ class _Msg {
   _Msg({required this.text, required this.isUser, this.audioUrl}) : time = DateTime.now();
 }
 
-// ─── BULLE DE MESSAGE ────────────────────────────────────────────────────────
 class _MessageBubble extends StatelessWidget {
   final _Msg msg;
   final VoidCallback? onPlay;
@@ -406,41 +370,21 @@ class _MessageBubble extends StatelessWidget {
     return Align(
       alignment: msg.isUser ? Alignment.centerRight : Alignment.centerLeft,
       child: Container(
-        constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.78),
-        margin: const EdgeInsets.only(bottom: 14),
+        constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.8),
+        margin: const EdgeInsets.only(bottom: 12),
         child: Column(
-          crossAxisAlignment:
-              msg.isUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+          crossAxisAlignment: msg.isUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
           children: [
-            if (!msg.isUser)
-              const Padding(
-                padding: EdgeInsets.only(left: 4, bottom: 5),
-                child: Row(mainAxisSize: MainAxisSize.min, children: [
-                  CircleAvatar(
-                    radius: 11,
-                    backgroundColor: AppColors.primarySoft,
-                    child: Icon(Icons.smart_toy_rounded, color: AppColors.primary, size: 13),
-                  ),
-                  SizedBox(width: 5),
-                  Text('Assistant',
-                    style: TextStyle(fontSize: 11, color: AppColors.ink2, fontWeight: FontWeight.w500)),
-                ]),
-              ),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               decoration: BoxDecoration(
-                color: msg.isUser ? AppColors.primary : AppColors.surface,
-                borderRadius: BorderRadius.only(
-                  topLeft:     const Radius.circular(18),
-                  topRight:    const Radius.circular(18),
-                  bottomLeft:  Radius.circular(msg.isUser ? 18 : 4),
-                  bottomRight: Radius.circular(msg.isUser ? 4 : 18),
+                color: msg.isUser ? AppColors.primary : Colors.white,
+                borderRadius: BorderRadius.circular(16).copyWith(
+                  bottomRight: msg.isUser ? const Radius.circular(0) : null,
+                  bottomLeft: !msg.isUser ? const Radius.circular(0) : null,
                 ),
                 boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.06),
-                    blurRadius: 8, offset: const Offset(0, 2),
-                  ),
+                  BoxShadow(color: Colors.black.withValues(alpha: .04), blurRadius: 4, offset: const Offset(0, 2))
                 ],
               ),
               child: Column(
@@ -448,32 +392,30 @@ class _MessageBubble extends StatelessWidget {
                 children: [
                   Text(msg.text,
                     style: TextStyle(
-                      fontSize: 13.5,
+                      fontSize: 14,
                       color: msg.isUser ? Colors.white : AppColors.ink,
-                      height: 1.55,
                     )),
                   if (onPlay != null) ...[
-                    const SizedBox(height: 6),
-                    GestureDetector(
+                    const SizedBox(height: 8),
+                    InkWell(
                       onTap: onPlay,
-                      child: Row(mainAxisSize: MainAxisSize.min, children: const [
-                        Icon(Icons.volume_up_rounded, size: 16, color: AppColors.primary),
-                        SizedBox(width: 4),
-                        Text('Écouter', style: TextStyle(fontSize: 12,
-                          fontWeight: FontWeight.w700, color: AppColors.primary)),
-                      ]),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.play_circle_fill_rounded, size: 20, color: msg.isUser ? Colors.white : AppColors.primary),
+                          const SizedBox(width: 6),
+                          Text('Écouter', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: msg.isUser ? Colors.white : AppColors.primary)),
+                        ],
+                      ),
                     ),
                   ],
                 ],
               ),
             ),
-            const SizedBox(height: 3),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4),
-              child: Text(
-                '${msg.time.hour.toString().padLeft(2,'0')}:${msg.time.minute.toString().padLeft(2,'0')}',
-                style: const TextStyle(fontSize: 10, color: AppColors.ink2),
-              ),
+            const SizedBox(height: 4),
+            Text(
+              '${msg.time.hour}:${msg.time.minute.toString().padLeft(2, '0')}',
+              style: const TextStyle(fontSize: 10, color: AppColors.ink2),
             ),
           ],
         ),
@@ -482,7 +424,6 @@ class _MessageBubble extends StatelessWidget {
   }
 }
 
-// ─── INDICATEUR "EN TRAIN D'ÉCRIRE" ─────────────────────────────────────────
 class _TypingBubble extends StatelessWidget {
   const _TypingBubble();
   @override
@@ -490,20 +431,16 @@ class _TypingBubble extends StatelessWidget {
     return Align(
       alignment: Alignment.centerLeft,
       child: Container(
-        margin: const EdgeInsets.only(bottom: 14),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        margin: const EdgeInsets.only(bottom: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
-          color: AppColors.surface,
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(18), topRight: Radius.circular(18),
-            bottomLeft: Radius.circular(4), bottomRight: Radius.circular(18),
-          ),
-          boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.06), blurRadius: 8)],
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16).copyWith(bottomLeft: const Radius.circular(0)),
         ),
         child: const Row(mainAxisSize: MainAxisSize.min, children: [
-          _AnimDot(delay: 0),   SizedBox(width: 5),
-          _AnimDot(delay: 180), SizedBox(width: 5),
-          _AnimDot(delay: 360),
+          _AnimDot(delay: 0),   SizedBox(width: 4),
+          _AnimDot(delay: 200), SizedBox(width: 4),
+          _AnimDot(delay: 400),
         ]),
       ),
     );
@@ -521,161 +458,87 @@ class _AnimDotState extends State<_AnimDot> with SingleTickerProviderStateMixin 
   @override
   void initState() {
     super.initState();
-    _ac   = AnimationController(vsync: this, duration: const Duration(milliseconds: 700));
-    _fade = Tween(begin: 0.25, end: 1.0).animate(CurvedAnimation(parent: _ac, curve: Curves.easeInOut));
+    _ac = AnimationController(vsync: this, duration: const Duration(milliseconds: 600));
+    _fade = Tween(begin: 0.3, end: 1.0).animate(_ac);
     Future.delayed(Duration(milliseconds: widget.delay), () { if (mounted) _ac.repeat(reverse: true); });
   }
   @override void dispose() { _ac.dispose(); super.dispose(); }
   @override
-  Widget build(BuildContext context) => FadeTransition(
-    opacity: _fade,
-    child: Container(width: 8, height: 8,
-      decoration: const BoxDecoration(color: AppColors.primary, shape: BoxShape.circle)),
-  );
+  Widget build(BuildContext context) => FadeTransition(opacity: _fade,
+    child: Container(width: 6, height: 6, decoration: const BoxDecoration(color: AppColors.primary, shape: BoxShape.circle)));
 }
 
-// ─── SUGGESTIONS RAPIDES ─────────────────────────────────────────────────────
 class _QuickSuggestions extends StatelessWidget {
   final ValueChanged<String> onTap;
   final String langue;
   const _QuickSuggestions({required this.onTap, required this.langue});
 
-  static const _itemsFr = [
-    ('🤰', 'Combien de consultations prénatales ?'),
-    ('🩸', 'Signes de danger pendant la grossesse'),
-    ('🍎', 'Alimentation pendant la grossesse'),
-    ('💉', 'Vaccins de la grossesse'),
-    ('👶', 'Mouvements du bébé'),
-  ];
-
-  static const _itemsWo = [
-    ('🤰', 'Ñaata wisite prénatale la war a def ?'),
-    ('🩸', 'Yan mooy signou urgence ci ëmbë ?'),
-    ('🍎', 'Lan lañu war lekk ci biir ëmbë ?'),
-    ('💉', 'Ñaata pikir tatanos la war a jël ?'),
-    ('👶', 'Lan mooy signes du travail ?'),
-  ];
-
   @override
   Widget build(BuildContext context) {
-    final items = langue == 'wo' ? _itemsWo : _itemsFr;
+    final items = langue == 'wo' 
+      ? [('🤰', 'Ñaata wisite prénatale ?'), ('🩸', 'Signou urgence ?'), ('🍎', 'Lekk ci biir ëmbë ?')]
+      : [('🤰', 'Consultations ?'), ('🩸', 'Signes de danger ?'), ('🍎', 'Alimentation ?')];
+    
     return Container(
-      height: 46,
-      color: AppColors.surface,
+      height: 48,
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         itemCount: items.length,
-        separatorBuilder: (_, i) => const SizedBox(width: 8),
-        itemBuilder: (_, i) => GestureDetector(
-          onTap: () => onTap(items[i].$2),
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            decoration: BoxDecoration(
-              color: AppColors.primarySoft,
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: AppColors.border),
-            ),
-            alignment: Alignment.center,
-            child: Text('${items[i].$1} ${items[i].$2}',
-              style: const TextStyle(fontSize: 12, color: AppColors.primary, fontWeight: FontWeight.w500)),
-          ),
+        separatorBuilder: (_, __) => const SizedBox(width: 8),
+        itemBuilder: (_, i) => ActionChip(
+          label: Text('${items[i].$1} ${items[i].$2}', style: const TextStyle(fontSize: 12)),
+          onPressed: () => onTap(items[i].$2),
+          backgroundColor: AppColors.surface,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          side: const BorderSide(color: AppColors.border),
         ),
       ),
     );
   }
 }
 
-// ─── BARRE DE SAISIE (texte + micro) ─────────────────────────────────────────
 class _InputBar extends StatelessWidget {
   final TextEditingController controller;
   final bool recording;
   final String langue;
-  final VoidCallback onSend;
-  final VoidCallback onMic;
-  const _InputBar({
-    required this.controller,
-    required this.recording,
-    required this.langue,
-    required this.onSend,
-    required this.onMic,
-  });
+  final VoidCallback onSend, onMic;
+  const _InputBar({required this.controller, required this.recording, required this.langue, required this.onSend, required this.onMic});
 
   @override
   Widget build(BuildContext context) {
-    final hintText = recording
-        ? 'Enregistrement en cours…'
-        : (langue == 'wo' ? 'Laajal sama… (ëmbii wala menopause)' : 'Posez votre question…');
     return Container(
-      padding: const EdgeInsets.fromLTRB(14, 8, 14, 16),
+      padding: EdgeInsets.fromLTRB(16, 8, 16, MediaQuery.of(context).padding.bottom + 8),
       decoration: BoxDecoration(
         color: AppColors.surface,
-        boxShadow: [BoxShadow(
-          color: AppColors.primary.withValues(alpha: 0.06),
-          blurRadius: 16, offset: const Offset(0, -4),
-        )],
+        boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: .04), blurRadius: 10, offset: const Offset(0, -2))],
       ),
-      child: SafeArea(
-        top: false,
-        child: Row(children: [
-          Expanded(
-            child: TextField(
-              controller: controller,
-              maxLines: null,
-              textInputAction: TextInputAction.send,
-              onSubmitted: (_) => onSend(),
-              decoration: InputDecoration(
-                hintText: hintText,
-                hintStyle: TextStyle(
-                  color: recording ? AppColors.danger : AppColors.ink2, fontSize: 13),
-                filled: true,
-                fillColor: AppColors.bg,
-                contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(24),
-                  borderSide: const BorderSide(color: AppColors.border),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(24),
-                  borderSide: const BorderSide(color: AppColors.border),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(24),
-                  borderSide: const BorderSide(color: AppColors.primary, width: 1.5),
-                ),
-              ),
+      child: Row(children: [
+        Expanded(
+          child: TextField(
+            controller: controller,
+            maxLines: null,
+            decoration: InputDecoration(
+              hintText: recording ? 'J\'écoute...' : 'Posez une question...',
+              hintStyle: TextStyle(color: recording ? AppColors.danger : AppColors.ink2),
+              border: InputBorder.none,
+              enabledBorder: InputBorder.none,
+              focusedBorder: InputBorder.none,
+              filled: false,
             ),
           ),
-          const SizedBox(width: 8),
-          // Bouton micro (passe en rouge pendant l'enregistrement)
-          Material(
-            color: recording ? AppColors.danger : AppColors.primarySoft,
-            borderRadius: BorderRadius.circular(24),
-            child: InkWell(
-              onTap: onMic,
-              borderRadius: BorderRadius.circular(24),
-              child: Padding(
-                padding: const EdgeInsets.all(11),
-                child: Icon(recording ? Icons.stop_rounded : Icons.mic_rounded,
-                  color: recording ? Colors.white : AppColors.primary, size: 20),
-              ),
-            ),
-          ),
-          const SizedBox(width: 8),
-          Material(
-            color: AppColors.primary,
-            borderRadius: BorderRadius.circular(24),
-            child: InkWell(
-              onTap: onSend,
-              borderRadius: BorderRadius.circular(24),
-              child: const Padding(
-                padding: EdgeInsets.all(11),
-                child: Icon(Icons.send_rounded, color: Colors.white, size: 20),
-              ),
-            ),
-          ),
-        ]),
-      ),
+        ),
+        IconButton(
+          icon: Icon(recording ? Icons.stop_circle_rounded : Icons.mic_none_rounded, 
+            color: recording ? AppColors.danger : AppColors.primary, size: 28),
+          onPressed: onMic,
+        ),
+        IconButton(
+          icon: const Icon(Icons.send_rounded, color: AppColors.primary),
+          onPressed: onSend,
+        ),
+      ]),
     );
   }
 }
