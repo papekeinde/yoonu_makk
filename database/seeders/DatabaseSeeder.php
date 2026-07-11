@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Administrateur;
 use App\Models\CategorieContenu;
 use App\Models\Contenu;
-use App\Models\DemandeAdhesion;
 use App\Models\Femme;
 use App\Models\Gynecologue;
 use App\Models\User;
@@ -25,6 +24,8 @@ class DatabaseSeeder extends Seeder
                 'prenom'            => 'Aminata',
                 'password'          => Hash::make('password'),
                 'email_verified_at' => now(),
+                'genre'             => 'femme',
+                'telephone'         => '770000000',
             ]
         );
         Administrateur::updateOrCreate(['user_id' => $admin->id]);
@@ -60,6 +61,7 @@ class DatabaseSeeder extends Seeder
                 'date_naissance'    => '1998-11-25',
                 'ville'             => 'Saint-Louis',
                 'email_verified_at' => now(),
+                'genre'             => 'femme',
             ]
         );
         Femme::updateOrCreate(['user_id' => $u_aissatou->id], ['type_profil' => 'grossesse']);
@@ -73,7 +75,7 @@ class DatabaseSeeder extends Seeder
                 'auteur_id' => $admin->id,
                 'type' => 'article',
                 'titre' => 'Qu\'est-ce que la ménopause ?',
-                'corps' => 'La ménopause est un processus naturel...',
+                'corps' => 'La ménopause est un processus naturel qui marque la fin des cycles menstruels.',
                 'langue' => 'fr',
                 'est_publie' => true,
                 'publie_le' => now()
